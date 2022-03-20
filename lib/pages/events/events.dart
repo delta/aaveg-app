@@ -10,15 +10,15 @@ import 'package:flutter/material.dart';
 typedef BoolCallback = Function(bool b);
 
 class Events extends StatefulWidget {
-  const Events({Key key}) : super(key: key);
+  const Events({Key? key}) : super(key: key);
 
   @override
   _EventsState createState() => _EventsState();
 }
 
 class _EventsState extends State<Events> {
-  Future<ResultResponse<EventsResponse, String>> _events;
-  EventsResponse _cache;
+  Future<ResultResponse<EventsResponse, String>>? _events;
+  EventsResponse? _cache;
 
   @override
   void initState() {
@@ -27,7 +27,7 @@ class _EventsState extends State<Events> {
       CacheManager().getEvents().then((value) {
         if (mounted) {
           setState(() {
-            _cache = value;
+            _cache = value!;
           });
         }
       });
@@ -40,12 +40,12 @@ class _EventsState extends State<Events> {
           future: _events,
           builder: (context, snapshot) {
             if (snapshot.hasData) {
-              if (snapshot.data.message == 'success') {
-                var res = snapshot.data.response as EventsResponse;
+              if (snapshot.data!.message == 'success') {
+                var res = snapshot.data!.response as EventsResponse;
                 return EventScreen(event: res, isOffline: false);
-              } else if (snapshot.data.message == 'Network Error') {
+              } else if (snapshot.data!.message == 'Network Error') {
                 if (_cache != null) {
-                  return EventScreen(event: _cache, isOffline: true);
+                  return EventScreen(event: _cache!, isOffline: true);
                 } else {
                   return const ErrorScreen();
                 }

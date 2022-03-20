@@ -9,7 +9,7 @@ class ScorePage extends StatelessWidget {
   final List<RankWrap> list;
   final String clan;
   final EventsScore eventsScore;
-  ScorePage(this.series, this.list, this.clan, this.eventsScore, {Key key})
+  ScorePage(this.series, this.list, this.clan, this.eventsScore, {Key? key})
       : super(key: key);
   final icon = {
     'Agni': 'assets/images/Agni.webp',
@@ -35,7 +35,7 @@ class ScorePage extends StatelessWidget {
                         child: Stack(children: [
                       Padding(
                           padding: EdgeInsets.all(10),
-                          child: Image.asset(icon[ranked.clan])),
+                          child: Image.asset(icon[ranked.clan]!)),
                       Padding(
                           padding: EdgeInsets.all(10),
                           child: Text(ranked.rank,

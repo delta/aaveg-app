@@ -11,16 +11,16 @@ import 'package:flutter/material.dart';
 typedef BoolCallback = Function(bool b);
 
 class Scores extends StatefulWidget {
-  const Scores({Key key}) : super(key: key);
+  const Scores({Key? key}) : super(key: key);
 
   @override
   _ScoresState createState() => _ScoresState();
 }
 
 class _ScoresState extends State<Scores> with SingleTickerProviderStateMixin {
-  Future<ResultResponse<ScoresResponse, String>> _scores;
-  TabController _tabController;
-  ScoresResponse _cache;
+  Future<ResultResponse<ScoresResponse, String>>? _scores;
+  TabController? _tabController;
+  ScoresResponse? _cache;
   var _clan = 'Agni';
 
   @override
@@ -42,7 +42,7 @@ class _ScoresState extends State<Scores> with SingleTickerProviderStateMixin {
 
   @override
   void dispose() {
-    _tabController.dispose();
+    _tabController!.dispose();
     super.dispose();
   }
 
@@ -71,13 +71,13 @@ class _ScoresState extends State<Scores> with SingleTickerProviderStateMixin {
           future: _scores,
           builder: (context, api) {
             if (api.hasData) {
-              if (api.data.message == 'success') {
+              if (api.data!.message == 'success') {
                 var res = api.data;
 
                 return ScoresScreen(
-                  tabController: _tabController,
+                  tabController: _tabController!,
                   list: [
-                    Utils().series(res.response, 1, _clan),
+                    Utils().series(res!.response, 1, _clan),
                     Utils().series(res.response, 2, _clan),
                     Utils().series(res.response, 3, _clan),
                   ],
@@ -85,16 +85,16 @@ class _ScoresState extends State<Scores> with SingleTickerProviderStateMixin {
                   isOffline: false,
                   clan: _clan,
                 );
-              } else if (api.data.message == 'Network Error') {
+              } else if (api.data!.message == 'Network Error') {
                 if (_cache != null) {
                   return ScoresScreen(
-                    tabController: _tabController,
+                    tabController: _tabController!,
                     list: [
-                      Utils().series(_cache, 1, _clan),
-                      Utils().series(_cache, 2, _clan),
-                      Utils().series(_cache, 3, _clan),
+                      Utils().series(_cache!, 1, _clan),
+                      Utils().series(_cache!, 2, _clan),
+                      Utils().series(_cache!, 3, _clan),
                     ],
-                    eventsScore: _cache.eventsScore,
+                    eventsScore: _cache!.eventsScore!,
                     isOffline: true,
                     clan: _clan,
                   );

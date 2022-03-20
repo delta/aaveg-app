@@ -6,16 +6,16 @@ import 'package:flutter/material.dart';
 class EventDetails extends StatelessWidget {
   final Event event;
 
-  const EventDetails({Key key, this.event}) : super(key: key);
+  const EventDetails({Key? key, required this.event}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     var list = [
       {'rank': 'Rank', 'points': 'Points'},
-      {'rank': '1', 'points': event.points[0].toString()},
-      {'rank': '2', 'points': event.points[1].toString()},
-      {'rank': '3', 'points': event.points[2].toString()},
+      {'rank': '1', 'points': event.points![0].toString()},
+      {'rank': '2', 'points': event.points![1].toString()},
+      {'rank': '3', 'points': event.points![2].toString()},
     ];
     var fab = [
       {
@@ -89,7 +89,7 @@ class EventDetails extends StatelessWidget {
                         },
                         errorBuilder: (context, error, stackTrace) =>
                             Image.asset(
-                                Utils().clusterIcons()[event.cluster[0].name]),
+                                Utils().clusterIcons()[event.cluster[0].name]!),
                       )),
                 ),
                 backgroundColor: Colors.black,
@@ -115,7 +115,8 @@ class EventDetails extends StatelessWidget {
                                     child: Column(
                                   children: [
                                     Image.asset(
-                                      Utils().getCup(event.cup[0].name),
+                                      Utils().getCup(event.cup[0].name)
+                                          as String,
                                       height: size.height * 0.05,
                                     ),
                                     const SizedBox(height: 10),
@@ -131,7 +132,7 @@ class EventDetails extends StatelessWidget {
                                   children: [
                                     Image.asset(
                                       Utils().clusterIcons()[
-                                          event.cluster[0].name],
+                                          event.cluster[0].name]!,
                                       height: size.height * 0.05,
                                     ),
                                     const SizedBox(height: 10),
@@ -195,7 +196,7 @@ class EventDetails extends StatelessWidget {
                                                 padding:
                                                     const EdgeInsets.all(16),
                                                 child: Text(
-                                                  e['rank'],
+                                                  e['rank']!,
                                                   textAlign: TextAlign.center,
                                                   style: const TextStyle(
                                                       color: Colors.white),
@@ -203,40 +204,37 @@ class EventDetails extends StatelessWidget {
                                             Padding(
                                                 padding:
                                                     const EdgeInsets.all(16),
-                                                child: Text(e['points'],
+                                                child: Text(e['points']!,
                                                     textAlign: TextAlign.center,
                                                     style: const TextStyle(
                                                         color: Colors.white)))
                                           ]))
                                       .toList())),
-                          getFab() != null
-                              ? Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
-                                  children: getFab()
-                                      .map((e) => Column(children: [
-                                            FloatingActionButton(
-                                              backgroundColor: Theme.of(context)
-                                                  .primaryColor,
-                                              onPressed: () {
-                                                print(e['link']);
-                                                Utils().launchURL(
-                                                    e['link'], context);
-                                              },
-                                              heroTag: e['tag'],
-                                              child: Icon(e['icon']),
-                                            ),
-                                            const SizedBox(
-                                              height: 16,
-                                            ),
-                                            Text(e['name'],
-                                                textAlign: TextAlign.center,
-                                                style: const TextStyle(
-                                                  color: Colors.white,
-                                                ))
-                                          ]))
-                                      .toList())
-                              : Container(),
+                          Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: getFab()
+                                  .map((e) => Column(children: [
+                                        FloatingActionButton(
+                                          backgroundColor:
+                                              Theme.of(context).primaryColor,
+                                          onPressed: () {
+                                            print(e['link']);
+                                            Utils().launchURL(
+                                                e['link'] as String, context);
+                                          },
+                                          heroTag: e['tag'],
+                                          child: Icon(e['icon'] as IconData),
+                                        ),
+                                        const SizedBox(
+                                          height: 16,
+                                        ),
+                                        Text(e['name'] as String,
+                                            textAlign: TextAlign.center,
+                                            style: const TextStyle(
+                                              color: Colors.white,
+                                            ))
+                                      ]))
+                                  .toList()),
                           Container(
                               margin: const EdgeInsets.fromLTRB(32, 64, 8, 8),
                               alignment: Alignment.topLeft,

@@ -35,12 +35,9 @@ class ApiManager {
     var message = '';
     try {
       var response = await client.get(Uri.parse(Urls.event));
-
-      if (response.body != null) {
-        result = eventsResponseFromJson(response.body);
-        message = 'success';
-        await CacheManager().storeEvents(response.body);
-      }
+      result = eventsResponseFromJson(response.body);
+      message = 'success';
+      await CacheManager().storeEvents(response.body);
     } catch (e) {
       message = 'Network Error';
     }
@@ -55,12 +52,9 @@ class ApiManager {
       var response = await client.get(Uri.parse(Urls.score), headers: {
         'Content-type': 'application/x-www-form-urlencoded',
       });
-
-      if (response.body != null) {
-        result = scoresResponseFromJson(response.body);
-        message = 'success';
-        await CacheManager().storeScores(result);
-      }
+      result = scoresResponseFromJson(response.body);
+      message = 'success';
+      await CacheManager().storeScores(result);
     } catch (e) {
       message = 'Network Error';
     }
@@ -103,11 +97,9 @@ class ApiManager {
       var response = await client.get(Uri.parse(Urls.gameget), headers: {
         'Content-type': 'application/x-www-form-urlencoded',
       });
-      if (response.body != null) {
-        result = gameResponseFromJson(response.body);
-        message = 'success';
-        await CacheManager().storeGame(result);
-      }
+      result = gameResponseFromJson(response.body);
+      message = 'success';
+      await CacheManager().storeGame(result);
     } catch (e) {
       print(e);
       message = 'Network Error';

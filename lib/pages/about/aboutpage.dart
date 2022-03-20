@@ -4,7 +4,11 @@ class AboutPage extends StatelessWidget {
   final int page;
   final String image;
   final String description;
-  const AboutPage({Key key, this.page, this.image, this.description})
+  const AboutPage(
+      {Key? key,
+      required this.page,
+      required this.image,
+      required this.description})
       : super(key: key);
 
   @override

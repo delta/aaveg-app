@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 class ScoreTable extends StatelessWidget {
   final EventsScore eventsScore;
 
-  const ScoreTable({Key key, this.eventsScore}) : super(key: key);
+  const ScoreTable({Key? key, required this.eventsScore}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -152,9 +152,9 @@ class ScoreTable extends StatelessWidget {
                           BorderSide(width: 1, color: Colors.grey.shade800),
                       inside:
                           BorderSide(width: 1, color: Colors.grey.shade700)),
-                  children: eventsScore.culturals
+                  children: eventsScore.culturals!
                       .map((e) => TableRow(
-                              decoration: eventsScore.culturals.indexOf(e) %
+                              decoration: eventsScore.culturals!.indexOf(e) %
                                           2 ==
                                       0
                                   ? BoxDecoration(color: Colors.grey.shade900)
@@ -164,7 +164,7 @@ class ScoreTable extends StatelessWidget {
                                     padding: const EdgeInsets.symmetric(
                                         vertical: 8, horizontal: 8),
                                     child: Text(
-                                      e.eventName,
+                                      e.eventName!,
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
                                           color: Colors.white,
@@ -403,9 +403,10 @@ class ScoreTable extends StatelessWidget {
                           BorderSide(width: 1, color: Colors.grey.shade800),
                       inside:
                           BorderSide(width: 1, color: Colors.grey.shade700)),
-                  children: eventsScore.spectrum
+                  children: eventsScore.spectrum!
                       .map((e) => TableRow(
-                              decoration: eventsScore.spectrum.indexOf(e) % 2 ==
+                              decoration: eventsScore.spectrum!.indexOf(e) %
+                                          2 ==
                                       0
                                   ? BoxDecoration(color: Colors.grey.shade900)
                                   : BoxDecoration(color: Colors.grey.shade800),
@@ -414,7 +415,7 @@ class ScoreTable extends StatelessWidget {
                                     padding: EdgeInsets.symmetric(
                                         vertical: 8, horizontal: 8),
                                     child: Text(
-                                      e.eventName,
+                                      e.eventName!,
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
                                           color: Colors.white,

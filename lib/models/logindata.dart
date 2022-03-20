@@ -6,8 +6,8 @@ String loginDataToJson(LoginData data) => json.encode(data.toJson());
 
 class LoginData {
   LoginData({
-    this.email,
-    this.password,
+    required this.email,
+    required this.password,
   });
 
   String email;

@@ -7,7 +7,7 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 const desc =
     'Legends of DeltaForce: Deeraj,VS Rahul, Vivek, Ram, Sandhya, Aditya, Jith, Kumaran, Karaen, Nimish, Mario Adarsh, Subash, Ishani, Abishake, Bharath, Hrishi';
 const AndroidNotificationChannel channel =
-    AndroidNotificationChannel('high_importance', 'Aaveg21', desc);
+    AndroidNotificationChannel('high_importance', 'Aaveg21', 'aaveg');
 
 final FlutterLocalNotificationsPlugin flutterLocalNotificationplugin =
     FlutterLocalNotificationsPlugin();
@@ -34,8 +34,8 @@ class PushNotifcation {
 
     flutterLocalNotificationplugin.initialize(initializationSettings);
     FirebaseMessaging.onMessage.listen((RemoteMessage message) async {
-      RemoteNotification notification = message.notification;
-      AndroidNotification android = message.notification?.android;
+      RemoteNotification? notification = message.notification;
+      AndroidNotification? android = message.notification?.android;
 
       if (notification != null && android != null) {
         AndroidNotificationDetails notificationDetails =
@@ -53,12 +53,12 @@ class PushNotifcation {
             notificationDetailsPlatformSpefics);
       }
 
-      List<ActiveNotification> activeNotifications =
+      List<ActiveNotification>? activeNotifications =
           await flutterLocalNotificationplugin
               .resolvePlatformSpecificImplementation<
                   AndroidFlutterLocalNotificationsPlugin>()
               ?.getActiveNotifications();
-      if (activeNotifications.isNotEmpty) {
+      if (activeNotifications!.isNotEmpty) {
         List<String> lines =
             activeNotifications.map((e) => e.title.toString()).toList();
         InboxStyleInformation inboxStyleInformation = InboxStyleInformation(
@@ -85,8 +85,8 @@ class PushNotifcation {
     });
   }
 
-  Future<String> getToken() async {
-    String token = await FirebaseMessaging.instance.getToken();
+  Future<String?> getToken() async {
+    String? token = await FirebaseMessaging.instance.getToken();
     print(token);
     return token;
   }

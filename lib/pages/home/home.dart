@@ -9,24 +9,24 @@ import 'package:aaveg_app/utils/clan_utils.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
-  const Home({Key key}) : super(key: key);
+  const Home({Key? key}) : super(key: key);
 
   @override
   _HomeState createState() => _HomeState();
 }
 
 class _HomeState extends State<Home> {
-  Future<ResultResponse<ScoresResponse, String>> _scores;
+  Future<ResultResponse<ScoresResponse, String>>? _scores;
   var _clanLogo = 'assets/images/Agni.webp';
   var _clan = 'Agni';
-  ScoresResponse _cache;
+  ScoresResponse? _cache;
 
   @override
   void initState() {
     _scores = ApiManager().scores().whenComplete(() {
       CacheManager().getScores().then((value) {
         setState(() {
-          _cache = value;
+          _cache = value!;
         });
       });
       CacheManager().getClan().then((value) {
@@ -45,19 +45,19 @@ class _HomeState extends State<Home> {
           future: _scores,
           builder: (context, api) {
             if (api.hasData) {
-              if (api.data.message == 'success') {
-                var res = api.data.response as ScoresResponse;
+              if (api.data!.message == 'success') {
+                var res = api.data!.response as ScoresResponse;
                 return HomeScreen(
                     clanLogo: _clanLogo,
                     clan: _clan,
                     res: res,
                     isOffline: false);
-              } else if (api.data.message == 'Network Error') {
+              } else if (api.data!.message == 'Network Error') {
                 if (_cache != null) {
                   return HomeScreen(
                       clanLogo: _clanLogo,
                       clan: _clan,
-                      res: _cache,
+                      res: _cache!,
                       isOffline: true);
                 } else {
                   return ErrorScreen();

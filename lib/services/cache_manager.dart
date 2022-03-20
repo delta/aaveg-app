@@ -17,17 +17,17 @@ class CacheManager {
     _prefrences.setString('userId', userId);
   }
 
-  Future<String> getUser() async {
+  Future<String?> getUser() async {
     SharedPreferences _prefrences = await SharedPreferences.getInstance();
     return _prefrences.getString('userId');
   }
 
   Future<String> getClan() async {
     SharedPreferences _prefrences = await SharedPreferences.getInstance();
-    return _prefrences.getString('clan');
+    return _prefrences.getString('clan')!;
   }
 
-  Future<String> getRN() async {
+  Future<String?> getRN() async {
     SharedPreferences _prefrences = await SharedPreferences.getInstance();
     return _prefrences.getString('rollnumber');
   }
@@ -46,9 +46,9 @@ class CacheManager {
     _prefrences.setString('event', events);
   }
 
-  Future<EventsResponse> getEvents() async {
+  Future<EventsResponse?> getEvents() async {
     SharedPreferences _prefrences = await SharedPreferences.getInstance();
-    String value = _prefrences.getString('event');
+    String? value = _prefrences.getString('event');
     if (value != null) {
       return eventsResponseFromJson(value);
     } else {
@@ -61,9 +61,9 @@ class CacheManager {
     _prefrences.setString('scores', scoresResponseToJson(events).toString());
   }
 
-  Future<ScoresResponse> getScores() async {
+  Future<ScoresResponse?> getScores() async {
     SharedPreferences _prefrences = await SharedPreferences.getInstance();
-    String value = _prefrences.getString('scores');
+    String? value = _prefrences.getString('scores');
     if (value != null) {
       return scoresResponseFromJson(value);
     } else {
@@ -71,7 +71,7 @@ class CacheManager {
     }
   }
 
-  Future<bool> getBGM() async {
+  Future<bool?> getBGM() async {
     SharedPreferences _prefrences = await SharedPreferences.getInstance();
     return _prefrences.getBool('bgm');
   }
@@ -81,7 +81,7 @@ class CacheManager {
     _prefrences.setBool('bgm', isOn);
   }
 
-  Future<String> getHS() async {
+  Future<String?> getHS() async {
     SharedPreferences _prefrences = await SharedPreferences.getInstance();
     if (_prefrences.getString('hs') == null) {
       return '0';
@@ -100,9 +100,9 @@ class CacheManager {
     _prefrences.setString('game', gameResponseToJson(events).toString());
   }
 
-  Future<GameResponse> getGame() async {
+  Future<GameResponse?> getGame() async {
     SharedPreferences _prefrences = await SharedPreferences.getInstance();
-    String value = _prefrences.getString('game');
+    String? value = _prefrences.getString('game');
     if (value != null) {
       return gameResponseFromJson(value);
     } else {

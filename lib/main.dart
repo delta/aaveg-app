@@ -9,25 +9,25 @@ void main() {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
       .then((_) async {
-    runApp(const MyApp());
+    runApp(MyApp());
   });
 }
 
 class MyApp extends StatefulWidget {
-  const MyApp({Key key}) : super(key: key);
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() => _MyAppState();
 }
 
 class _MyAppState extends State<MyApp> {
-  PushNotifcation firebase;
+  PushNotifcation? firebase;
 
   handleAsync() async {
-    await firebase.initialize(context);
+    await firebase!.initialize(context);
 
-    String token = await firebase.getToken();
-    await firebase.subscribeToTopic('aaveg');
+    String? token = await firebase!.getToken();
+    await firebase!.subscribeToTopic('aaveg');
     print('Firebase token : $token');
   }
 

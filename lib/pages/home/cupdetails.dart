@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:aaveg_app/models/cupdata.dart';
 import 'package:aaveg_app/utils/clan_utils.dart';
 import 'package:flutter/material.dart';
@@ -7,7 +5,7 @@ import 'package:flutter/material.dart';
 class CupDetails extends StatelessWidget {
   final CupData cups;
 
-  const CupDetails({Key key, this.cups}) : super(key: key);
+  const CupDetails({Key? key, required this.cups}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

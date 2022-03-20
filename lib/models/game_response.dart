@@ -10,29 +10,29 @@ class GameResponse {
     this.game,
   });
 
-  List<Game> game;
+  List<Game>? game;
 
   factory GameResponse.fromJson(Map<String, dynamic> json) => GameResponse(
         game: json['game'] == null
             ? null
-            : List<Game>.from(json['game'].map((x) => Game.fromJson(x))),
+            : List<Game>.from(json['game'].map(Game.fromJson)),
       );
 
   Map<String, dynamic> toJson() => {
         'game': game == null
             ? null
-            : List<dynamic>.from(game.map((x) => x.toJson())),
+            : List<dynamic>.from(game!.map((x) => x.toJson())),
       };
 }
 
 class Game {
   Game({
-    this.id,
-    this.rollnumber,
-    this.clan,
-    this.distance,
-    this.kills,
-    this.v,
+    required this.id,
+    required this.rollnumber,
+    required this.clan,
+    required this.distance,
+    required this.kills,
+    required this.v,
   });
 
   String id;
@@ -52,11 +52,11 @@ class Game {
       );
 
   Map<String, dynamic> toJson() => {
-        '_id': id == null ? null : id,
-        'rollnumber': rollnumber == null ? null : rollnumber,
-        'clan': clan == null ? null : clan,
-        'distance': distance == null ? null : distance,
-        'kills': kills == null ? null : kills,
-        '__v': v == null ? null : v,
+        '_id': id,
+        'rollnumber': rollnumber,
+        'clan': clan,
+        'distance': distance,
+        'kills': kills,
+        '__v': v,
       };
 }
