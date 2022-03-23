@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 class PageDot extends StatelessWidget {
   final bool isSelected;
   final VoidCallback onTap;
-  const PageDot({Key key, this.isSelected, this.onTap}) : super(key: key);
+  const PageDot({Key? key, required this.isSelected, required this.onTap})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) => GestureDetector(

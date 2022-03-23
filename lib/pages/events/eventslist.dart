@@ -7,7 +7,8 @@ import 'package:flutter/material.dart';
 class EventsList extends StatelessWidget {
   final List<Event> list;
   final String cluster;
-  const EventsList({Key key, this.list, this.cluster}) : super(key: key);
+  const EventsList({Key? key, required this.list, required this.cluster})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) => Scaffold(
@@ -91,7 +92,7 @@ class EventsList extends StatelessWidget {
                                                                 .clusterIcons()[
                                                             list[index]
                                                                 .cluster[0]
-                                                                .name]);
+                                                                .name]!);
                                                       },
                                                     ))),
                                             Flexible(

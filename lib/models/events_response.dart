@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_lambdas
+
 import 'dart:convert';
 
 EventsResponse eventsResponseFromJson(String str) =>
@@ -12,9 +14,9 @@ class EventsResponse {
     this.eventsByCup,
   });
 
-  String title;
-  List<EventsByC> eventsByCluster;
-  List<EventsByC> eventsByCup;
+  String? title;
+  List<EventsByC>? eventsByCluster;
+  List<EventsByC>? eventsByCup;
 
   factory EventsResponse.fromJson(Map<String, dynamic> json) => EventsResponse(
         title: json['title'] == null ? null : json['title'],
@@ -32,19 +34,19 @@ class EventsResponse {
         'title': title == null ? null : title,
         'eventsByCluster': eventsByCluster == null
             ? null
-            : List<dynamic>.from(eventsByCluster.map((x) => x.toJson())),
+            : List<dynamic>.from(eventsByCluster!.map((x) => x.toJson())),
         'eventsByCup': eventsByCup == null
             ? null
-            : List<dynamic>.from(eventsByCup.map((x) => x.toJson())),
+            : List<dynamic>.from(eventsByCup!.map((x) => x.toJson())),
       };
 }
 
 class EventsByC {
   EventsByC({
-    this.events,
+    required this.events,
   });
 
-  List<Event> events;
+  List<Event>? events;
 
   factory EventsByC.fromJson(Map<String, dynamic> json) => EventsByC(
         events: json['events'] == null
@@ -55,30 +57,30 @@ class EventsByC {
   Map<String, dynamic> toJson() => {
         'events': events == null
             ? null
-            : List<dynamic>.from(events.map((x) => x.toJson())),
+            : List<dynamic>.from(events!.map((x) => x.toJson())),
       };
 }
 
 class Event {
   Event({
-    this.name,
-    this.cluster,
-    this.points,
-    this.places,
-    this.description,
-    this.rules,
-    this.startTime,
-    this.endTime,
-    this.date,
-    this.formLink,
-    this.eventLink,
-    this.imageLink,
-    this.cup,
+    required this.name,
+    required this.cluster,
+    required this.points,
+    required this.places,
+    required this.description,
+    required this.rules,
+    required this.startTime,
+    required this.endTime,
+    required this.date,
+    required this.formLink,
+    required this.eventLink,
+    required this.imageLink,
+    required this.cup,
   });
 
   String name;
   List<Cup> cluster;
-  List<int> points;
+  List<int>? points;
   int places;
   String description;
   String rules;
@@ -113,29 +115,25 @@ class Event {
       );
 
   Map<String, dynamic> toJson() => {
-        'name': name == null ? null : name,
-        'cluster': cluster == null
-            ? null
-            : List<dynamic>.from(cluster.map((x) => x.toJson())),
-        'points':
-            points == null ? null : List<dynamic>.from(points.map((x) => x)),
-        'places': places == null ? null : places,
+        'name': name,
+        'cluster': List<dynamic>.from(cluster.map((x) => x.toJson())),
+        'points': List<dynamic>.from(points!.map((x) => x)),
+        'places': places,
         'description': description,
-        'rules': rules == null ? null : rules,
-        'startTime': startTime == null ? null : startTime,
-        'endTime': endTime == null ? null : endTime,
-        'date': date == null ? null : date,
-        'formLink': formLink == null ? null : formLink,
-        'eventLink': eventLink == null ? null : eventLink,
-        'imageLink': imageLink == null ? null : imageLink,
-        'cup':
-            cup == null ? null : List<dynamic>.from(cup.map((x) => x.toJson())),
+        'rules': rules,
+        'startTime': startTime,
+        'endTime': endTime,
+        'date': date,
+        'formLink': formLink,
+        'eventLink': eventLink,
+        'imageLink': imageLink,
+        'cup': List<dynamic>.from(cup.map((x) => x.toJson())),
       };
 }
 
 class Cup {
   Cup({
-    this.name,
+    required this.name,
   });
 
   String name;
@@ -145,6 +143,6 @@ class Cup {
       );
 
   Map<String, dynamic> toJson() => {
-        'name': name == null ? null : name,
+        'name': name,
       };
 }

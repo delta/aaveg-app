@@ -7,7 +7,7 @@ import 'package:aaveg_app/utils/clan_utils.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
-  const LoginPage({Key key}) : super(key: key);
+  const LoginPage({Key? key}) : super(key: key);
 
   @override
   _LoginPageState createState() => _LoginPageState();
@@ -113,7 +113,7 @@ class _LoginPageState extends State<LoginPage> {
                               cursorColor: Colors.purpleAccent,
                               keyboardType: TextInputType.emailAddress,
                               style: TextStyle(color: Colors.white),
-                              validator: (input) => !input.contains('@')
+                              validator: (input) => !input!.contains('@')
                                   ? 'EmailID required'
                                   : null,
                               decoration: InputDecoration(
@@ -144,7 +144,7 @@ class _LoginPageState extends State<LoginPage> {
                               keyboardType: TextInputType.visiblePassword,
                               obscureText: true,
                               validator: (input) =>
-                                  input.length != 9 ? 'Wrong Password' : null,
+                                  input!.length != 9 ? 'Wrong Password' : null,
                               decoration: InputDecoration(
                                   hintText: 'Password',
                                   hintStyle: TextStyle(color: Colors.white60),

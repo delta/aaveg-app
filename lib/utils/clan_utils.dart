@@ -15,19 +15,19 @@ class Utils {
     Color color = Colors.purple;
     switch (clan) {
       case 'Agni':
-        color = Colors.deepOrange[800];
+        color = Colors.deepOrange[800]!;
         break;
       case 'Aakash':
         color = Colors.purple;
         break;
       case 'Jal':
-        color = Colors.blue[400];
+        color = Colors.blue[400]!;
         break;
       case 'Prithvi':
-        color = Colors.green[600];
+        color = Colors.green[600]!;
         break;
       case 'Vayu':
-        color = Colors.lightBlue[100];
+        color = Colors.lightBlue[100]!;
         break;
     }
     return color;
@@ -130,7 +130,6 @@ class Utils {
         return 'assets/images/Agni.webp';
       case 'Aakash':
         return 'assets/images/Aakash.webp';
-        break;
       case 'Jal':
         return 'assets/images/Jal.webp';
       case 'Prithvi':
@@ -144,20 +143,20 @@ class Utils {
 
   List<CupData> getCupList(String myclan, ScoresResponse scores) => [
         CupData('assets/images/culcupsss.webp', 'Overall',
-            getRank(myclan, scores.total.toJson())),
+            getRank(myclan, scores.total!.toJson())),
         CupData('assets/images/culcupss.webp', 'Culturals',
-            getRank(myclan, scores.standings.culturals.toJson())),
+            getRank(myclan, scores.standings!.culturals.toJson())),
         CupData('assets/images/culcups.webp', 'Spectrum',
-            getRank(myclan, scores.standings.spectrum.toJson())),
+            getRank(myclan, scores.standings!.spectrum.toJson())),
       ];
 
-  Map<String, List<Event>> sortCluster(List<EventsByC> list) {
+  Map<String, List<Event>>? sortCluster(List<EventsByC> list) {
     Map<String, List<Event>> clusterMap = <String, List<Event>>{};
 
-    if (list == null) return null;
+    // if (list == null) return null;
 
     for (final a in list) {
-      for (final b in a.events) {
+      for (final b in a.events!) {
         String s = b.cluster[0].name;
         if (clusterMap.containsKey(s)) {
           clusterMap.update(s, (value) {
@@ -191,7 +190,7 @@ class Utils {
     for (int i = 0; i < sortedCluster.length; ++i) {
       cluster.forEach((key, value) {
         if (key == sortedCluster[i]) {
-          newcluster.putIfAbsent(key, () => cluster[key]);
+          newcluster.putIfAbsent(key, () => cluster[key]!);
         }
       });
     }
@@ -223,42 +222,44 @@ class Utils {
     switch (i) {
       case 1:
         list = [
-          Charts('Aakash', res.total.aakash, getChartColor2('Aakash')),
-          Charts('Agni', res.total.agni, getChartColor2('Agni')),
-          Charts('Jal', res.total.jal, getChartColor2('Jal')),
-          Charts('Vayu', res.total.vayu, getChartColor2('Vayu')),
-          Charts('Prithvi', res.total.prithvi, getChartColor2('Prithvi'))
+          Charts('Aakash', res.total!.aakash!, getChartColor2('Aakash')),
+          Charts('Agni', res.total!.agni!, getChartColor2('Agni')),
+          Charts('Jal', res.total!.jal!, getChartColor2('Jal')),
+          Charts('Vayu', res.total!.vayu!, getChartColor2('Vayu')),
+          Charts('Prithvi', res.total!.prithvi!, getChartColor2('Prithvi'))
         ];
         break;
       case 2:
         list = [
-          Charts('Aakash', res.standings.culturals.aakash,
+          Charts('Aakash', res.standings!.culturals.aakash!,
               getChartColor2('Aakash')),
-          Charts('Agni', res.standings.culturals.agni, getChartColor2('Agni')),
-          Charts('Jal', res.standings.culturals.jal, getChartColor2('Jal')),
-          Charts('Vayu', res.standings.culturals.vayu, getChartColor2('Vayu')),
-          Charts('Prithvi', res.standings.culturals.prithvi,
+          Charts(
+              'Agni', res.standings!.culturals.agni!, getChartColor2('Agni')),
+          Charts('Jal', res.standings!.culturals.jal!, getChartColor2('Jal')),
+          Charts(
+              'Vayu', res.standings!.culturals.vayu!, getChartColor2('Vayu')),
+          Charts('Prithvi', res.standings!.culturals.prithvi!,
               getChartColor2('Prithvi'))
         ];
         break;
       case 3:
         list = [
-          Charts('Aakash', res.standings.spectrum.aakash,
+          Charts('Aakash', res.standings!.spectrum.aakash!,
               getChartColor2('Aakash')),
-          Charts('Agni', res.standings.spectrum.agni, getChartColor2('Agni')),
-          Charts('Jal', res.standings.spectrum.jal, getChartColor2('Jal')),
-          Charts('Vayu', res.standings.spectrum.vayu, getChartColor2('Vayu')),
-          Charts('Prithvi', res.standings.spectrum.prithvi,
+          Charts('Agni', res.standings!.spectrum.agni!, getChartColor2('Agni')),
+          Charts('Jal', res.standings!.spectrum.jal!, getChartColor2('Jal')),
+          Charts('Vayu', res.standings!.spectrum.vayu!, getChartColor2('Vayu')),
+          Charts('Prithvi', res.standings!.spectrum.prithvi!,
               getChartColor2('Prithvi'))
         ];
         break;
       default:
         return [
-          Charts('Aakash', res.total.aakash, getChartColor2('Aakash')),
-          Charts('Agni', res.total.agni, getChartColor2('Agni')),
-          Charts('Jal', res.total.jal, getChartColor2('Jal')),
-          Charts('Vayu', res.total.vayu, getChartColor2('Vayu')),
-          Charts('Prithvi', res.total.prithvi, getChartColor2('Prithvi'))
+          Charts('Aakash', res.total!.aakash!, getChartColor2('Aakash')),
+          Charts('Agni', res.total!.agni!, getChartColor2('Agni')),
+          Charts('Jal', res.total!.jal!, getChartColor2('Jal')),
+          Charts('Vayu', res.total!.vayu!, getChartColor2('Vayu')),
+          Charts('Prithvi', res.total!.prithvi!, getChartColor2('Prithvi'))
         ];
     }
     return list;
@@ -311,7 +312,7 @@ class Utils {
     return ranked;
   }
 
-  String getCup(String cup) {
+  String? getCup(String cup) {
     var cups = {
       'Cultural': 'assets/images/culcups.webp',
       'Spectrum': 'assets/images/culcupss.webp'

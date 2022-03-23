@@ -12,9 +12,9 @@ class ScoresResponse {
     this.eventsScore,
   });
 
-  Standings standings;
-  Clans total;
-  EventsScore eventsScore;
+  Standings? standings;
+  Clans? total;
+  EventsScore? eventsScore;
 
   factory ScoresResponse.fromJson(Map<String, dynamic> json) => ScoresResponse(
         standings: json['standings'] == null
@@ -23,24 +23,24 @@ class ScoresResponse {
         total: json['total'] == null ? null : Clans.fromJson(json['total']),
         eventsScore: json['events_score'] == null
             ? null
-            : EventsScore.fromJson(json['events_score']),
+            : EventsScore?.fromJson(json['events_score']),
       );
 
   Map<String, dynamic> toJson() => {
-        'standings': standings == null ? null : standings.toJson(),
-        'total': total == null ? null : total.toJson(),
-        'events_score': eventsScore == null ? null : eventsScore.toJson(),
+        'standings': standings == null ? null : standings!.toJson(),
+        'total': total == null ? null : total!.toJson(),
+        'events_score': eventsScore == null ? null : eventsScore!.toJson(),
       };
 }
 
 class EventsScore {
   EventsScore({
-    this.culturals,
-    this.spectrum,
+    required this.culturals,
+    required this.spectrum,
   });
 
-  List<Clans> culturals;
-  List<Clans> spectrum;
+  List<Clans>? culturals;
+  List<Clans>? spectrum;
 
   factory EventsScore.fromJson(Map<String, dynamic> json) => EventsScore(
         culturals: json['culturals'] == null
@@ -54,10 +54,10 @@ class EventsScore {
   Map<String, dynamic> toJson() => {
         'culturals': culturals == null
             ? null
-            : List<dynamic>.from(culturals.map((x) => x.toJson())),
+            : List<dynamic>.from(culturals!.map((x) => x.toJson())),
         'spectrum': spectrum == null
             ? null
-            : List<dynamic>.from(spectrum.map((x) => x.toJson())),
+            : List<dynamic>.from(spectrum!.map((x) => x.toJson())),
       };
 }
 
@@ -71,36 +71,36 @@ class Clans {
     this.jal,
   });
 
-  String eventName;
-  int aakash;
-  int vayu;
-  int agni;
-  int prithvi;
-  int jal;
+  String? eventName;
+  int? aakash;
+  int? vayu;
+  int? agni;
+  int? prithvi;
+  int? jal;
 
   factory Clans.fromJson(Map<String, dynamic> json) => Clans(
-        eventName: json['event_name'] == null ? null : json['event_name'],
-        aakash: json['Aakash'] == null ? 0 : json['Aakash'],
-        vayu: json['Vayu'] == null ? 0 : json['Vayu'],
-        agni: json['Agni'] == null ? 0 : json['Agni'],
-        prithvi: json['Prithvi'] == null ? 0 : json['Prithvi'],
-        jal: json['Jal'] == null ? 0 : json['Jal'],
+        eventName: json['event_name'],
+        aakash: json['Aakash'],
+        vayu: json['Vayu'],
+        agni: json['Agni'],
+        prithvi: json['Prithvi'],
+        jal: json['Jal'],
       );
 
   Map<String, dynamic> toJson() => {
-        'event_name': eventName == null ? null : eventName,
-        'Aakash': aakash == null ? 0 : aakash,
-        'Vayu': vayu == null ? 0 : vayu,
-        'Agni': agni == null ? 0 : agni,
-        'Prithvi': prithvi == null ? 0 : prithvi,
-        'Jal': jal == null ? 0 : jal,
+        'event_name': eventName,
+        'Aakash': aakash,
+        'Vayu': vayu,
+        'Agni': agni,
+        'Prithvi': prithvi,
+        'Jal': jal,
       };
 }
 
 class Standings {
   Standings({
-    this.culturals,
-    this.spectrum,
+    required this.culturals,
+    required this.spectrum,
   });
 
   Clans culturals;
@@ -132,7 +132,7 @@ class Standings {
   }
 
   Map<String, dynamic> toJson() => {
-        'culturals': culturals == null ? null : culturals.toJson(),
-        'spectrum': spectrum == null ? null : spectrum.toJson(),
+        'culturals': culturals.toJson(),
+        'spectrum': spectrum.toJson(),
       };
 }

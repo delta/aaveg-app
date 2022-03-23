@@ -13,12 +13,12 @@ class ScoresScreen extends StatelessWidget {
   final String clan;
 
   const ScoresScreen(
-      {Key key,
-      this.tabController,
-      this.list,
-      this.isOffline,
-      this.eventsScore,
-      this.clan})
+      {Key? key,
+      required this.tabController,
+      required this.list,
+      required this.isOffline,
+      required this.eventsScore,
+      required this.clan})
       : super(key: key);
   @override
   Widget build(BuildContext context) => Scaffold(

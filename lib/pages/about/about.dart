@@ -4,7 +4,7 @@ import 'package:aaveg_app/screens/background.dart';
 import 'package:flutter/material.dart';
 
 class About extends StatefulWidget {
-  const About({Key key}) : super(key: key);
+  const About({Key? key}) : super(key: key);
 
   @override
   _AboutState createState() => _AboutState();
@@ -77,8 +77,8 @@ class _AboutState extends State<About> {
             for (int index = 0; index < list.length; index++)
               AboutPage(
                   page: index,
-                  image: list[index]['logo'],
-                  description: list[index]['description']),
+                  image: list[index]['logo']!,
+                  description: list[index]['description']!),
           ])),
       Container(
           alignment: Alignment.bottomCenter,

@@ -8,7 +8,8 @@ class EventScreen extends StatelessWidget {
   final EventsResponse event;
   final bool isOffline;
 
-  const EventScreen({Key key, this.event, this.isOffline}) : super(key: key);
+  const EventScreen({Key? key, required this.event, required this.isOffline})
+      : super(key: key);
   @override
   Widget build(BuildContext context) => Scaffold(
       appBar: AppBar(
@@ -23,6 +24,6 @@ class EventScreen extends StatelessWidget {
       ),
       body: Stack(children: [
         const Background(),
-        ClusterList(clusters: Utils().sortCluster(event.eventsByCluster))
+        ClusterList(clusters: Utils().sortCluster(event.eventsByCluster!)!)
       ]));
 }

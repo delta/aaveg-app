@@ -3,7 +3,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 class Footer extends StatefulWidget {
-  const Footer({Key key}) : super(key: key);
+  const Footer({Key? key}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() => FooterState();

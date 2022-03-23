@@ -12,7 +12,11 @@ class HomeScreen extends StatelessWidget {
   final bool isOffline;
 
   const HomeScreen(
-      {Key key, this.clan, this.clanLogo, this.res, this.isOffline})
+      {Key? key,
+      required this.clan,
+      required this.clanLogo,
+      required this.res,
+      required this.isOffline})
       : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -51,7 +55,7 @@ class HomeScreen extends StatelessWidget {
                                 TextSpan(children: <InlineSpan>[
                                   TextSpan(
                                       text: Utils()
-                                          .getRank(clan, res.total.toJson()),
+                                          .getRank(clan, res.total!.toJson()),
                                       style: TextStyle(
                                           color: Colors.grey.shade300,
                                           shadows: <Shadow>[
@@ -68,7 +72,7 @@ class HomeScreen extends StatelessWidget {
                                     offset: const Offset(2.4, -70),
                                     child: Text(
                                       Utils().getSuperScript(int.parse(Utils()
-                                          .getRank(clan, res.total.toJson()))),
+                                          .getRank(clan, res.total!.toJson()))),
                                       style: TextStyle(
                                           fontSize: size.height * 0.045,
                                           color: Colors.grey.shade300,

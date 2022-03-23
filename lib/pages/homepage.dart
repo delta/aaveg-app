@@ -1,6 +1,6 @@
 import 'package:aaveg_app/pages/about/about.dart';
 import 'package:aaveg_app/pages/events/events.dart';
-import 'package:aaveg_app/pages/game/game.dart';
+// import 'package:aaveg_app/pages/game/game.dart';
 import 'package:aaveg_app/pages/home/home.dart';
 import 'package:aaveg_app/pages/scoreboard/scoreboard.dart';
 import 'package:aaveg_app/screens/background.dart';
@@ -9,7 +9,7 @@ import 'package:aaveg_app/utils/clan_utils.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key key}) : super(key: key);
+  const HomePage({Key? key}) : super(key: key);
 
   @override
   _State createState() => _State();
@@ -19,7 +19,7 @@ class _State extends State<HomePage> {
   int _selectedIndex = 0;
   final PageController _pageController = PageController(initialPage: 0);
 
-  Future<String> _clan;
+  late Future<String> _clan;
   bool isOffline = false;
   void _onPageChanged(int index) {
     setState(() {
@@ -45,7 +45,7 @@ class _State extends State<HomePage> {
         if (snapshot.hasData) {
           return MaterialApp(
               debugShowCheckedModeBanner: false,
-              theme: ThemeData(primaryColor: Utils().getColors(snapshot.data)),
+              theme: ThemeData(primaryColor: Utils().getColors(snapshot.data!)),
               home: Scaffold(
                   appBar: AppBar(
                       title: Row(
@@ -97,13 +97,7 @@ class _State extends State<HomePage> {
                   body: Builder(
                       builder: (context) => PageView(
                             controller: _pageController,
-                            children: const [
-                              Home(),
-                              Events(),
-                              Scores(),
-                              Games(),
-                              About()
-                            ],
+                            children: [Home(), Events(), Scores(), About()],
                             onPageChanged: _onPageChanged,
                             physics: NeverScrollableScrollPhysics(),
                           )),

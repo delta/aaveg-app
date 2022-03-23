@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 class ClusterList extends StatelessWidget {
   final Map<String, List<Event>> clusters;
 
-  const ClusterList({Key key, this.clusters}) : super(key: key);
+  const ClusterList({Key? key, required this.clusters}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     var icons = Utils().clusterIcons();
@@ -59,7 +59,7 @@ class ClusterList extends StatelessWidget {
                                                     const EdgeInsets.all(8),
                                                 child: Image.asset(
                                                   icons[clusters.keys
-                                                      .elementAt(index)],
+                                                      .elementAt(index)]!,
                                                 ))),
                                         Flexible(
                                             flex: 1,

@@ -2,7 +2,7 @@ import 'package:aaveg_app/screens/background.dart';
 import 'package:flutter/material.dart';
 
 class LoadingScreen extends StatefulWidget {
-  const LoadingScreen({Key key}) : super(key: key);
+  const LoadingScreen({Key? key}) : super(key: key);
 
   @override
   _LoadingScreenState createState() => _LoadingScreenState();
@@ -10,7 +10,7 @@ class LoadingScreen extends StatefulWidget {
 
 class _LoadingScreenState extends State<LoadingScreen>
     with TickerProviderStateMixin {
-  AnimationController _animController;
+  AnimationController? _animController;
 
   @override
   void initState() {
@@ -19,12 +19,12 @@ class _LoadingScreenState extends State<LoadingScreen>
       vsync: this,
       duration: const Duration(seconds: 1),
     );
-    _animController.repeat();
+    _animController!.repeat();
   }
 
   @override
   void dispose() {
-    _animController.dispose();
+    _animController!.dispose();
     super.dispose();
   }
 
@@ -33,14 +33,15 @@ class _LoadingScreenState extends State<LoadingScreen>
         const Background(),
         Center(
           child: AnimatedBuilder(
-            animation: _animController,
+            animation: _animController!,
             child: SizedBox(
               height: 88.0,
               width: 88.0,
               child: Image.asset('assets/images/aavegwhite.png'),
             ),
-            builder: (BuildContext context, Widget _widget) => Transform.rotate(
-              angle: _animController.value * 6.3,
+            builder: (BuildContext? context, Widget? _widget) =>
+                Transform.rotate(
+              angle: _animController!.value * 6.3,
               child: _widget,
             ),
           ),
