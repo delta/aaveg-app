@@ -10,7 +10,7 @@
     </queries>
    <application
         android:name="${applicationName}"
-        android:label="Aaveg '21"
+        android:label="Aaveg '22"
         android:icon="@mipmap/ic_launcher"
         android:usesCleartextTraffic="true" >
 <meta-data

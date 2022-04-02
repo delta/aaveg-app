@@ -1,21 +1,12 @@
 # Aaveg App
 
+![Aaveg 22 - Mobile App](https://user-images.githubusercontent.com/71443682/161394464-c51ce11d-5857-406d-b43e-c0841ad113b6.png "Aaveg App")
+
 Flutter Application for Aaveg Fest
 
-<img src="https://user-images.githubusercontent.com/63253383/146262939-9f67040b-d334-4dbc-8c30-b395d3fb2b71.png" margin = auto >
 
 ## Screenshots
-
-<img src="https://user-images.githubusercontent.com/63253383/146260460-b8648dd4-dec0-4f00-a246-5598fadc8594.jpeg" width="200">&emsp;
-<img src="https://user-images.githubusercontent.com/63253383/146260517-fc0d97e0-58f6-4830-b99e-780d5feb553c.jpeg" width="200">&emsp;
-<img src="https://user-images.githubusercontent.com/63253383/146261570-adb3aeb7-af93-406f-8aad-a2742b1496c1.jpeg" width="200">&emsp;
-<img src="https://user-images.githubusercontent.com/63253383/146260542-bd3be63e-398d-4f83-be5f-80f57ea17d21.jpeg" width="200">&emsp;
-<img src="https://user-images.githubusercontent.com/63253383/146260973-56575649-fb39-4249-b7bc-dde92be1895c.jpeg" width="200">&emsp;
-<img src="https://user-images.githubusercontent.com/63253383/146261590-4221ca44-7999-4aa4-b76b-f9eae4bcc3e9.jpeg" width="200">&emsp;
-<img src="https://user-images.githubusercontent.com/63253383/146260958-647f9f28-4d2c-4269-8276-42343cbeab95.jpeg" width="200">&emsp;
-<img src="https://user-images.githubusercontent.com/63253383/146260567-7da8327f-d229-4fa8-a01a-b2ff3d011a7e.jpeg" width="200">&emsp;
-<img src="https://user-images.githubusercontent.com/63253383/146260577-48e60f30-bcac-408e-87f4-3303aa0418d5.jpeg" width="800">&emsp;
-
+Coming Soon
 ## Flutter
 
 ### Requirements
