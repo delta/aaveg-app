@@ -1,5 +1,8 @@
+import 'package:aaveg_app/routes/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
+import 'package:get/get_navigation/src/root/get_material_app.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -17,14 +20,16 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-
   @override
   void initState() {
     super.initState();
   }
 
   @override
-  Widget build(BuildContext context) => MaterialApp(
-        
+  Widget build(BuildContext context) => GetMaterialApp(
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData.dark(),
+        getPages: Routes().route,
+        initialRoute: "/home",
       );
 }
