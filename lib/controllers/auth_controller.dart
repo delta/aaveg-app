@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:aaveg_app/providers/auth_provider.dart';
 import 'package:aaveg_app/utils/constants.dart';
 import 'package:get/get.dart';
@@ -25,7 +23,7 @@ class AuthController extends GetxController with StateMixin<dynamic> {
     final currentUri = Uri.base;
     print(currentUri);
     final port = currentUri.port;
-    final _redirectUri = 'http://localhost:$port/static.html';
+    // final _redirectUri = 'http://localhost:$port/static.html';
 
     final url = Uri.https('auth.delta.nitt.edu', '/authorize', {
       'client_id': ClientCredentials.clientId,
@@ -58,12 +56,14 @@ class AuthController extends GetxController with StateMixin<dynamic> {
     }
   }
 
-  void _login(String eventBody) {
-    print('reached');
-    final receivedUri = Uri.parse(eventBody);
-    String token = receivedUri.queryParameters['code']!;
-    code = token;
-    onCallBack(code);
-    _popupWin!.close();
-  }
+  // Call this function on recieving auth code
+
+  // void _login(String eventBody) {
+  //   print('reached');
+  //   final receivedUri = Uri.parse(eventBody);
+  //   String token = receivedUri.queryParameters['code']!;
+  //   code = token;
+  //   onCallBack(code);
+  //   _popupWin!.close();
+  // }
 }
