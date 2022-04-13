@@ -2,7 +2,7 @@ import 'package:aaveg_app/providers/auth_provider.dart';
 import 'package:aaveg_app/utils/constants.dart';
 import 'package:get/get.dart';
 import 'package:get/state_manager.dart';
-import 'package:universal_html/html.dart' as html;
+// import 'package:universal_html/html.dart' as html;
 // import 'dart:html' as html;
 import 'package:url_launcher/url_launcher.dart';
 
@@ -18,11 +18,11 @@ class AuthController extends GetxController with StateMixin<dynamic> {
   }
 
   String code = '';
-  late html.WindowBase? _popupWin;
+  // late html.WindowBase? _popupWin;
   void loginWithDauth() async {
     final currentUri = Uri.base;
     print(currentUri);
-    final port = currentUri.port;
+    // final port = currentUri.port;
     // final _redirectUri = 'http://localhost:$port/static.html';
 
     final url = Uri.https('auth.delta.nitt.edu', '/authorize', {
