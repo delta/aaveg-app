@@ -30,6 +30,6 @@ class _MyAppState extends State<MyApp> {
         debugShowCheckedModeBanner: false,
         theme: ThemeData.dark(),
         getPages: Routes().route,
-        initialRoute: "/home",
+        initialRoute: "/dauth",
       );
 }
