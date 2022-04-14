@@ -38,6 +38,7 @@ dependencies:
   firebase_messaging: ^11.2.12
   get: ^4.6.1
   universal_html: ^2.0.8
+  webview_flutter: ^3.0.2
   
 dev_dependencies:
   flutter_test:

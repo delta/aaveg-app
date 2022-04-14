@@ -1,5 +1,5 @@
-import 'package:aaveg_app/controllers/auth_controller.dart';
 import 'package:aaveg_app/views/themes/colors.dart';
+import 'package:aaveg_app/views/widgets/dauth_web_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -8,7 +8,6 @@ class DauthWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final authcontroller = Get.find<AuthController>();
     return Container(
       width: 320,
       height: 400,
@@ -51,7 +50,7 @@ class DauthWidget extends StatelessWidget {
                   RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(18.0),
                       side: const BorderSide(color: Colors.black)))),
-          onPressed: () => {authcontroller.loginWithDauth()},
+          onPressed: () => {Get.to(WebViewWidget())},
         ),
       ]),
     );

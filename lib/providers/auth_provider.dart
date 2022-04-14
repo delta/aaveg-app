@@ -1,17 +1,11 @@
+import 'package:aaveg_app/models/auth_model.dart';
 import 'package:get/get_connect/connect.dart';
-import 'package:aaveg_app/utils/constants.dart';
 
 class AuthProvider extends GetConnect {
-  Future getCallBack(String code) async {
-    final response = await get('${ApiConstants.auth}?code=$code', headers: {
-      'Accept': 'application/json',
-      'Access-Control-Allow-Origin': 'Accept',
-    });
-
-    if (response.status.hasError) {
-      return Future.error(response.statusText!);
-    } else {
-      return print(response.bodyString!);
-    }
+  Future<AuthModel> getTokenResponse(String code) async {
+    final response =
+        await post("http://10.0.2.2:3000/api/user/login", {"code": code});
+    print(response.body);
+    return authModelFromJson(response.bodyString!);
   }
 }
