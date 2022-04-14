@@ -1,13 +1,14 @@
+import 'package:aaveg_app/providers/storage_service.dart';
 import 'package:aaveg_app/routes/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:get/get_navigation/src/root/get_material_app.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
       .then((_) async {
+    await Get.putAsync(() => StorageService().initStorage());
     runApp(MyApp());
   });
 }
