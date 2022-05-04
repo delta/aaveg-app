@@ -31,6 +31,8 @@ jobs:
           flutter-version: ${{ env.flutter_version }}
       - name: Install dependencies
         run: flutter pub get
+      - name: Copy config
+        run: cp ./lib/utils/config.example.dart ./lib/utils/config.dart
       - if: github.event_name == 'pull_request'
         run: flutter format --dry-run . --set-exit-if-changed
       - if: github.event_name == 'pull_request'

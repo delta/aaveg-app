@@ -1,10 +1,15 @@
+import 'package:aaveg_app/providers/storage_service.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
+    final storage = Get.find<StorageService>();
+    if (storage.getJwt() == null) {
+      Get.offAndToNamed("/dauth");
+    }
     return Scaffold(
       appBar: AppBar(
         title: Text('Aaveg-22'),

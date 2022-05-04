@@ -11,9 +11,9 @@ Coming Soon
 
 ### Requirements
 
-- Java-Version - '12.x'
-- Flutter-Version - '2.5.x'
-- Dart-Version - '2.12' or above
+- Java-Version - '17.x'
+- Flutter-Version - '2.10.x'
+- Dart-Version - '2.16' or above
 - Android Studio
 
 ### Setup
@@ -42,6 +42,13 @@ Coming Soon
 ### Setup
 * Add google-services.json file inside android/app/
 * Add the file path in .gitignore(if not already)
+* Copy and Paste the config.example.dart to config.dart and add your details
+
+  ```
+  cd lib/utlis
+  cp config.example.dart config.dart 
+  ```
+* Add config.dart in gitignore(if not added already)
 * Creating tar file [services.tar], Run the command below in your project's working directory to create the archive file:
     
     ``` 
