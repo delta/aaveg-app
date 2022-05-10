@@ -10,7 +10,7 @@ on:
 
 env:
   flutter_version: "2.10.x"
-  java_version: "17.x"
+  java_version: "12.x"
 
 jobs:
   flutter_test:
