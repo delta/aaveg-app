@@ -18,7 +18,7 @@ class AuthController extends GetxController with StateMixin<dynamic> {
           snackStyle: SnackStyle.FLOATING,
           margin: EdgeInsets.all(10),
         );
-        Get.offAndToNamed("/home");
+        Get.offAllNamed("/home");
       }
     }, onError: (err) {
       Get.snackbar(

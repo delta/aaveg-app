@@ -21,6 +21,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  final storage = Get.find<StorageService>();
   @override
   void initState() {
     super.initState();
@@ -31,6 +32,6 @@ class _MyAppState extends State<MyApp> {
         debugShowCheckedModeBanner: false,
         theme: ThemeData.dark(),
         getPages: Routes().route,
-        initialRoute: "/dauth",
+        initialRoute: storage.getJwt() != null ? "/home" : "/dauth",
       );
 }
