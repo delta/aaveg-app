@@ -40,6 +40,7 @@ dependencies:
   universal_html: ^2.0.8
   webview_flutter: ^3.0.2
   get_storage: ^2.0.3
+  logger: ^1.1.0
   
 dev_dependencies:
   flutter_test:
