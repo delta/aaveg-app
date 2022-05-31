@@ -1,38 +1,44 @@
-import 'package:aaveg_app/providers/storage_service.dart';
+import 'package:aaveg_app/controllers/nav_bar_controller.dart';
+import 'package:aaveg_app/views/widgets/NavBar/nav_icon_widget.dart';
+import 'package:aaveg_app/views/widgets/NavBar/navbar_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class Home extends StatelessWidget {
-  const Home({Key? key}) : super(key: key);
+class Home extends StatefulWidget {
+  Home({Key? key}) : super(key: key);
+
+  @override
+  State<Home> createState() => _HomeState();
+}
+
+GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+final NavBarController navBarController = Get.find<NavBarController>();
+
+class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
-    final storage = Get.find<StorageService>();
-    if (storage.getJwt() == null) {
-      Get.offAndToNamed("/dauth");
-    }
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Aaveg-22'),
-      ),
-      body: Container(
-        width: double.infinity,
-        height: double.infinity,
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Text(
-                'Aaveg-22',
-                style: TextStyle(
-                    fontSize: 30,
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold),
-              ),
-            ],
+      key: _scaffoldKey,
+      onDrawerChanged: (isOpen) {
+        navBarController.setVisiblity(!isOpen);
+      },
+      drawer: Theme(
+          data: Theme.of(context).copyWith(
+            canvasColor: Colors.black.withOpacity(0.4),
           ),
-        ),
-      ),
+          child: Drawer(
+            child: NavbarWdiget(),
+          )),
+      body: Stack(children: [
+        NavIcon(globalKey: _scaffoldKey),
+        Container(
+          alignment: Alignment.center,
+          child: Text(
+            'Home Page',
+            textAlign: TextAlign.center,
+          ),
+        )
+      ]),
     );
   }
 }

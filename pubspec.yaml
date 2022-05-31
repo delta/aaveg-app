@@ -41,6 +41,9 @@ dependencies:
   webview_flutter: ^3.0.2
   get_storage: ^2.0.3
   logger: ^1.1.0
+  google_fonts: ^3.0.1
+  outlined_text: ^1.0.1
+  # fluent_ui: ^3.11.1
   
 dev_dependencies:
   flutter_test:
@@ -51,7 +54,7 @@ dev_dependencies:
 
 # The following section is specific to Flutter.
 flutter:
-
+  
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
@@ -59,6 +62,11 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/images/
+    - assets/fonts/
+  fonts:
+    - family: 'Anurati'
+      fonts: 
+        - asset: assets/fonts/anurati-regular.otf
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
