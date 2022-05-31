@@ -29,6 +29,8 @@ class _AuthPageState extends State<AuthPage> {
     final storage = Get.find<StorageService>();
     final log = logger(AuthPage);
     log.i("Jwt : ${storage.getJwt()}");
+    log.i("Jwt : ${storage.getName()}");
+
     var _mediaquery = MediaQuery.of(context);
     return Scaffold(
         key: _key,

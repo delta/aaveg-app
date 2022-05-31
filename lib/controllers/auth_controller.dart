@@ -9,7 +9,7 @@ class AuthController extends GetxController with StateMixin<dynamic> {
   Future<void> getResponse(String code) async {
     api.getTokenResponse(code).then((response) {
       if (response.jwt != null) {
-        storageService.storeJwt(response);
+        storageService.storeUser(response);
         Get.snackbar(
           "Login",
           "Login Successful",

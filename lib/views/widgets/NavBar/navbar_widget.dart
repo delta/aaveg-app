@@ -1,4 +1,5 @@
 import 'package:aaveg_app/controllers/nav_bar_controller.dart';
+import 'package:aaveg_app/providers/storage_service.dart';
 import 'package:aaveg_app/views/widgets/NavBar/nav_item.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -12,10 +13,11 @@ class NavbarWdiget extends StatefulWidget {
 }
 
 class _NavbarWdigetState extends State<NavbarWdiget> {
+  final storage = Get.find<StorageService>();
   @override
   Widget build(BuildContext context) {
     return Container(
-        width: 50,
+        constraints: BoxConstraints(minWidth: 50),
         child: SingleChildScrollView(
             child: Column(
           children: [
@@ -76,11 +78,10 @@ class _NavbarWdigetState extends State<NavbarWdiget> {
             Container(
               child: Row(children: [
                 Container(
-                  width: 75,
-                  height: 75,
+                  width: 70,
+                  height: 70,
                   alignment: Alignment.center,
-                  margin: EdgeInsets.only(
-                      left: MediaQuery.of(context).size.width / 8, top: 10),
+                  margin: EdgeInsets.only(left: 10, top: 10),
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     color: Colors.transparent,
@@ -91,26 +92,28 @@ class _NavbarWdigetState extends State<NavbarWdiget> {
                   ),
                 ),
                 Container(
-                  margin: EdgeInsets.only(left: 30),
+                  margin: EdgeInsets.only(left: 10, top: 3),
                   alignment: Alignment.center,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Container(
+                        width: MediaQuery.of(context).size.width * 0.45,
                         child: Text(
-                          'Name',
+                          storage.getName() ?? "Name",
                           textAlign: TextAlign.center,
                           style: TextStyle(
-                              fontSize: 20,
+                              fontSize: 18,
                               color: Colors.white,
                               fontWeight: FontWeight.w700,
                               fontFamily: GoogleFonts.montserrat().fontFamily),
                         ),
                       ),
                       Container(
+                        width: MediaQuery.of(context).size.width * 0.4,
                         child: Text(
-                          'Squad',
+                          storage.getSquad() ?? "squad",
                           textAlign: TextAlign.center,
                           style: TextStyle(
                               fontSize: 15,

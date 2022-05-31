@@ -33,7 +33,7 @@ class _MyAppState extends State<MyApp> {
         debugShowCheckedModeBanner: false,
         theme: ThemeData.dark(),
         getPages: Routes().route,
-        initialRoute: storage.getJwt() != null ? "/home" : "/dauth",
+        initialRoute: storage.getJwt() != null ? "/dauth" : "/dauth",
         initialBinding: NavBarBinding(),
       );
 }

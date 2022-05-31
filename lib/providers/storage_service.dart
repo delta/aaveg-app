@@ -12,8 +12,18 @@ class StorageService extends GetxService {
     return this;
   }
 
-  Future<void> storeJwt(AuthModel user) async {
+  Future<void> storeUser(AuthModel user) async {
     await storage.write(Constants.jwt, user.jwt);
+    await storage.write(Constants.name, user.userDetails?.name);
+    await storage.write(Constants.squad, user.userDetails?.squad);
+  }
+
+  String? getName() {
+    return storage.read(Constants.name);
+  }
+
+  String? getSquad() {
+    return storage.read(Constants.squad);
   }
 
   String? getJwt() {

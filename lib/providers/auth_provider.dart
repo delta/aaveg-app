@@ -7,7 +7,8 @@ class AuthProvider extends GetConnect {
     final response =
         await post("${Constants.baseUrl}/api/user/login", {"code": code});
     if (response.statusCode == 200) {
-      return authModelFromJson(response.bodyString!);
+      final user = authModelFromJson(response.bodyString!);
+      return user;
     } else {
       return Future.error(response.statusText!);
     }
