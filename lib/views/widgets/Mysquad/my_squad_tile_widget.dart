@@ -1,4 +1,3 @@
-import 'package:aaveg_app/views/widgets/Mysquad/my_squad_details.dart';
 import 'package:flutter/material.dart';
 
 class MySquadWidget extends StatefulWidget {
