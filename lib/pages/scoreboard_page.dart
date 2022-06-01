@@ -1,7 +1,7 @@
 import 'package:aaveg_app/controllers/nav_bar_controller.dart';
 import 'package:aaveg_app/views/widgets/NavBar/nav_icon_widget.dart';
 import 'package:aaveg_app/views/widgets/NavBar/navbar_widget.dart';
-import 'package:aaveg_app/views/widgets/scoretile_widget.dart';
+import 'package:aaveg_app/views/widgets/ScoreBoard/scoretile_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

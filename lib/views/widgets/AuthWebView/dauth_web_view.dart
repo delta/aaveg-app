@@ -2,7 +2,7 @@ import 'package:aaveg_app/controllers/auth_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 import 'package:get/get.dart';
-import '../../utils/config.dart';
+import '../../../utils/config.dart';
 
 class WebViewWidget extends GetView<AuthController> {
   const WebViewWidget({Key? key}) : super(key: key);
