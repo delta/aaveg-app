@@ -14,68 +14,79 @@ class _ScoreTileState extends State<ScoreTile> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(top: 20),
-      width: 340,
-      height: 340,
+      margin: EdgeInsets.only(top: 20, bottom: 20),
+      width: 3 * MediaQuery.of(context).size.width / 4,
+      height: MediaQuery.of(context).size.height / 2.3,
       padding: EdgeInsets.all(15),
       alignment: Alignment.center,
       decoration: BoxDecoration(
         shape: BoxShape.rectangle,
-        color: Colors.black.withOpacity(0.75),
+        color: Colors.black.withOpacity(0.65),
         borderRadius: BorderRadius.circular(30),
       ),
       child: Column(children: [
         Container(
-          width: 150,
-          height: 150,
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            image: DecorationImage(
-              fit: BoxFit.cover,
-              image: AssetImage('assets/images/paasha-logo.png'),
+          child: Column(children: [
+            Container(
+              margin: EdgeInsets.only(top: 20),
+              width: 120,
+              height: 120,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                image: DecorationImage(
+                  fit: BoxFit.cover,
+                  image: AssetImage('assets/images/paasha-logo.png'),
+                ),
+              ),
             ),
-          ),
-        ),
-        Container(
-          child: Text(
-            'Rank 1',
-            style: TextStyle(
-                fontSize: 32,
-                fontWeight: FontWeight.w600,
-                fontFamily: GoogleFonts.montserrat().fontFamily),
-          ),
-        ),
-        Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: points
-              .map(
-                (e) => Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
+            Container(
+              margin: EdgeInsets.only(top: 8, bottom: 8, left: 5),
+              padding: EdgeInsets.symmetric(vertical: 8.0),
+              child: Text(
+                'Rank1',
+                style: TextStyle(
+                    fontSize: 30,
+                    fontWeight: FontWeight.w900,
+                    fontFamily: GoogleFonts.montserrat().fontFamily),
+                textAlign: TextAlign.center,
+              ),
+            ),
+            Table(
+              defaultColumnWidth: FixedColumnWidth(100.0),
+              children: points
+                  .map(
+                    (e) => TableRow(children: [
                       Container(
-                        margin: EdgeInsets.only(top: 8),
+                        margin: EdgeInsets.only(top: 2, bottom: 2, left: 5),
+                        // padding: EdgeInsets.symmetric(vertical: 8.0),
+                        alignment: Alignment.centerLeft,
                         child: Text(
                           e,
                           style: TextStyle(
-                              fontSize: 24,
+                              fontSize: 20,
                               fontWeight: FontWeight.w700,
                               fontFamily: GoogleFonts.montserrat().fontFamily),
+                          textAlign: TextAlign.start,
                         ),
                       ),
                       Container(
+                        // padding: EdgeInsets.symmetric(vertical: 8.0),
+                        margin: EdgeInsets.only(top: 2, bottom: 2, left: 5),
                         child: Text(
                           '30',
                           style: TextStyle(
-                              fontSize: 24,
+                              fontSize: 20,
                               fontWeight: FontWeight.w700,
                               fontFamily: GoogleFonts.montserrat().fontFamily),
+                          textAlign: TextAlign.end,
                         ),
                       ),
                     ]),
-              )
-              .toList(),
-        )
+                  )
+                  .toList(),
+            )
+          ]),
+        ),
       ]),
     );
   }

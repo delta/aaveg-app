@@ -39,8 +39,8 @@ class _ScoreBoardPageState extends State<ScoreBoardPage> {
                 image: DecorationImage(
                   fit: BoxFit.cover,
                   image: AssetImage('assets/images/scoreboard_bg.png'),
-                  colorFilter:
-                      ColorFilter.mode(Colors.black, BlendMode.dstATop),
+                  colorFilter: ColorFilter.mode(
+                      Colors.black.withOpacity(0.25), BlendMode.darken),
                 ),
               ),
               child: Stack(
@@ -50,7 +50,7 @@ class _ScoreBoardPageState extends State<ScoreBoardPage> {
                     children: [
                       Container(
                         margin: EdgeInsets.only(
-                            top: MediaQuery.of(context).size.height / 6),
+                            top: MediaQuery.of(context).size.height / 8),
                         width: double.infinity,
                         child: Text(
                           "SCOREBOARD",
