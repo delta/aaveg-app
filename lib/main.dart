@@ -1,3 +1,4 @@
+import 'package:aaveg_app/bindings/nav_bar_binding.dart';
 import 'package:aaveg_app/providers/storage_service.dart';
 import 'package:aaveg_app/routes/routes.dart';
 import 'package:flutter/material.dart';
@@ -21,6 +22,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  final storage = Get.find<StorageService>();
   @override
   void initState() {
     super.initState();
@@ -31,6 +33,7 @@ class _MyAppState extends State<MyApp> {
         debugShowCheckedModeBanner: false,
         theme: ThemeData.dark(),
         getPages: Routes().route,
-        initialRoute: "/dauth",
+        initialRoute: storage.getJwt() != null ? "/home" : "/dauth",
+        initialBinding: NavBarBinding(),
       );
 }
