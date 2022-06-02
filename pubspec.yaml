@@ -43,6 +43,7 @@ dependencies:
   logger: ^1.1.0
   google_fonts: ^3.0.1
   outlined_text: ^1.0.1
+  auto_size_text: ^3.0.0
   # fluent_ui: ^3.11.1
   
 dev_dependencies:
