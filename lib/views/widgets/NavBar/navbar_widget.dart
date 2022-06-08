@@ -164,6 +164,9 @@ class NavBarListWidget extends StatelessWidget {
               items[index].pageName,
               style: TextStyle(
                   fontSize: 25,
+                  color: Get.routing.current == items[index].route
+                      ? Colors.amber
+                      : Colors.white,
                   fontFamily: GoogleFonts.montserrat().fontFamily),
               textAlign: TextAlign.center,
             ),
