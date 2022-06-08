@@ -2,7 +2,6 @@ import 'package:aaveg_app/views/widgets/Calender/day_text.dart';
 import 'package:aaveg_app/views/widgets/Calender/day_widget.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class CalenderWidget extends StatefulWidget {
   CalenderWidget({Key? key}) : super(key: key);
