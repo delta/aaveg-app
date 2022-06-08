@@ -1,5 +1,6 @@
 import 'package:aaveg_app/bindings/auth_binding.dart';
 import 'package:aaveg_app/bindings/sample_bindings.dart';
+import 'package:aaveg_app/pages/all_squad_page.dart';
 import 'package:aaveg_app/pages/auth_page.dart';
 import 'package:aaveg_app/pages/home.dart';
 import 'package:aaveg_app/pages/sample.dart';
@@ -17,5 +18,6 @@ class Routes {
     GetPage(name: "/scoreboard", page: () => ScoreBoardPage()),
     GetPage(name: "/mysquad", page: () => MySquad()),
     GetPage(name: "/team", page: () => TeamPage()),
+    GetPage(name: "/allsquad", page: () => AllSquad()),
   ];
 }

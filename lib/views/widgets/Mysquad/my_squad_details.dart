@@ -23,7 +23,7 @@ class _MySquadDetailsWidgetState extends State<MySquadDetailsWidget> {
             shape: BoxShape.circle,
             image: DecorationImage(
               fit: BoxFit.cover,
-              image: AssetImage('assets/images/paasha-logo.png'),
+              image: AssetImage('assets/images/squads/PAASHA.png'),
             ),
           ),
         ),

@@ -30,6 +30,7 @@ class _AuthPageState extends State<AuthPage> {
     final log = logger(AuthPage);
     log.i("Jwt : ${storage.getJwt()}");
     log.i("Jwt : ${storage.getName()}");
+    log.i("Squad : ${storage.getSquad()}");
 
     var _mediaquery = MediaQuery.of(context);
     return Scaffold(
@@ -94,10 +95,11 @@ class _AuthPageState extends State<AuthPage> {
                         width: _mediaquery.size.width,
                         alignment: Alignment.center,
                         child: Text(
-                          "THE EDGE OF K-Os",
+                          "THE E D G E OF K-Os",
                           style: TextStyle(
                               fontFamily: 'Anurati',
-                              fontSize: 40,
+                              fontSize: 35,
+                              letterSpacing: 0.2,
                               fontWeight: FontWeight.w900),
                         ),
                       ),
