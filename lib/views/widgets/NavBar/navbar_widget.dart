@@ -53,7 +53,7 @@ class _NavbarWdigetState extends State<NavbarWdiget> {
             NavBarListWidget(
               items: [
                 NavItem(pageName: "Home", route: "/home"),
-                NavItem(pageName: "Calendar", route: "/sample")
+                NavItem(pageName: "Calendar", route: "/calendar")
               ],
             ),
             NavDivider(),

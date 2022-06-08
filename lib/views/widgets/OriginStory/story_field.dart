@@ -8,8 +8,9 @@ class StoryField extends StatelessWidget {
     return Container(
       margin: new EdgeInsets.fromLTRB(25, 2, 25, 77),
       decoration: BoxDecoration(
-          color: Color(0x99514f4f), borderRadius: BorderRadius.circular(10)),
-      child: Center(child: Text('Hiii')),
+          color: Colors.black.withOpacity(0.4),
+          borderRadius: BorderRadius.circular(10)),
+      child: Center(child: Text('Story of the origin')),
     );
   }
 }
