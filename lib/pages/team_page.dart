@@ -22,10 +22,12 @@ class _TeamPageState extends State<TeamPage> {
     super.initState();
     setteamList("Core");
     setTeamDescription("Core");
+    setTeam("Core");
   }
 
   List<String> teamList = [];
   String describeTeam = "";
+  String team = "";
   void setteamList(String teamName) {
     setState(() {
       teamList = [
@@ -42,11 +44,18 @@ class _TeamPageState extends State<TeamPage> {
       ];
     });
     setTeamDescription(teamName);
+    setTeam(teamName);
   }
 
   void setTeamDescription(String teamName) {
     setState(() {
       describeTeam = "Small Character description about $teamName";
+    });
+  }
+
+  void setTeam(String teamName) {
+    setState(() {
+      team = teamName;
     });
   }
 
@@ -106,37 +115,91 @@ class _TeamPageState extends State<TeamPage> {
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           TextButton(
-                              onPressed: () {
-                                setteamList("Core");
-                              },
+                            onPressed: () {
+                              setteamList("Core");
+                            },
+                            child: Container(
+                              padding: const EdgeInsets.all(3.0),
+                              decoration: BoxDecoration(
+                                border: Border.all(
+                                    color: team == "Core"
+                                        ? Colors.white
+                                        : Colors.transparent),
+                              ),
                               child: Text(
                                 'Core',
                                 style: ButtonBarTextStyle.textStyle,
-                              )),
+                              ),
+                            ),
+                          ),
                           TextButton(
-                              onPressed: () {
-                                setteamList("WebOps");
-                              },
-                              child: Text('WebOps',
-                                  style: ButtonBarTextStyle.textStyle)),
+                            onPressed: () {
+                              setteamList("WebOps");
+                            },
+                            child: Container(
+                              padding: const EdgeInsets.all(3.0),
+                              decoration: BoxDecoration(
+                                  border: Border.all(
+                                      color: team == "WebOps"
+                                          ? Colors.white
+                                          : Colors.transparent)),
+                              child: Text(
+                                'WebOps',
+                                style: ButtonBarTextStyle.textStyle,
+                              ),
+                            ),
+                          ),
                           TextButton(
-                              onPressed: () {
-                                setteamList("Content");
-                              },
-                              child: Text('Content',
-                                  style: ButtonBarTextStyle.textStyle)),
+                            onPressed: () {
+                              setteamList("Content");
+                            },
+                            child: Container(
+                              padding: const EdgeInsets.all(3.0),
+                              decoration: BoxDecoration(
+                                  border: Border.all(
+                                      color: team == "Content"
+                                          ? Colors.white
+                                          : Colors.transparent)),
+                              child: Text(
+                                'Content',
+                                style: ButtonBarTextStyle.textStyle,
+                              ),
+                            ),
+                          ),
                           TextButton(
-                              onPressed: () {
-                                setteamList("Design");
-                              },
-                              child: Text('Design',
-                                  style: ButtonBarTextStyle.textStyle)),
+                            onPressed: () {
+                              setteamList("Design");
+                            },
+                            child: Container(
+                              padding: const EdgeInsets.all(3.0),
+                              decoration: BoxDecoration(
+                                  border: Border.all(
+                                      color: team == "Design"
+                                          ? Colors.white
+                                          : Colors.transparent)),
+                              child: Text(
+                                'Design',
+                                style: ButtonBarTextStyle.textStyle,
+                              ),
+                            ),
+                          ),
                           TextButton(
-                              onPressed: () {
-                                setteamList("OC");
-                              },
-                              child: Text('OC',
-                                  style: ButtonBarTextStyle.textStyle)),
+                            onPressed: () {
+                              setteamList("OC");
+                            },
+                            child: Container(
+                              padding: const EdgeInsets.all(3.0),
+                              decoration: BoxDecoration(
+                                  border: Border.all(
+                                      color: team == "OC"
+                                          ? Colors.white
+                                          : Colors.transparent)),
+                              child: Text(
+                                'OC',
+                                style: ButtonBarTextStyle.textStyle,
+                              ),
+                            ),
+                          ),
                         ],
                       ),
                     ),
