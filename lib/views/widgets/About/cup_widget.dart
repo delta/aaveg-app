@@ -14,16 +14,17 @@ class CupWidget extends StatefulWidget {
 class _CupWidgetState extends State<CupWidget> {
   @override
   Widget build(BuildContext context) {
+    double totalHeight = MediaQuery.of(context).size.height;
     return Container(
         // margin: new EdgeInsets.fromLTRB(25, 2, 25, 77),
         child: Column(children: [
       Container(
         decoration: BoxDecoration(
-            color: Colors.black.withOpacity(0.4),
+            color: Colors.black.withOpacity(0.65),
             borderRadius: BorderRadius.circular(10)),
         child: SizedBox(
-          height: 160,
-          width: 160,
+          height: totalHeight * 0.173,
+          width: totalHeight * 0.173,
           child: Center(
             child: Image(image: AssetImage(widget.cup.imageasset)),
           ),
@@ -34,11 +35,11 @@ class _CupWidgetState extends State<CupWidget> {
       ),
       Container(
           decoration: BoxDecoration(
-              color: Colors.black.withOpacity(0.4),
+              color: Colors.black.withOpacity(0.65),
               borderRadius: BorderRadius.circular(10)),
           child: SizedBox(
-            height: 70,
-            width: 160,
+            height: totalHeight * 0.0756,
+            width: totalHeight * 0.173,
             child: Center(
                 child: AutoSizeText(
               'Smol desc about the cup',

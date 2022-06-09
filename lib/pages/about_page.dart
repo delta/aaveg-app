@@ -48,6 +48,7 @@ class _SampleState extends State<AboutPage> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    double totalHeight = MediaQuery.of(context).size.height;
     return Scaffold(
         key: _scaffoldKey,
         onDrawerChanged: (isOpen) {
@@ -83,13 +84,13 @@ class _SampleState extends State<AboutPage> with TickerProviderStateMixin {
                     SizedBox(
                         height: 122,
                         child: Center(
-                          child: AutoSizeText('ABOUT US',
+                          child: AutoSizeText('ABOUT AAVEG',
                               maxLines: 1,
                               style: TextStyle(
                                   color: Colors.white,
                                   fontWeight: FontWeight.bold,
                                   fontFamily: 'Anurati',
-                                  fontSize: 42,
+                                  fontSize: totalHeight * 0.039,
                                   letterSpacing: 10)),
                         )),
                     SizedBox(height: 316, child: AboutTextWidget()),

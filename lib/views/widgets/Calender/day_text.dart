@@ -7,73 +7,93 @@ class DayText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double fontSize = MediaQuery.of(context).size.height / 80;
+    double boxHeight = MediaQuery.of(context).size.height / 22.5;
+    List<String> days = [
+      'S\nU\nN',
+      'S\nU\nN',
+      'S\nU\nN',
+      'S\nU\nN',
+      'S\nU\nN',
+      'S\nU\nN',
+      'S\nU\nN'
+    ];
     return Container(
         child: Column(children: [
-      SizedBox(
-        height: 40,
-        child: AutoSizeText('S\nU\nN',
-            style: TextStyle(fontFamily: GoogleFonts.montserrat().fontFamily)),
-      ),
-      SizedBox(
-        height: 15,
-      ),
-      SizedBox(
-        height: 40,
-        child: AutoSizeText('M\nO\nN',
-            minFontSize: 5,
-            maxFontSize: 15,
-            style: TextStyle(fontFamily: GoogleFonts.montserrat().fontFamily)),
-      ),
-      SizedBox(
-        height: 15,
-      ),
-      SizedBox(
-        height: 40,
-        child: AutoSizeText('T\nU\nE',
-            minFontSize: 5,
-            maxFontSize: 15,
-            style: TextStyle(fontFamily: GoogleFonts.montserrat().fontFamily)),
-      ),
-      SizedBox(
-        height: 15,
-      ),
-      SizedBox(
-        height: 40,
-        child: AutoSizeText('W\nE\nD',
-            minFontSize: 5,
-            maxFontSize: 15,
-            style: TextStyle(fontFamily: GoogleFonts.montserrat().fontFamily)),
-      ),
-      SizedBox(
-        height: 12,
-      ),
-      SizedBox(
-        height: 40,
-        child: AutoSizeText('T\nH\nU',
-            minFontSize: 5,
-            maxFontSize: 15,
-            style: TextStyle(fontFamily: GoogleFonts.montserrat().fontFamily)),
-      ),
-      SizedBox(
-        height: 15,
-      ),
-      SizedBox(
-        height: 40,
-        child: AutoSizeText('F\nR\nI',
-            minFontSize: 5,
-            maxFontSize: 15,
-            style: TextStyle(fontFamily: GoogleFonts.montserrat().fontFamily)),
-      ),
-      SizedBox(
-        height: 15,
-      ),
-      SizedBox(
-        height: 40,
-        child: AutoSizeText('S\nA\nT',
-            minFontSize: 5,
-            maxFontSize: 15,
-            style: TextStyle(fontFamily: GoogleFonts.montserrat().fontFamily)),
-      )
+      for (var day in days)
+        Column(children: [
+          SizedBox(
+            height: boxHeight,
+            child: Text(day,
+                style: TextStyle(
+                    fontFamily: GoogleFonts.montserrat().fontFamily,
+                    fontSize: fontSize)),
+          ),
+          if (days.indexOf(day) != 6)
+            SizedBox(
+              height: MediaQuery.of(context).size.height / 60,
+            ),
+        ]),
+      // SizedBox(
+      //   height: MediaQuery.of(context).size.height / 60,
+      // ),
+      // SizedBox(
+      //   height: MediaQuery.of(context).size.height / 22.5,
+      //   child: Text('S\nU\nN',
+      //       style: TextStyle(
+      //           fontFamily: GoogleFonts.montserrat().fontFamily,
+      //           fontSize: fontSize)),
+      // ),
+      // SizedBox(
+      //   height: MediaQuery.of(context).size.height / 60,
+      // ),
+      // SizedBox(
+      //   height: MediaQuery.of(context).size.height / 22.5,
+      //   child: Text('S\nU\nN',
+      //       style: TextStyle(
+      //           fontFamily: GoogleFonts.montserrat().fontFamily,
+      //           fontSize: fontSize)),
+      // ),
+      // SizedBox(
+      //   height: MediaQuery.of(context).size.height / 60,
+      // ),
+      // SizedBox(
+      //   height: MediaQuery.of(context).size.height / 22.5,
+      //   child: Text('S\nU\nN',
+      //       style: TextStyle(
+      //           fontFamily: GoogleFonts.montserrat().fontFamily,
+      //           fontSize: fontSize)),
+      // ),
+      // SizedBox(
+      //   height: MediaQuery.of(context).size.height / 60,
+      // ),
+      // SizedBox(
+      //   height: MediaQuery.of(context).size.height / 22.5,
+      //   child: Text('S\nU\nN',
+      //       style: TextStyle(
+      //           fontFamily: GoogleFonts.montserrat().fontFamily,
+      //           fontSize: fontSize)),
+      // ),
+      // SizedBox(
+      //   height: MediaQuery.of(context).size.height / 60,
+      // ),
+      // SizedBox(
+      //   height: MediaQuery.of(context).size.height / 22.5,
+      //   child: Text('S\nU\nN',
+      //       style: TextStyle(
+      //           fontFamily: GoogleFonts.montserrat().fontFamily,
+      //           fontSize: fontSize)),
+      // ),
+      // SizedBox(
+      //   height: MediaQuery.of(context).size.height / 60,
+      // ),
+      // SizedBox(
+      //   height: MediaQuery.of(context).size.height / 22.5,
+      //   child: Text('S\nU\nN',
+      //       style: TextStyle(
+      //           fontFamily: GoogleFonts.montserrat().fontFamily,
+      //           fontSize: fontSize)),
+      // )
     ]));
   }
 }

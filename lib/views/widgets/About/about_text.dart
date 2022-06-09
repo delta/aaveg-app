@@ -11,12 +11,15 @@ class AboutTextWidget extends StatefulWidget {
 class _AboutTextWidgetState extends State<AboutTextWidget> {
   @override
   Widget build(BuildContext context) {
+    double totalHeight = MediaQuery.of(context).size.height;
+    double totalWidth = MediaQuery.of(context).size.width;
+
     return Container(
       margin: new EdgeInsets.all(20),
-      height: 316,
-      width: 393,
+      height: totalHeight * 0.34,
+      width: totalWidth * 0.918,
       decoration: BoxDecoration(
-          color: Colors.black.withOpacity(0.4),
+          color: Colors.black.withOpacity(0.65),
           borderRadius: BorderRadius.circular(10)),
       child: Center(
           child: Text('About aaveg',

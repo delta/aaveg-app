@@ -29,6 +29,7 @@ class _SampleState extends State<CalendarPage> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    double totalHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       key: _scaffoldKey,
       onDrawerChanged: (isOpen) {
@@ -52,7 +53,10 @@ class _SampleState extends State<CalendarPage> with TickerProviderStateMixin {
             NavIcon(globalKey: _scaffoldKey),
             Column(
               children: [
-                Expanded(child: Container(), flex: 200),
+                Expanded(
+                  child: Container(),
+                  flex: 200,
+                ),
                 Expanded(
                     flex: 64,
                     child: Center(
@@ -67,9 +71,12 @@ class _SampleState extends State<CalendarPage> with TickerProviderStateMixin {
                               fontSize: 42,
                               letterSpacing: 5)),
                     )),
-                Expanded(child: Container(), flex: 109),
-                Expanded(child: CalenderWidget(), flex: 900),
-                Expanded(child: Container(), flex: 279),
+                // Expanded(child: Container(), flex: 200),
+                Expanded(
+                  child: CalenderWidget(),
+                  flex: 1200,
+                ),
+                // Expanded(child: Container(), flex: 279),
               ],
             ),
           ]),

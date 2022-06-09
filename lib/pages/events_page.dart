@@ -74,6 +74,8 @@ class _SampleState extends State<EventsPage> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    double totalHeight = MediaQuery.of(context).size.height;
+    double totalWidth = MediaQuery.of(context).size.width;
     return Scaffold(
         key: _scaffoldKey,
         onDrawerChanged: (isOpen) {
@@ -106,7 +108,7 @@ class _SampleState extends State<EventsPage> with TickerProviderStateMixin {
                                   color: Colors.white,
                                   fontWeight: FontWeight.bold,
                                   fontFamily: 'Anurati',
-                                  fontSize: 62,
+                                  fontSize: totalHeight * 0.07,
                                   letterSpacing: 10)),
                         )),
                     Expanded(
@@ -114,8 +116,8 @@ class _SampleState extends State<EventsPage> with TickerProviderStateMixin {
                       child: Container(
                         margin: EdgeInsets.fromLTRB(0, 0, 0, 5),
                         padding: EdgeInsets.fromLTRB(0, 6, 0, 6),
-                        decoration:
-                            BoxDecoration(color: Colors.black.withOpacity(0.4)),
+                        decoration: BoxDecoration(
+                            color: Colors.black.withOpacity(0.65)),
                         child: TabBar(
                             controller: _tabController,
                             indicatorColor: Colors.white,
