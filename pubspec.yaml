@@ -43,6 +43,8 @@ dependencies:
   logger: ^1.1.0
   google_fonts: ^3.0.1
   outlined_text: ^1.0.1
+  auto_size_text: ^3.0.0
+  card_swiper: ^2.0.4
   # fluent_ui: ^3.11.1
   
 dev_dependencies:
@@ -63,6 +65,8 @@ flutter:
   assets:
     - assets/images/
     - assets/fonts/
+    - assets/images/squads/
+    - assets/images/characters/
   fonts:
     - family: 'Anurati'
       fonts: 

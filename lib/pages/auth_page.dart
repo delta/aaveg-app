@@ -1,10 +1,11 @@
 import 'package:aaveg_app/controllers/nav_bar_controller.dart';
 import 'package:aaveg_app/providers/storage_service.dart';
 import 'package:aaveg_app/views/widgets/NavBar/countdown_timer_widget.dart';
-import 'package:aaveg_app/views/widgets/dauth_web_view.dart';
+import 'package:aaveg_app/views/widgets/AuthWebView/dauth_web_view.dart';
 import 'package:aaveg_app/views/widgets/NavBar/nav_icon_widget.dart';
 import 'package:aaveg_app/views/widgets/NavBar/navbar_widget.dart';
 import 'package:aaveg_app/views/widgets/NavBar/timer_widget.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -30,6 +31,7 @@ class _AuthPageState extends State<AuthPage> {
     final log = logger(AuthPage);
     log.i("Jwt : ${storage.getJwt()}");
     log.i("Jwt : ${storage.getName()}");
+    log.i("Squad : ${storage.getSquad()}");
 
     var _mediaquery = MediaQuery.of(context);
     return Scaffold(
@@ -49,8 +51,8 @@ class _AuthPageState extends State<AuthPage> {
             Container(
                 decoration: BoxDecoration(
                     image: DecorationImage(
-                  colorFilter:
-                      ColorFilter.mode(Colors.black, BlendMode.dstATop),
+                  colorFilter: ColorFilter.mode(
+                      Colors.black.withOpacity(0.25), BlendMode.darken),
                   image: AssetImage('assets/images/home_background.jpeg'),
                   fit: BoxFit.fill,
                 )),
@@ -93,11 +95,13 @@ class _AuthPageState extends State<AuthPage> {
                         margin: EdgeInsets.only(top: 150, left: 10, right: 10),
                         width: _mediaquery.size.width,
                         alignment: Alignment.center,
-                        child: Text(
-                          "THE EDGE OF K-Os",
+                        child: AutoSizeText(
+                          "THE E D G E OF K-Os",
+                          maxLines: 1,
                           style: TextStyle(
                               fontFamily: 'Anurati',
-                              fontSize: 40,
+                              fontSize: 35,
+                              letterSpacing: 0.2,
                               fontWeight: FontWeight.w900),
                         ),
                       ),
