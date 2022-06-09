@@ -1,6 +1,7 @@
 import 'package:aaveg_app/controllers/calendar_page_controller.dart';
 import 'package:aaveg_app/controllers/nav_bar_controller.dart';
 import 'package:aaveg_app/views/widgets/Calender/calender_widget.dart';
+import 'package:aaveg_app/views/widgets/NavBar/nav_icon_widget.dart';
 import 'package:aaveg_app/views/widgets/NavBar/navbar_widget.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
@@ -30,11 +31,6 @@ class _SampleState extends State<CalendarPage> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0.0,
-      ),
-      extendBodyBehindAppBar: true,
       onDrawerChanged: (isOpen) {
         navBarController.setVisiblity(!isOpen);
       },
@@ -53,6 +49,7 @@ class _SampleState extends State<CalendarPage> with TickerProviderStateMixin {
                   image: AssetImage(
                       'assets/images/sci_fi_landscape_4k-2560x1440 1.png'))),
           child: Stack(children: [
+            NavIcon(globalKey: _scaffoldKey),
             Column(
               children: [
                 Expanded(child: Container(), flex: 200),
