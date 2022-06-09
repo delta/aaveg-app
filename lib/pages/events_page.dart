@@ -75,7 +75,6 @@ class _SampleState extends State<EventsPage> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     double totalHeight = MediaQuery.of(context).size.height;
-    double totalWidth = MediaQuery.of(context).size.width;
     return Scaffold(
         key: _scaffoldKey,
         onDrawerChanged: (isOpen) {

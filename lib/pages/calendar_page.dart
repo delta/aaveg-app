@@ -29,7 +29,6 @@ class _SampleState extends State<CalendarPage> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    double totalHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       key: _scaffoldKey,
       onDrawerChanged: (isOpen) {
