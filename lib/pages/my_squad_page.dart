@@ -20,84 +20,84 @@ class _MySquadState extends State<MySquad> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        key: _mysquadkey,
-        onDrawerChanged: (isOpen) {
-          navBarController.setVisiblity(!isOpen);
-        },
-        drawer: Theme(
-            data: Theme.of(context).copyWith(
-              canvasColor: Colors.black.withOpacity(0.4),
-            ),
-            child: Drawer(
-              child: NavbarWdiget(),
-            )),
-        body: Stack(
-          children: [
-            Container(
-              width: double.infinity,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  fit: BoxFit.cover,
-                  image: AssetImage('assets/images/mysquad_bg.png'),
-                  colorFilter: ColorFilter.mode(
-                      Colors.black.withOpacity(0.5), BlendMode.darken),
-                ),
+      key: _mysquadkey,
+      onDrawerChanged: (isOpen) {
+        navBarController.setVisiblity(!isOpen);
+      },
+      drawer: Theme(
+          data: Theme.of(context).copyWith(
+            canvasColor: Colors.black.withOpacity(0.4),
+          ),
+          child: Drawer(
+            child: NavbarWdiget(),
+          )),
+      body: Stack(
+        children: [
+          Container(
+            width: double.infinity,
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                fit: BoxFit.cover,
+                image: AssetImage('assets/images/mysquad_bg.png'),
+                colorFilter: ColorFilter.mode(
+                    Colors.black.withOpacity(0.5), BlendMode.darken),
               ),
-              child: Stack(
-                children: [
-                  NavIcon(globalKey: _mysquadkey),
-                  Column(
-                    children: [
-                      Container(
-                        margin: EdgeInsets.only(
-                            top: MediaQuery.of(context).size.height / 9),
-                        width: double.infinity,
-                        child: Text(
-                          "SQUAD NAME",
-                          style: TextStyle(
-                              fontSize: 40,
-                              fontWeight: FontWeight.w900,
-                              letterSpacing: 10,
-                              fontFamily: 'Anurati'),
-                          // textAlign: TextAlign.center,
-                        ),
+            ),
+            child: Stack(
+              children: [
+                NavIcon(globalKey: _mysquadkey),
+                Column(
+                  children: [
+                    Container(
+                      margin: EdgeInsets.only(
+                          top: MediaQuery.of(context).size.height / 9),
+                      width: double.infinity,
+                      alignment: Alignment.center,
+                      child: Text(
+                        "SQUAD NAME",
+                        style: TextStyle(
+                            fontSize: 40,
+                            fontWeight: FontWeight.w900,
+                            letterSpacing: 10,
+                            fontFamily: 'Anurati'),
+                        textAlign: TextAlign.center,
                       ),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              MySquadWidget(
-                                width: MediaQuery.of(context).size.width / 2,
-                                height:
-                                    MediaQuery.of(context).size.height / 2.5,
-                                child: MySquadDetailsWidget(),
-                              ),
-                              MySquadWidget(
-                                width: MediaQuery.of(context).size.width / 2.6,
-                                height:
-                                    MediaQuery.of(context).size.height / 2.5,
-                                child: MySquadDetailsWidget(),
-                              ),
-                            ],
-                          ),
-                          Container(
-                            margin: EdgeInsets.only(bottom: 20),
-                            child: MySquadWidget(
-                              width: MediaQuery.of(context).size.width,
-                              height: MediaQuery.of(context).size.height / 3,
-                              child: MySquadCharacterDescWidget(),
+                    ),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            MySquadWidget(
+                              width: MediaQuery.of(context).size.width / 2,
+                              height: MediaQuery.of(context).size.height / 2.5,
+                              child: MySquadDetailsWidget(),
                             ),
-                          )
-                        ],
-                      )
-                    ],
-                  )
-                ],
-              ),
+                            MySquadWidget(
+                              width: MediaQuery.of(context).size.width / 2.6,
+                              height: MediaQuery.of(context).size.height / 2.5,
+                              child: MySquadDetailsWidget(),
+                            ),
+                          ],
+                        ),
+                        Container(
+                          margin: EdgeInsets.only(bottom: 20),
+                          child: MySquadWidget(
+                            width: MediaQuery.of(context).size.width,
+                            height: MediaQuery.of(context).size.height / 4,
+                            child: MySquadCharacterDescWidget(),
+                          ),
+                        )
+                      ],
+                    )
+                  ],
+                )
+              ],
             ),
-          ],
-        ));
+          ),
+        ],
+      ),
+    );
   }
 }

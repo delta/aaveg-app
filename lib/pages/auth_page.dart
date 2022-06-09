@@ -5,6 +5,7 @@ import 'package:aaveg_app/views/widgets/AuthWebView/dauth_web_view.dart';
 import 'package:aaveg_app/views/widgets/NavBar/nav_icon_widget.dart';
 import 'package:aaveg_app/views/widgets/NavBar/navbar_widget.dart';
 import 'package:aaveg_app/views/widgets/NavBar/timer_widget.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -94,8 +95,9 @@ class _AuthPageState extends State<AuthPage> {
                         margin: EdgeInsets.only(top: 150, left: 10, right: 10),
                         width: _mediaquery.size.width,
                         alignment: Alignment.center,
-                        child: Text(
+                        child: AutoSizeText(
                           "THE E D G E OF K-Os",
+                          maxLines: 1,
                           style: TextStyle(
                               fontFamily: 'Anurati',
                               fontSize: 35,
