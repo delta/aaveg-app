@@ -90,9 +90,9 @@ class _SampleState extends State<EventsPage> with TickerProviderStateMixin {
         body: Stack(
           children: [
             Container(
-              constraints: BoxConstraints.expand(),
               decoration: BoxDecoration(
                   image: DecorationImage(
+                      fit: BoxFit.cover,
                       image: AssetImage('assets/images/events_bg.png'))),
               child: Stack(children: [
                 NavIcon(globalKey: _scaffoldKey),

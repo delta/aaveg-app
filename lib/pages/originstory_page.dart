@@ -55,9 +55,9 @@ class _SampleState extends State<OriginStoryPage>
             child: NavbarWdiget(),
           )),
       body: Container(
-        constraints: BoxConstraints.expand(),
         decoration: BoxDecoration(
             image: DecorationImage(
+                fit: BoxFit.cover,
                 image: AssetImage('assets/images/sci-fi_city_bg.png'))),
         child: Stack(children: [
           NavIcon(globalKey: _scaffoldKey),

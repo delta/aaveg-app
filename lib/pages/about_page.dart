@@ -62,9 +62,9 @@ class _SampleState extends State<AboutPage> with TickerProviderStateMixin {
               child: NavbarWdiget(),
             )),
         body: Container(
-          constraints: BoxConstraints.expand(),
           decoration: BoxDecoration(
               image: DecorationImage(
+                  fit: BoxFit.cover,
                   image: AssetImage('assets/images/426154 1.png'))),
           child: Column(children: [
             SizedBox(

@@ -43,9 +43,9 @@ class _SampleState extends State<CalendarPage> with TickerProviderStateMixin {
           )),
       body: Stack(children: [
         Container(
-          constraints: BoxConstraints.expand(),
           decoration: BoxDecoration(
               image: DecorationImage(
+                  fit: BoxFit.cover,
                   image: AssetImage(
                       'assets/images/sci_fi_landscape_4k-2560x1440 1.png'))),
           child: Stack(children: [
