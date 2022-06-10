@@ -38,17 +38,14 @@ class _CalenderWidgetState extends State<CalenderWidget>
               height: MediaQuery.of(context).size.height * 0.6,
               child: Row(children: [
                 Expanded(
-                  flex: 10,
-                  child: Expanded(
-                    flex: 1,
-                    child: Column(children: [
-                      Expanded(flex: 50, child: SizedBox()),
-                      Expanded(flex: 315, child: DayText())
-                    ]),
-                  ),
+                  flex: 1,
+                  child: Column(children: [
+                    Expanded(flex: 50, child: SizedBox()),
+                    Expanded(flex: 315, child: DayText())
+                  ]),
                 ),
                 Expanded(
-                  flex: 15,
+                  flex: 20,
                   child: Swiper(
                     itemCount: 2,
                     controller: swiperController,
