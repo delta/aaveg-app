@@ -64,8 +64,11 @@ class _SampleState extends State<AboutPage> with TickerProviderStateMixin {
         body: Container(
           decoration: BoxDecoration(
               image: DecorationImage(
-                  fit: BoxFit.cover,
-                  image: AssetImage('assets/images/426154 1.png'))),
+            fit: BoxFit.cover,
+            image: AssetImage('assets/images/teams_bg.png'),
+            colorFilter: ColorFilter.mode(
+                Colors.black.withOpacity(0.5), BlendMode.darken),
+          )),
           child: Column(children: [
             SizedBox(
               child: Align(

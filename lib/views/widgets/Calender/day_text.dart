@@ -6,16 +6,16 @@ class DayText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double fontSize = MediaQuery.of(context).size.height / 80;
-    double boxHeight = MediaQuery.of(context).size.height / 22.5;
+    double fontSize = MediaQuery.of(context).size.height / 75;
+    double boxHeight = MediaQuery.of(context).size.height * 0.049;
     List<String> days = [
       'S\nU\nN',
-      'S\nU\nN',
-      'S\nU\nN',
-      'S\nU\nN',
-      'S\nU\nN',
-      'S\nU\nN',
-      'S\nU\nN'
+      'M\nO\nN',
+      'T\nU\nE',
+      'W\nE\nD',
+      'T\nH\nU',
+      'F\nR\nI',
+      'S\nA\nT'
     ];
     return Container(
         child: Column(children: [
@@ -23,10 +23,12 @@ class DayText extends StatelessWidget {
         Column(children: [
           SizedBox(
             height: boxHeight,
-            child: Text(day,
-                style: TextStyle(
-                    fontFamily: GoogleFonts.montserrat().fontFamily,
-                    fontSize: fontSize)),
+            child: Center(
+              child: Text(day,
+                  style: TextStyle(
+                      fontFamily: GoogleFonts.montserrat().fontFamily,
+                      fontSize: fontSize)),
+            ),
           ),
           if (days.indexOf(day) != 6)
             SizedBox(

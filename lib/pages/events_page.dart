@@ -25,46 +25,66 @@ class _SampleState extends State<EventsPage> with TickerProviderStateMixin {
   late TabController _tabController;
   List<Event> eventlist = [
     Event(
-        name: 'Drama',
-        clusterName: 'Vaayu',
+        name: 'Event Name',
+        clusterName: 'Name of cluster',
         type: 'cultural',
-        desc: 'Drama for first years',
-        cupName: 'dramacup',
-        r1Date: '15 june',
-        r2Date: '18 june'),
+        desc: 'event description (from rulebook)',
+        cupName: 'Cup name',
+        r1Date: 'Date(round1)',
+        r2Date: 'Date(round2)',
+        r1Time: 'time r1',
+        r2Time: 'time r2'),
     Event(
-        name: 'Drama',
-        clusterName: 'Vaayu',
+        name: 'Event Name',
+        clusterName: 'Name of cluster',
         type: 'cultural',
-        desc: 'Drama for first years',
-        cupName: 'dramacup',
-        r1Date: '15 june',
-        r2Date: '18 june'),
+        desc: 'event description (from rulebook)',
+        cupName: 'Cup name',
+        r1Date: 'Date(round1)',
+        r2Date: 'Date(round2)',
+        r1Time: 'time r1',
+        r2Time: 'time r2'),
     Event(
-        name: 'Drama',
-        clusterName: 'Vaayu',
+        name: 'Event Name',
+        clusterName: 'Name of cluster',
         type: 'cultural',
-        desc: 'Drama for first years',
-        cupName: 'dramacup',
-        r1Date: '15 june',
-        r2Date: '18 june'),
+        desc: 'event description (from rulebook)',
+        cupName: 'Cup name',
+        r1Date: 'Date(round1)',
+        r2Date: 'Date(round2)',
+        r1Time: 'time r1',
+        r2Time: 'time r2'),
     Event(
-        name: 'Drama',
-        clusterName: 'Vaayu',
+        name: 'Event Name',
+        clusterName: 'Name of cluster',
         type: 'cultural',
-        desc: 'Drama for first years',
-        cupName: 'dramacup',
-        r1Date: '15 june',
-        r2Date: '18 june'),
+        desc: 'event description (from rulebook)',
+        cupName: 'Cup name',
+        r1Date: 'Date(round1)',
+        r2Date: 'Date(round2)',
+        r1Time: 'time r1',
+        r2Time: 'time r2'),
+    Event(
+        name: 'Event Name',
+        clusterName: 'Name of cluster',
+        type: 'cultural',
+        desc: 'event description (from rulebook)',
+        cupName: 'Cup name',
+        r1Date: 'Date(round1)',
+        r2Date: 'Date(round2)',
+        r1Time: 'time r1',
+        r2Time: 'time r2'),
+    Event(
+        name: 'Event Name',
+        clusterName: 'Name of cluster',
+        type: 'cultural',
+        desc: 'event description (from rulebook)',
+        cupName: 'Cup name',
+        r1Date: 'Date(round1)',
+        r2Date: 'Date(round2)',
+        r1Time: 'time r1',
+        r2Time: 'time r2'),
   ];
-  Event testevent = Event(
-      name: 'Drama',
-      clusterName: 'Vaayu',
-      type: 'cultural',
-      desc: 'Drama for first years',
-      cupName: 'dramacup',
-      r1Date: '15 june',
-      r2Date: '18 june');
 
   @override
   void initState() {
@@ -75,6 +95,8 @@ class _SampleState extends State<EventsPage> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     double totalHeight = MediaQuery.of(context).size.height;
+
+    double totalWidth = MediaQuery.of(context).size.width;
     return Scaffold(
         key: _scaffoldKey,
         onDrawerChanged: (isOpen) {
@@ -92,8 +114,11 @@ class _SampleState extends State<EventsPage> with TickerProviderStateMixin {
             Container(
               decoration: BoxDecoration(
                   image: DecorationImage(
-                      fit: BoxFit.cover,
-                      image: AssetImage('assets/images/events_bg.png'))),
+                fit: BoxFit.cover,
+                image: AssetImage('assets/images/scoreboard_bg.png'),
+                colorFilter: ColorFilter.mode(
+                    Colors.black.withOpacity(0.5), BlendMode.darken),
+              )),
               child: Stack(children: [
                 NavIcon(globalKey: _scaffoldKey),
                 Column(
@@ -115,68 +140,70 @@ class _SampleState extends State<EventsPage> with TickerProviderStateMixin {
                       child: Container(
                         margin: EdgeInsets.fromLTRB(0, 0, 0, 5),
                         padding: EdgeInsets.fromLTRB(0, 6, 0, 6),
+                        width: totalWidth,
                         decoration: BoxDecoration(
                             color: Colors.black.withOpacity(0.65)),
-                        child: TabBar(
-                            controller: _tabController,
-                            indicatorColor: Colors.white,
-                            indicator: BoxDecoration(
-                                border: Border.all(
-                                    width: 2.5,
-                                    color: Color.fromARGB(255, 255, 255, 255))),
-                            tabs: [
-                              Tab(
-                                icon: AutoSizeText(
-                                  'All Events',
-                                  maxLines: 1,
-                                  minFontSize: 5,
-                                  maxFontSize: 15,
-                                  style: TextStyle(
-                                      fontFamily:
-                                          GoogleFonts.montserrat().fontFamily),
-                                ),
-                              ),
-                              Tab(
-                                  icon: AutoSizeText(
-                                'Cultural',
-                                maxLines: 1,
-                                minFontSize: 5,
-                                maxFontSize: 15,
-                                style: TextStyle(
-                                    fontFamily:
-                                        GoogleFonts.montserrat().fontFamily),
-                              )),
-                              Tab(
-                                  icon: AutoSizeText(
-                                'Gaming',
-                                maxLines: 1,
-                                minFontSize: 5,
-                                maxFontSize: 15,
-                                style: TextStyle(
-                                    fontFamily:
-                                        GoogleFonts.montserrat().fontFamily),
-                              )),
-                              Tab(
-                                  icon: AutoSizeText(
-                                'Lits',
-                                maxLines: 1,
-                                minFontSize: 5,
-                                maxFontSize: 15,
-                                style: TextStyle(
-                                    fontFamily:
-                                        GoogleFonts.montserrat().fontFamily),
-                              )),
-                              Tab(
-                                  icon: AutoSizeText(
-                                'Misc',
-                                maxLines: 1,
-                                minFontSize: 5,
-                                maxFontSize: 15,
-                                style: TextStyle(
-                                    fontFamily:
-                                        GoogleFonts.montserrat().fontFamily),
-                              )),
-                            ]),
+                        child: SingleChildScrollView(
+                          scrollDirection: Axis.horizontal,
+                          child: SizedBox(
+                            width: totalWidth,
+                            child: TabBar(
+                                isScrollable: true,
+                                controller: _tabController,
+                                indicatorColor: Colors.white,
+                                indicator: BoxDecoration(
+                                    border: Border.all(
+                                        width: 2, color: Colors.white)),
+                                tabs: [
+                                  Tab(
+                                    icon: Text(
+                                      'All Events',
+                                      maxLines: 1,
+                                      style: TextStyle(
+                                          fontFamily: GoogleFonts.montserrat()
+                                              .fontFamily,
+                                          fontSize: totalHeight * 0.018),
+                                    ),
+                                  ),
+                                  Tab(
+                                      icon: Text(
+                                    'Cultural',
+                                    maxLines: 1,
+                                    style: TextStyle(
+                                        fontSize: totalHeight * 0.018,
+                                        fontFamily: GoogleFonts.montserrat()
+                                            .fontFamily),
+                                  )),
+                                  Tab(
+                                      icon: Text(
+                                    'Gaming',
+                                    maxLines: 1,
+                                    style: TextStyle(
+                                        fontFamily:
+                                            GoogleFonts.montserrat().fontFamily,
+                                        fontSize: totalHeight * 0.018),
+                                  )),
+                                  Tab(
+                                      icon: Text(
+                                    'Lits',
+                                    maxLines: 1,
+                                    style: TextStyle(
+                                        fontSize: totalHeight * 0.018,
+                                        fontFamily: GoogleFonts.montserrat()
+                                            .fontFamily),
+                                  )),
+                                  Tab(
+                                      icon: Text(
+                                    'Misc',
+                                    maxLines: 1,
+                                    style: TextStyle(
+                                        fontSize: totalHeight * 0.018,
+                                        fontFamily: GoogleFonts.montserrat()
+                                            .fontFamily),
+                                  )),
+                                ]),
+                          ),
+                        ),
                       ),
                     ),
                     Expanded(

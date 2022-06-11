@@ -1,4 +1,5 @@
 import 'package:aaveg_app/models/event_modal.dart';
+import 'package:aaveg_app/views/widgets/Events/event_popup.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -16,209 +17,87 @@ class _EventCardState extends State<EventCard> {
   @override
   Widget build(BuildContext context) {
     double totalHeight = MediaQuery.of(context).size.height;
-    return GestureDetector(
-      onTap: () {
-        setState(() {
-          selected = !selected;
-        });
-      },
-      child: AnimatedContainer(
-          margin: selected
-              ? EdgeInsets.fromLTRB(12, 10, 12, 10)
-              : EdgeInsets.fromLTRB(32, 10, 32, 10),
-          padding: EdgeInsets.all(20),
-          duration: Duration(milliseconds: 400),
-          height: selected ? 430 : 150,
-          width: selected ? 930 : 350,
-          decoration: BoxDecoration(
-              color: Colors.black.withOpacity(0.65),
-              borderRadius: BorderRadius.circular(7)),
-          child: selected
-              ? Container(
-                  child: Column(
-                    children: [
-                      Expanded(
-                        flex: 209,
-                        child: Image(
-                          image: AssetImage(
-                            'assets/images/saaranga logo 1.png',
-                          ),
-                        ),
-                      ),
-                      Expanded(
-                        flex: 35,
-                        child: Center(
-                          child: Text(
-                            widget.event.name,
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: totalHeight * 0.024,
-                                fontFamily:
-                                    GoogleFonts.montserrat().fontFamily),
-                          ),
-                        ),
-                      ),
-                      Expanded(
-                        flex: 25,
-                        child: Center(
-                          child: Text(
-                            widget.event.clusterName,
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: totalHeight * 0.016,
-                                fontFamily:
-                                    GoogleFonts.montserrat().fontFamily),
-                          ),
-                        ),
-                      ),
-                      // Expanded(
-                      //   flex: ,
-                      //   child: Container(
-                      //   ),
-                      // ),
-                      Expanded(
-                        flex: 70,
-                        child: Center(
-                          child: Text(
-                            widget.event.desc,
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: totalHeight * 0.011,
-                                fontFamily:
-                                    GoogleFonts.montserrat().fontFamily),
-                          ),
-                        ),
-                      ),
-                      // Expanded(
-                      //   child: SizedBox(
-                      //     height: 45,
-                      //   ),
-                      // ),
-                      Expanded(
-                        flex: 25,
-                        child: Center(
-                          child: Text(
-                            widget.event.cupName,
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: totalHeight * 0.0184,
-                                fontFamily:
-                                    GoogleFonts.montserrat().fontFamily),
-                          ),
-                        ),
-                      ),
-                      Expanded(
-                        flex: 25,
-                        child: Center(
-                          child: Text(
-                            'click here for rulebook -->',
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: totalHeight * 0.0162,
-                                fontFamily:
-                                    GoogleFonts.montserrat().fontFamily),
-                          ),
-                        ),
-                      ),
-                      // Expanded(
-                      //   child: SizedBox(
-                      //     height: 25,
-                      //   ),
-                      // ),
-                      Expanded(
-                        flex: 25,
-                        child: Center(
-                          child: Text(
-                            widget.event.r1Date +
-                                '      ' +
-                                widget.event.r2Date,
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: totalHeight * 0.0141,
-                                fontFamily:
-                                    GoogleFonts.montserrat().fontFamily),
-                          ),
-                        ),
-                      ),
-                      Expanded(
-                        flex: 25,
-                        child: Center(
-                          child: Text(
-                            widget.event.r2Date +
-                                '      ' +
-                                widget.event.r1Date,
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: totalHeight * 0.0141,
-                                fontFamily:
-                                    GoogleFonts.montserrat().fontFamily),
-                          ),
-                        ),
-                      ),
-                    ],
+    return Container(
+        margin: EdgeInsets.fromLTRB(32, 10, 32, 10),
+        padding: EdgeInsets.all(20),
+        height: 150,
+        width: 350,
+        decoration: BoxDecoration(
+            color: Colors.black.withOpacity(0.65),
+            borderRadius: BorderRadius.circular(7)),
+        child: Container(
+          child: Row(
+            children: [
+              Expanded(
+                  child: SizedBox(
+                    height: 107,
+                    width: 107,
+                    child: Image(
+                      image: AssetImage('assets/images/saaranga logo 1.png'),
+                    ),
                   ),
-                )
-              : Container(
-                  child: Row(
-                    children: [
-                      Expanded(
-                          child: SizedBox(
-                            height: 107,
-                            width: 107,
-                            child: Image(
-                              image: AssetImage(
-                                  'assets/images/saaranga logo 1.png'),
+                  flex: 1),
+              SizedBox(width: 25),
+              Expanded(
+                child: Column(children: [
+                  Expanded(
+                      child: Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          widget.event.name,
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: totalHeight * 0.03,
+                              fontFamily: GoogleFonts.montserrat().fontFamily),
+                        ),
+                      ),
+                      flex: 1),
+                  Expanded(
+                      child: Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                            widget.event.r1Date + '\n' + widget.event.r2Date,
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: totalHeight * 0.015,
+                                fontFamily:
+                                    GoogleFonts.montserrat().fontFamily)),
+                      ),
+                      flex: 1),
+                  Expanded(
+                      child: Align(
+                        alignment: Alignment.centerLeft,
+                        child: Row(children: [
+                          GestureDetector(
+                            onTap: () {
+                              showDialog(
+                                  barrierColor: Colors.transparent,
+                                  context: context,
+                                  builder: (context) {
+                                    return EventPopup(event: widget.event);
+                                  });
+                            },
+                            child: Text(
+                              'Know more',
+                              style: TextStyle(
+                                  fontFamily:
+                                      GoogleFonts.montserrat().fontFamily,
+                                  fontSize: totalHeight * 0.018,
+                                  fontStyle: FontStyle.italic),
                             ),
                           ),
-                          flex: 1),
-                      SizedBox(width: 25),
-                      Expanded(
-                        child: Column(children: [
-                          Expanded(
-                              child: Align(
-                                alignment: Alignment.centerLeft,
-                                child: Text(
-                                  widget.event.name,
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: totalHeight * 0.03,
-                                      fontFamily:
-                                          GoogleFonts.montserrat().fontFamily),
-                                ),
-                              ),
-                              flex: 1),
-                          Expanded(
-                              child: Align(
-                                alignment: Alignment.centerLeft,
-                                child: Text(
-                                    widget.event.r1Date +
-                                        '\n' +
-                                        widget.event.r2Date,
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: totalHeight * 0.015,
-                                        fontFamily: GoogleFonts.montserrat()
-                                            .fontFamily)),
-                              ),
-                              flex: 1),
-                          Expanded(
-                              child: Align(
-                                alignment: Alignment.centerLeft,
-                                child: Text(
-                                  'Know more',
-                                  style: TextStyle(
-                                      fontFamily:
-                                          GoogleFonts.montserrat().fontFamily,
-                                      fontSize: totalHeight * 0.012),
-                                ),
-                              ),
-                              flex: 1),
+                          Container(
+                              padding: EdgeInsets.fromLTRB(5, 0, 0, 0),
+                              child: ImageIcon(
+                                  AssetImage('assets/images/arrow.png')))
                         ]),
-                        flex: 2,
-                      )
-                    ],
-                  ),
-                )),
-    );
+                      ),
+                      flex: 1),
+                ]),
+                flex: 2,
+              )
+            ],
+          ),
+        ));
   }
 }

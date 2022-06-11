@@ -34,6 +34,8 @@ class _CupWidgetState extends State<CupWidget> {
         height: 4,
       ),
       Container(
+          padding: EdgeInsets.fromLTRB(totalHeight * 0.010, totalHeight * 0.005,
+              totalHeight * 0.005, totalHeight * 0.010),
           decoration: BoxDecoration(
               color: Colors.black.withOpacity(0.65),
               borderRadius: BorderRadius.circular(10)),
@@ -41,11 +43,11 @@ class _CupWidgetState extends State<CupWidget> {
             height: totalHeight * 0.0756,
             width: totalHeight * 0.173,
             child: Center(
-                child: AutoSizeText(
+                child: Text(
               'Smol desc about the cup',
-              minFontSize: 5,
-              maxFontSize: 10,
-              style: TextStyle(fontFamily: GoogleFonts.montserrat().fontFamily),
+              style: TextStyle(
+                  fontFamily: GoogleFonts.montserrat().fontFamily,
+                  fontSize: totalHeight * 0.018),
             )),
           ))
     ]));

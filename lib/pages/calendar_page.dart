@@ -45,9 +45,11 @@ class _SampleState extends State<CalendarPage> with TickerProviderStateMixin {
         Container(
           decoration: BoxDecoration(
               image: DecorationImage(
-                  fit: BoxFit.cover,
-                  image: AssetImage(
-                      'assets/images/sci_fi_landscape_4k-2560x1440 1.png'))),
+            fit: BoxFit.cover,
+            image: AssetImage('assets/images/homepage_bg.png'),
+            colorFilter: ColorFilter.mode(
+                Colors.black.withOpacity(0.5), BlendMode.darken),
+          )),
           child: Stack(children: [
             NavIcon(globalKey: _scaffoldKey),
             Column(

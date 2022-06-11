@@ -56,9 +56,13 @@ class _SampleState extends State<OriginStoryPage>
           )),
       body: Container(
         decoration: BoxDecoration(
-            image: DecorationImage(
-                fit: BoxFit.cover,
-                image: AssetImage('assets/images/sci-fi_city_bg.png'))),
+          image: DecorationImage(
+            fit: BoxFit.cover,
+            image: AssetImage('assets/images/mysquad_bg.png'),
+            colorFilter: ColorFilter.mode(
+                Colors.black.withOpacity(0.5), BlendMode.darken),
+          ),
+        ),
         child: Stack(children: [
           NavIcon(globalKey: _scaffoldKey),
           Column(

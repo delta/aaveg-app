@@ -46,46 +46,46 @@ class _CalenderWidgetState extends State<CalenderWidget>
                 ),
                 Expanded(
                   flex: 20,
-                  child: Swiper(
-                    itemCount: 2,
-                    controller: swiperController,
-                    itemBuilder: (context, index) => Column(children: [
-                      Expanded(
-                          flex: 50,
-                          child: Row(children: [
-                            Expanded(
-                              flex: 1,
-                              child: IconButton(
-                                  onPressed: () =>
-                                      {swiperController.previous()},
-                                  icon: Icon(Icons.arrow_back_ios)),
-                            ),
-                            Expanded(
+                  child: Column(children: [
+                    Expanded(
+                        flex: 50,
+                        child: Row(children: [
+                          Expanded(
+                            flex: 1,
+                            child: IconButton(
+                                onPressed: () => {swiperController.previous()},
+                                icon: Icon(Icons.arrow_back_ios)),
+                          ),
+                          Expanded(
                               flex: 3,
-                              child: Center(
-                                child: AutoSizeText(
-                                  monthList[index],
-                                  minFontSize: 20,
-                                  maxFontSize: 35,
-                                  style: TextStyle(
-                                      fontFamily: 'Anurati',
-                                      fontSize:
-                                          MediaQuery.of(context).size.height /
-                                              50,
-                                      letterSpacing: 5),
+                              child: Swiper(
+                                itemCount: 2,
+                                controller: swiperController,
+                                itemBuilder: (context, index) => Center(
+                                  child: Text(
+                                    monthList[index],
+                                    style: TextStyle(
+                                        fontFamily: 'Anurati',
+                                        fontSize:
+                                            MediaQuery.of(context).size.height /
+                                                30,
+                                        letterSpacing: 5),
+                                  ),
                                 ),
-                              ),
-                            ),
-                            Expanded(
-                              flex: 1,
-                              child: IconButton(
-                                  onPressed: () => {swiperController.next()},
-                                  icon: Icon(Icons.arrow_forward_ios)),
-                            ),
-                          ])),
-                      Expanded(
-                        flex: 315,
-                        child: GridView(
+                              )),
+                          Expanded(
+                            flex: 1,
+                            child: IconButton(
+                                onPressed: () => {swiperController.next()},
+                                icon: Icon(Icons.arrow_forward_ios)),
+                          ),
+                        ])),
+                    Expanded(
+                      flex: 315,
+                      child: Swiper(
+                        itemCount: 2,
+                        controller: swiperController,
+                        itemBuilder: (context, index) => GridView(
                           padding: EdgeInsets.zero,
                           scrollDirection: Axis.vertical,
                           physics: ScrollPhysics(),
@@ -96,15 +96,15 @@ class _CalenderWidgetState extends State<CalenderWidget>
                             mainAxisSpacing:
                                 MediaQuery.of(context).size.height / 60,
                             mainAxisExtent:
-                                MediaQuery.of(context).size.height / 22.5,
+                                MediaQuery.of(context).size.height * 0.049,
                           ),
                           children: dayList.map((day) {
                             return DayWidget();
                           }).toList(),
                         ),
                       ),
-                    ]),
-                  ),
+                    ),
+                  ]),
                 ),
               ]),
             ),
