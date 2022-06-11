@@ -1,6 +1,5 @@
 import 'package:aaveg_app/views/widgets/Calender/day_text.dart';
 import 'package:aaveg_app/views/widgets/Calender/day_widget.dart';
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
 

@@ -4,7 +4,6 @@ import 'package:aaveg_app/models/event_modal.dart';
 import 'package:aaveg_app/views/widgets/Events/event_card.dart';
 import 'package:aaveg_app/views/widgets/NavBar/nav_icon_widget.dart';
 import 'package:aaveg_app/views/widgets/NavBar/navbar_widget.dart';
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
