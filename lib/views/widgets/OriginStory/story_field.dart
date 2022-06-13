@@ -12,7 +12,7 @@ class _StoryFieldState extends State<StoryField> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: new EdgeInsets.fromLTRB(25, 20, 30, 50),
+      margin: new EdgeInsets.fromLTRB(0, 20, 0, 50),
       decoration: BoxDecoration(
           color: Colors.black.withOpacity(0.65),
           borderRadius: BorderRadius.circular(10)),

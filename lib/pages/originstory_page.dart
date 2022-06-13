@@ -3,7 +3,6 @@ import 'package:aaveg_app/controllers/originstory_controller.dart';
 import 'package:aaveg_app/views/widgets/NavBar/nav_icon_widget.dart';
 import 'package:aaveg_app/views/widgets/NavBar/navbar_widget.dart';
 import 'package:aaveg_app/views/widgets/OriginStory/story_field.dart';
-import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -26,6 +25,7 @@ class _SampleState extends State<OriginStoryPage>
   Widget build(BuildContext context) {
     double totalHeight = MediaQuery.of(context).size.height;
     double totalWidth = MediaQuery.of(context).size.width;
+    TabController _tabBarController = TabController(length: 6, vsync: this);
     List<String> descriptions = [
       'Aaveg desc',
       'Chakra desc',
@@ -42,160 +42,104 @@ class _SampleState extends State<OriginStoryPage>
       'assets/images/saaranga logo 1.png',
       'assets/images/vajr logo 1.png'
     ];
+
     return Scaffold(
-      key: _scaffoldKey,
-      onDrawerChanged: (isOpen) {
-        navBarController.setVisiblity(!isOpen);
-      },
-      drawer: Theme(
-          data: Theme.of(context).copyWith(
-            canvasColor: Colors.black.withOpacity(0.4),
+        key: _scaffoldKey,
+        onDrawerChanged: (isOpen) {
+          navBarController.setVisiblity(!isOpen);
+        },
+        drawer: Theme(
+            data: Theme.of(context).copyWith(
+              canvasColor: Colors.black.withOpacity(0.4),
+            ),
+            child: Drawer(
+              child: NavbarWdiget(),
+            )),
+        body: Container(
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              fit: BoxFit.cover,
+              image: AssetImage('assets/images/mysquad_bg.png'),
+              colorFilter: ColorFilter.mode(
+                  Colors.black.withOpacity(0.5), BlendMode.darken),
+            ),
           ),
-          child: Drawer(
-            child: NavbarWdiget(),
-          )),
-      body: Container(
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            fit: BoxFit.cover,
-            image: AssetImage('assets/images/mysquad_bg.png'),
-            colorFilter: ColorFilter.mode(
-                Colors.black.withOpacity(0.5), BlendMode.darken),
-          ),
-        ),
-        child: Stack(children: [
-          NavIcon(globalKey: _scaffoldKey),
-          Column(
-            children: [
-              Expanded(child: Container(), flex: 65),
-              Expanded(
-                  flex: 92,
-                  child: Center(
-                    child: Text('ORIGIN STORY',
-                        maxLines: 1,
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontFamily: 'Anurati',
-                          letterSpacing: 6,
-                          fontSize: totalHeight * 0.045,
-                        )),
-                  )),
-              // Expanded(
-              //   flex: 65,
-              //   child: Container(
-              //     decoration:
-              //         BoxDecoration(color: Color.fromARGB(0, 97, 11, 11)),
-              //     child: TabBar(
-              //         indicator: null,
-              //         controller: _tabController,
-              //         tabs: [
-              //           Tab(
-              //               icon: Image.asset(
-              //             'assets/images/Aaveg Glyph - White 1.png',
-              //             height: 60,
-              //             width: 60,
-              //           )),
-              //           // Image.asset(
-              //           //   'assets/images/chakraa logo 1.png',
-              //           //   scale: 0.1,
-              //           // ),
-              //           Tab(
-              //             icon: Image.asset(
-              //               'assets/images/chakraa logo 1.png',
-              //               width: 150,
-              //               height: 150,
-              //             ),
-              //           ),
-              //           Tab(
-              //               icon: Image.asset(
-              //             'assets/images/paasha logo 1.png',
-              //           )),
-              //           Tab(
-              //             icon: Image.asset(
-              //               'assets/images/paras logo 1.png',
-              //               height: 60,
-              //               width: 60,
-              //             ),
-              //           ),
-              //           Tab(
-              //               icon: Image.asset(
-              //             'assets/images/saaranga logo 1.png',
-              //             height: 60,
-              //             width: 60,
-              //           )),
-              //           Tab(
-              //               icon: Image.asset(
-              //             'assets/images/vajr logo 1.png',
-              //             height: 60,
-              //             width: 60,
-              //           )),
-              //         ]),
-              //   ),
-              // ),
-              // Expanded(
-              //   flex: 65,
-              //   child: ListView.builder(
-              //       scrollDirection: Axis.horizontal,
-              //       itemCount: 6,
-              //       itemBuilder: ((context, index) => Container(
-              //               child: Image.asset(
-              //             assetList[index],
-              //             height: MediaQuery.of(context).size.width / 6,
-              //             width: MediaQuery.of(context).size.width / 6,
-              //           )))),
-              // ),
-              Expanded(
-                  flex: 65,
-                  child: Row(
-                    children: [
-                      for (var logo in assetList)
-                        Expanded(
-                          flex: 1,
-                          child: Container(
+          child: Stack(children: [
+            NavIcon(globalKey: _scaffoldKey),
+            Column(
+              children: [
+                Expanded(child: Container(), flex: 65),
+                Expanded(
+                    flex: 92,
+                    child: Center(
+                      child: Text('ORIGIN STORY',
+                          maxLines: 1,
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontFamily: 'Anurati',
+                            letterSpacing: 6,
+                            fontSize: totalHeight * 0.045,
+                          )),
+                    )),
+                Expanded(
+                    flex: 70,
+                    child: TabBar(
+                      controller: _tabBarController,
+                      indicatorPadding: EdgeInsets.zero,
+                      labelPadding: EdgeInsets.zero,
+                      indicator: BoxDecoration(
+                          border:
+                              Border.all(color: Color(0xff708090), width: 2),
+                          borderRadius: BorderRadius.circular(totalWidth / 12)),
+                      tabs: [
+                        for (var logo in assetList)
+                          Container(
                               child: (Image.asset(
                             logo,
                             height: totalWidth / 6,
                             width: totalWidth / 6,
                           ))),
-                        )
-                    ],
-                  )),
-              Expanded(
-                flex: 620,
-                child: Swiper(
-                  itemCount: 6,
-                  itemBuilder: (context, index) => StoryField(
-                    desc: descriptions[index],
-                  ),
-                  autoplay: true,
-                  autoplayDelay: 5000,
-                  control: new SwiperControl(
-                    color: Colors.white,
-                    iconPrevious: Icons.arrow_back_ios,
-                    iconNext: Icons.arrow_forward_ios,
-                  ),
-                  pagination: SwiperPagination(
-                      builder: new DotSwiperPaginationBuilder(
-                          color: Colors.black.withOpacity(0.5),
-                          size: 15,
-                          activeColor: Colors.white)),
-                ),
-              )
-              // child: TabBarView(
-              //     controller: _tabController,
-              //     children: const <Widget>[
-              //       StoryField(),
-              //       StoryField(),
-              //       StoryField(),
-              //       StoryField(),
-              //       StoryField(),
-              //       StoryField(),
-              //     ]),
-            ],
-          ),
-        ]),
-      ),
-    );
+                      ],
+                    )),
+                Expanded(
+                  flex: 620,
+                  child: Row(children: [
+                    SizedBox(
+                        width: totalWidth * 0.1,
+                        child: IconButton(
+                            onPressed: () => {
+                                  _tabBarController.index == 0
+                                      ? _tabBarController.animateTo(5)
+                                      : _tabBarController.animateTo(
+                                          _tabBarController.index - 1)
+                                },
+                            icon: Image.asset('assets/images/left_arrow.png'))),
+                    SizedBox(
+                      width: totalWidth * 0.8,
+                      child: TabBarView(
+                        controller: _tabBarController,
+                        children: [
+                          for (var desc in descriptions) StoryField(desc: desc)
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                        width: totalWidth * 0.1,
+                        child: IconButton(
+                            onPressed: () => {
+                                  _tabBarController.index == 5
+                                      ? _tabBarController.animateTo(0)
+                                      : _tabBarController.animateTo(
+                                          _tabBarController.index + 1)
+                                },
+                            icon:
+                                Image.asset('assets/images/right_arrow.png'))),
+                  ]),
+                )
+              ],
+            ),
+          ]),
+        ));
   }
 }

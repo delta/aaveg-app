@@ -1,6 +1,5 @@
 import 'package:aaveg_app/views/widgets/Calender/day_text.dart';
 import 'package:aaveg_app/views/widgets/Calender/day_widget.dart';
-import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
 
 class CalenderWidget extends StatefulWidget {
@@ -22,7 +21,8 @@ class _CalenderWidgetState extends State<CalenderWidget>
   @override
   Widget build(BuildContext context) {
     List<String> monthList = ['JULY', 'AUGUST'];
-    SwiperController swiperController = SwiperController();
+    TabController _tabBarController = TabController(length: 2, vsync: this);
+
     return Container(
       child: Center(
         child: SizedBox(
@@ -52,57 +52,91 @@ class _CalenderWidgetState extends State<CalenderWidget>
                           Expanded(
                             flex: 1,
                             child: IconButton(
-                                onPressed: () => {swiperController.previous()},
+                                onPressed: () {
+                                  _tabBarController.index == 0
+                                      ? _tabBarController.animateTo(1)
+                                      : _tabBarController.animateTo(0);
+                                },
                                 icon: Icon(Icons.arrow_back_ios)),
                           ),
                           Expanded(
                               flex: 3,
-                              child: Swiper(
-                                itemCount: 2,
-                                controller: swiperController,
-                                itemBuilder: (context, index) => Center(
-                                  child: Text(
-                                    monthList[index],
-                                    style: TextStyle(
-                                        fontFamily: 'Anurati',
-                                        fontSize:
-                                            MediaQuery.of(context).size.height /
-                                                30,
-                                        letterSpacing: 5),
-                                  ),
-                                ),
-                              )),
+                              child: TabBar(
+                                  controller: _tabBarController,
+                                  isScrollable: true,
+                                  indicatorColor: Colors.transparent,
+                                  tabs: [
+                                    for (var i = 0; i < 2; i++)
+                                      SizedBox(
+                                        width:
+                                            MediaQuery.of(context).size.width *
+                                                0.4,
+                                        child: Center(
+                                          child: Text(
+                                            monthList[i],
+                                            style: TextStyle(
+                                                fontFamily: 'Anurati',
+                                                fontSize: MediaQuery.of(context)
+                                                        .size
+                                                        .height /
+                                                    30,
+                                                letterSpacing: 5),
+                                          ),
+                                        ),
+                                      ),
+                                  ])),
                           Expanded(
                             flex: 1,
                             child: IconButton(
-                                onPressed: () => {swiperController.next()},
+                                onPressed: () {
+                                  _tabBarController.index == 1
+                                      ? _tabBarController.animateTo(0)
+                                      : _tabBarController.animateTo(1);
+                                },
                                 icon: Icon(Icons.arrow_forward_ios)),
                           ),
                         ])),
                     Expanded(
-                      flex: 315,
-                      child: Swiper(
-                        itemCount: 2,
-                        controller: swiperController,
-                        itemBuilder: (context, index) => GridView(
-                          padding: EdgeInsets.zero,
-                          scrollDirection: Axis.vertical,
-                          physics: ScrollPhysics(),
-                          gridDelegate:
-                              SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 5,
-                            crossAxisSpacing: 15,
-                            mainAxisSpacing:
-                                MediaQuery.of(context).size.height / 60,
-                            mainAxisExtent:
-                                MediaQuery.of(context).size.height * 0.049,
-                          ),
-                          children: dayList.map((day) {
-                            return DayWidget();
-                          }).toList(),
-                        ),
-                      ),
-                    ),
+                        flex: 315,
+                        child: TabBarView(
+                          controller: _tabBarController,
+                          children: [
+                            GridView(
+                              padding: EdgeInsets.zero,
+                              scrollDirection: Axis.vertical,
+                              physics: ScrollPhysics(),
+                              gridDelegate:
+                                  SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: 5,
+                                crossAxisSpacing: 15,
+                                mainAxisSpacing:
+                                    MediaQuery.of(context).size.height / 60,
+                                mainAxisExtent:
+                                    MediaQuery.of(context).size.height * 0.049,
+                              ),
+                              children: dayList.map((day) {
+                                return DayWidget();
+                              }).toList(),
+                            ),
+                            GridView(
+                              padding: EdgeInsets.zero,
+                              scrollDirection: Axis.vertical,
+                              physics: ScrollPhysics(),
+                              gridDelegate:
+                                  SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: 5,
+                                crossAxisSpacing: 15,
+                                mainAxisSpacing:
+                                    MediaQuery.of(context).size.height / 60,
+                                mainAxisExtent:
+                                    MediaQuery.of(context).size.height * 0.049,
+                              ),
+                              children: dayList.map((day) {
+                                return DayWidget();
+                              }).toList(),
+                            ),
+                          ],
+                        )),
                   ]),
                 ),
               ]),
