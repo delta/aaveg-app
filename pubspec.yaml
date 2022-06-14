@@ -45,6 +45,7 @@ dependencies:
   outlined_text: ^1.0.1
   auto_size_text: ^3.0.0
   card_swiper: ^2.0.4
+  sizer: ^2.0.15
   # fluent_ui: ^3.11.1
   
 dev_dependencies:
