@@ -28,12 +28,11 @@ class _TeamTileWidgetState extends State<TeamTileWidget> {
                 color: Color(0xffD3D3D3),
                 borderRadius: BorderRadius.circular(5),
               ),
-              // child: ClipRRect(
-              //   child: Image(
-              //       image: AssetImage('assets/images/teams_bg.png'),
-              //       fit: BoxFit.cover),
-              //   borderRadius: BorderRadius.circular(5),
-              // ),
+              child: ClipRRect(
+                child: Image(
+                    image: NetworkImage(widget.imgUrl), fit: BoxFit.cover),
+                borderRadius: BorderRadius.circular(5),
+              ),
             ),
             Container(
               width: MediaQuery.of(context).size.width / 2.5,
