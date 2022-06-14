@@ -3,4 +3,5 @@ class Constants {
   static const String jwt = "jwt";
   static const String name = "name";
   static const String squad = "squad";
+  static const String squads = "squads";
 }
