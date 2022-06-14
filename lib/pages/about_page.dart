@@ -79,23 +79,23 @@ class _SampleState extends State<AboutPage> with TickerProviderStateMixin {
               ),
               height: 80,
             ),
+            SizedBox(
+                height: 122,
+                child: Center(
+                  child: AutoSizeText('ABOUT AAVEG',
+                      maxLines: 1,
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: 'Anurati',
+                          fontSize: totalHeight * 0.039,
+                          letterSpacing: 10)),
+                )),
             Expanded(
               child: SingleChildScrollView(
                 padding: EdgeInsets.zero,
                 child: Column(
                   children: [
-                    SizedBox(
-                        height: 122,
-                        child: Center(
-                          child: AutoSizeText('ABOUT AAVEG',
-                              maxLines: 1,
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                  fontFamily: 'Anurati',
-                                  fontSize: totalHeight * 0.039,
-                                  letterSpacing: 10)),
-                        )),
                     SizedBox(height: 316, child: AboutTextWidget()),
                     ConstrainedBox(
                       constraints: BoxConstraints(
