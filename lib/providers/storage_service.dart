@@ -70,6 +70,14 @@ class StorageService extends GetxService {
     return storage.read(Constants.jwt);
   }
 
+  Future<void> storeEvents(String events) async {
+    await storage.write(Constants.events, events);
+  }
+
+  String? getEvents() {
+    return storage.read(Constants.events);
+  }
+
   void clearStorage() {
     storage.erase();
   }

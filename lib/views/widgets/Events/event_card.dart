@@ -1,6 +1,8 @@
+import 'package:aaveg_app/controllers/event_popup_controller.dart';
 import 'package:aaveg_app/models/event_modal.dart';
 import 'package:aaveg_app/views/widgets/Events/event_popup.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class EventCard extends StatefulWidget {
@@ -17,6 +19,7 @@ class _EventCardState extends State<EventCard> {
   @override
   Widget build(BuildContext context) {
     double totalHeight = MediaQuery.of(context).size.height;
+    EventPopupController controller = Get.find<EventPopupController>();
     return Container(
         margin: EdgeInsets.fromLTRB(32, 10, 32, 10),
         padding: EdgeInsets.all(20),
@@ -32,9 +35,7 @@ class _EventCardState extends State<EventCard> {
                   child: SizedBox(
                     height: 107,
                     width: 107,
-                    child: Image(
-                      image: AssetImage('assets/images/saaranga logo 1.png'),
-                    ),
+                    child: Image.network(widget.event.imageLink!),
                   ),
                   flex: 1),
               SizedBox(width: 25),
@@ -44,7 +45,7 @@ class _EventCardState extends State<EventCard> {
                       child: Align(
                         alignment: Alignment.centerLeft,
                         child: Text(
-                          widget.event.name,
+                          widget.event.name!,
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: totalHeight * 0.03,
@@ -56,7 +57,19 @@ class _EventCardState extends State<EventCard> {
                       child: Align(
                         alignment: Alignment.centerLeft,
                         child: Text(
-                            widget.event.r1Date + '\n' + widget.event.r2Date,
+                            widget.event.rounds![0].day.toString() +
+                                '-' +
+                                widget.event.rounds![0].month.toString() +
+                                '-' +
+                                widget.event.rounds![0].year.toString() +
+                                ' (Round 1)' +
+                                '\n' +
+                                widget.event.rounds![1].day.toString() +
+                                '-' +
+                                widget.event.rounds![1].month.toString() +
+                                '-' +
+                                widget.event.rounds![1].year.toString() +
+                                ' (Round2)',
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: totalHeight * 0.015,
@@ -74,7 +87,9 @@ class _EventCardState extends State<EventCard> {
                                   barrierColor: Colors.transparent,
                                   context: context,
                                   builder: (context) {
-                                    return EventPopup(event: widget.event);
+                                    controller.getDetails(widget.event.id!);
+                                    return controller.obx(
+                                        (event) => EventPopup(event: event!));
                                   });
                             },
                             child: Text(

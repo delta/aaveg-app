@@ -9,4 +9,5 @@ class Constants {
   static const String about = "about";
   static const String mysquad = "mysquad";
   static const String date = "date";
+  static const String events = "events";
 }

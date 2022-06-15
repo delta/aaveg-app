@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../../models/event_modal.dart';
 
@@ -47,8 +48,8 @@ class _EventPopupState extends State<EventPopup> {
                   ),
                   Expanded(
                     flex: 209,
-                    child: Image.asset(
-                      'assets/images/saaranga logo 1.png',
+                    child: Image.network(
+                      widget.event.imageLink!,
                       height: totalHeight * 0.226,
                       width: totalHeight * 0.226,
                     ),
@@ -57,7 +58,7 @@ class _EventPopupState extends State<EventPopup> {
                     flex: 30,
                     child: Center(
                       child: Text(
-                        widget.event.name,
+                        widget.event.name!,
                         style: TextStyle(
                             fontWeight: FontWeight.w900,
                             letterSpacing: 2,
@@ -70,7 +71,7 @@ class _EventPopupState extends State<EventPopup> {
                     flex: 20,
                     child: Center(
                       child: Text(
-                        widget.event.clusterName,
+                        widget.event.cluster!,
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: totalHeight * 0.016,
@@ -82,7 +83,7 @@ class _EventPopupState extends State<EventPopup> {
                     flex: 70,
                     child: Center(
                       child: Text(
-                        widget.event.desc,
+                        widget.event.description!,
                         style: TextStyle(
                             fontSize: totalHeight * 0.013,
                             fontFamily: GoogleFonts.montserrat().fontFamily),
@@ -93,7 +94,7 @@ class _EventPopupState extends State<EventPopup> {
                     flex: 25,
                     child: Center(
                       child: Text(
-                        widget.event.cupName,
+                        widget.event.cup!,
                         style: TextStyle(
                             fontSize: totalHeight * 0.0184,
                             fontFamily: GoogleFonts.montserrat().fontFamily),
@@ -103,30 +104,33 @@ class _EventPopupState extends State<EventPopup> {
                   Expanded(
                     flex: 25,
                     child: Center(
-                      child: Row(
-                        children: [
-                          Expanded(
-                            flex: 2,
-                            child: Align(
-                              alignment: Alignment.centerRight,
-                              child: Text(
-                                'click here for rulebook',
-                                style: TextStyle(
-                                    fontSize: totalHeight * 0.0162,
-                                    fontFamily:
-                                        GoogleFonts.montserrat().fontFamily),
+                      child: InkWell(
+                        onTap: () => launch(widget.event.rulebookLink!),
+                        child: Row(
+                          children: [
+                            Expanded(
+                              flex: 2,
+                              child: Align(
+                                alignment: Alignment.centerRight,
+                                child: Text(
+                                  'click here for rulebook',
+                                  style: TextStyle(
+                                      fontSize: totalHeight * 0.0162,
+                                      fontFamily:
+                                          GoogleFonts.montserrat().fontFamily),
+                                ),
                               ),
                             ),
-                          ),
-                          Expanded(
-                              child: Container(
-                            padding: EdgeInsets.fromLTRB(5, 0, 0, 0),
-                            child: Align(
-                                alignment: Alignment.centerLeft,
-                                child: ImageIcon(
-                                    AssetImage('assets/images/arrow.png'))),
-                          ))
-                        ],
+                            Expanded(
+                                child: Container(
+                              padding: EdgeInsets.fromLTRB(5, 0, 0, 0),
+                              child: Align(
+                                  alignment: Alignment.centerLeft,
+                                  child: ImageIcon(
+                                      AssetImage('assets/images/arrow.png'))),
+                            ))
+                          ],
+                        ),
                       ),
                     ),
                   ),
@@ -147,9 +151,19 @@ class _EventPopupState extends State<EventPopup> {
                             child: Align(
                               alignment: Alignment.centerLeft,
                               child: Text(
-                                widget.event.r1Date +
+                                widget.event.rounds![0].day.toString() +
+                                    '-' +
+                                    widget.event.rounds![0].month.toString() +
+                                    '-' +
+                                    widget.event.rounds![0].year.toString() +
+                                    ' (Round 1)' +
                                     '\n' +
-                                    widget.event.r2Date,
+                                    widget.event.rounds![1].day.toString() +
+                                    '-' +
+                                    widget.event.rounds![1].month.toString() +
+                                    '-' +
+                                    widget.event.rounds![1].year.toString() +
+                                    ' (Round2)',
                                 style: TextStyle(
                                     fontSize: totalHeight * 0.0141,
                                     fontFamily:
@@ -163,7 +177,13 @@ class _EventPopupState extends State<EventPopup> {
                           child: Align(
                             alignment: Alignment.centerLeft,
                             child: Text(
-                              widget.event.r2Date + '\n' + widget.event.r1Date,
+                              widget.event.rounds![0].hour.toString() +
+                                  ':' +
+                                  widget.event.rounds![0].minute.toString() +
+                                  '\n' +
+                                  widget.event.rounds![1].hour.toString() +
+                                  ':' +
+                                  widget.event.rounds![1].minute.toString(),
                               style: TextStyle(
                                   fontSize: totalHeight * 0.0141,
                                   fontFamily:

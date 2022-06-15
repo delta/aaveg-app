@@ -7,7 +7,7 @@ class DayText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double fontSize = MediaQuery.of(context).size.height / 75;
-    double boxHeight = MediaQuery.of(context).size.height * 0.049;
+    double boxHeight = MediaQuery.of(context).size.height * 0.051;
     List<String> days = [
       'S\nU\nN',
       'M\nO\nN',
