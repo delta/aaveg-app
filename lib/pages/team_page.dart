@@ -175,6 +175,7 @@ class TeamPage extends GetView<TeamController> {
                       physics: ClampingScrollPhysics(),
                       child: Container(
                         margin: EdgeInsets.only(top: 10),
+                        height: 100,
                         width: double.infinity,
                         alignment: Alignment.center,
                         decoration: BoxDecoration(
