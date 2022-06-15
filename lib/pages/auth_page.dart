@@ -62,36 +62,42 @@ class _AuthPageState extends State<AuthPage> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
-                          Container(
-                            margin: EdgeInsets.only(top: 35, right: 20),
-                            height: 35,
-                            child: Align(
-                              alignment: Alignment.center,
-                              child: OutlinedButton(
-                                style: OutlinedButton.styleFrom(
-                                  side: BorderSide(
-                                      color: Colors.white, width: 2.5),
-                                ),
-                                onPressed: () {
-                                  Get.to(WebViewWidget());
-                                },
-                                child: Container(
+                          Visibility(
+                              child: Container(
+                                margin: EdgeInsets.only(top: 35, right: 20),
+                                height: 35,
+                                child: Align(
                                   alignment: Alignment.center,
-                                  child: Text("LOGIN",
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.bold,
-                                          fontFamily: GoogleFonts.montserrat()
-                                              .fontFamily)),
+                                  child: OutlinedButton(
+                                    style: OutlinedButton.styleFrom(
+                                      side: BorderSide(
+                                          color: Colors.white, width: 2.5),
+                                    ),
+                                    onPressed: () {
+                                      Get.to(WebViewWidget());
+                                    },
+                                    child: Container(
+                                      alignment: Alignment.center,
+                                      child: Text("LOGIN",
+                                          style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 18,
+                                              fontWeight: FontWeight.bold,
+                                              fontFamily:
+                                                  GoogleFonts.montserrat()
+                                                      .fontFamily)),
+                                    ),
+                                  ),
                                 ),
                               ),
-                            ),
-                          ),
+                              visible: storage.getJwt() == null),
                         ],
                       ),
                       Container(
-                        margin: EdgeInsets.only(top: 150, left: 10, right: 10),
+                        margin: EdgeInsets.only(
+                            top: storage.getJwt() == null ? 150 : 200,
+                            left: 10,
+                            right: 10),
                         width: _mediaquery.size.width,
                         alignment: Alignment.center,
                         child: AutoSizeText(
