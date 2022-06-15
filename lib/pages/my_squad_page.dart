@@ -10,13 +10,14 @@ import 'package:aaveg_app/views/widgets/Mysquad/my_squad_tile_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-GlobalKey<ScaffoldState> _mysquadkey = GlobalKey<ScaffoldState>();
 final NavBarController navBarController = Get.find<NavBarController>();
 Points points = Points();
 
 class MySquad extends GetView<MySquadController> {
   @override
   Widget build(BuildContext context) {
+    GlobalKey<ScaffoldState> _mysquadkey = GlobalKey<ScaffoldState>();
+
     return Scaffold(
       key: _mysquadkey,
       onDrawerChanged: (isOpen) {

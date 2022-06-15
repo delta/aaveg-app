@@ -9,7 +9,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 final NavBarController navBarController = Get.find<NavBarController>();
-GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 final sampleController = Get.find<AboutPageController>();
 List<int> cuplist = [1, 2, 3, 4, 5];
 
@@ -17,6 +16,8 @@ class AboutPage extends GetView<AboutPageController> {
   @override
   Widget build(BuildContext context) {
     double totalHeight = MediaQuery.of(context).size.height;
+    GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
     return Scaffold(
         key: _scaffoldKey,
         onDrawerChanged: (isOpen) {

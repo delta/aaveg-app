@@ -15,10 +15,9 @@ class CalendarPage extends StatefulWidget {
 }
 
 final NavBarController navBarController = Get.find<NavBarController>();
-GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
 class _SampleState extends State<CalendarPage> with TickerProviderStateMixin {
-  // finds your controller and uses it
+  GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   final sampleController = Get.find<CalendarPageController>();
   final dayList = new List<int>.generate(35, (i) => i + 1);
 

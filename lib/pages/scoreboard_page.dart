@@ -7,7 +7,6 @@ import 'package:aaveg_app/views/widgets/ScoreBoard/scoretile_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-GlobalKey<ScaffoldState> _scoreboardKey = GlobalKey<ScaffoldState>();
 final NavBarController navBarController = Get.find<NavBarController>();
 final ScoreController scoreController = Get.find<ScoreController>();
 Map<String, String> map = Map();
@@ -16,6 +15,7 @@ ScoreModel? scoreModel;
 class ScoreBoardPage extends GetView<ScoreController> {
   @override
   Widget build(BuildContext context) {
+    GlobalKey<ScaffoldState> _scoreboardKey = GlobalKey<ScaffoldState>();
     return Scaffold(
         key: _scoreboardKey,
         onDrawerChanged: (isOpen) {

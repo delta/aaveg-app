@@ -15,7 +15,6 @@ import 'package:google_fonts/google_fonts.dart';
 //   State<TeamPage> createState() => _TeamPageState();
 // }
 final NavBarController navBarController = Get.find<NavBarController>();
-GlobalKey<ScaffoldState> _teamPagekey = GlobalKey<ScaffoldState>();
 List<String> teamList = [];
 String describeTeam = "";
 String team = "";
@@ -23,6 +22,7 @@ String team = "";
 class TeamPage extends GetView<TeamController> {
   @override
   Widget build(BuildContext context) {
+    GlobalKey<ScaffoldState> _teamPagekey = GlobalKey<ScaffoldState>();
     return Scaffold(
       key: _teamPagekey,
       onDrawerChanged: (isOpen) {
