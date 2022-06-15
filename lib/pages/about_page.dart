@@ -78,24 +78,30 @@ class AboutPage extends GetView<AboutPageController> {
                       child: SizedBox(
                         child: Container(
                             child: controller.obx(
-                          (state) => GridView(
-                            shrinkWrap: true,
-                            padding: EdgeInsets.zero,
-                            scrollDirection: Axis.vertical,
-                            physics: NeverScrollableScrollPhysics(),
-                            gridDelegate:
-                                SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: 2,
-                              mainAxisExtent: 250,
-                            ),
-                            children: [
-                              CupWidget(cup: state!.aboutUsContent!.cup1!),
-                              CupWidget(cup: state.aboutUsContent!.cup2!),
-                              CupWidget(cup: state.aboutUsContent!.cup3!),
-                              CupWidget(cup: state.aboutUsContent!.cup3!),
-                            ],
-                          ),
-                        )),
+                                (state) => GridView(
+                                      shrinkWrap: true,
+                                      padding: EdgeInsets.zero,
+                                      scrollDirection: Axis.vertical,
+                                      physics: NeverScrollableScrollPhysics(),
+                                      gridDelegate:
+                                          SliverGridDelegateWithFixedCrossAxisCount(
+                                        crossAxisCount: 2,
+                                        mainAxisExtent: 250,
+                                      ),
+                                      children: [
+                                        CupWidget(
+                                            cup: state!.aboutUsContent!.cup1!),
+                                        CupWidget(
+                                            cup: state.aboutUsContent!.cup2!),
+                                        CupWidget(
+                                            cup: state.aboutUsContent!.cup3!),
+                                        CupWidget(
+                                            cup: state.aboutUsContent!.cup3!),
+                                      ],
+                                    ),
+                                onLoading: Center(
+                                  child: CircularProgressIndicator(),
+                                ))),
                       ),
                     )
                   ],

@@ -63,6 +63,6 @@ class StorageService extends GetxService {
   }
 
   void clearStorage() {
-    storage.remove(Constants.jwt);
+    storage.erase();
   }
 }

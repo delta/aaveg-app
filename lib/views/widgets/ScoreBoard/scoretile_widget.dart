@@ -26,7 +26,7 @@ class _ScoreTileState extends State<ScoreTile> {
     return Container(
       margin: EdgeInsets.only(top: 20, bottom: 20),
       width: 3 * MediaQuery.of(context).size.width / 4,
-      height: MediaQuery.of(context).size.height / 2.3,
+      // height: MediaQuery.of(context).size.height / 2.3,
       padding: EdgeInsets.all(15),
       alignment: Alignment.center,
       decoration: BoxDecoration(

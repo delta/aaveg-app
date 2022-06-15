@@ -74,11 +74,19 @@ class _AuthPageState extends State<AuthPage> {
                                           color: Colors.white, width: 2.5),
                                     ),
                                     onPressed: () {
-                                      Get.to(WebViewWidget());
+                                      setState(() {
+                                        if (storage.getJwt() != null)
+                                          storage.clearStorage();
+                                        else
+                                          Get.to(WebViewWidget());
+                                      });
                                     },
                                     child: Container(
                                       alignment: Alignment.center,
-                                      child: Text("LOGIN",
+                                      child: Text(
+                                          storage.getJwt() != null
+                                              ? "LOGOUT"
+                                              : "LOGIN",
                                           style: TextStyle(
                                               color: Colors.white,
                                               fontSize: 18,
@@ -90,14 +98,11 @@ class _AuthPageState extends State<AuthPage> {
                                   ),
                                 ),
                               ),
-                              visible: storage.getJwt() == null),
+                              visible: true),
                         ],
                       ),
                       Container(
-                        margin: EdgeInsets.only(
-                            top: storage.getJwt() == null ? 150 : 200,
-                            left: 10,
-                            right: 10),
+                        margin: EdgeInsets.only(top: 150, left: 10, right: 10),
                         width: _mediaquery.size.width,
                         alignment: Alignment.center,
                         child: AutoSizeText(

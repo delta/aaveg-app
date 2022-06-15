@@ -4,6 +4,7 @@ import 'package:aaveg_app/routes/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:jwt_decoder/jwt_decoder.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -26,6 +27,16 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
+    final token = storage.getJwt();
+    if (storage.getJwt() != null) {
+      print("Not null");
+      if (JwtDecoder.isExpired(token!)) {
+        print("Expired");
+        storage.clearStorage();
+      } else {
+        print("Not expired");
+      }
+    }
   }
 
   @override

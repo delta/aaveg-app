@@ -13,7 +13,7 @@ class MySquadProvider extends GetConnect {
         headers: headers);
     if (response.statusCode == 401) {
       storage.clearStorage();
-      Get.offAllNamed('/home');
+      return Future.error("Session expired. Please login again");
     }
     if (response.statusCode == 200) {
       final mysquad = mysquadModelFromJson(response.bodyString!);

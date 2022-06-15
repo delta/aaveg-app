@@ -45,80 +45,78 @@ class MySquad extends GetView<MySquadController> {
             child: Stack(
               children: [
                 NavIcon(globalKey: _mysquadkey),
-                Column(
-                  children: [
-                    Container(
-                      margin: EdgeInsets.only(
-                          top: MediaQuery.of(context).size.height / 9),
-                      width: double.infinity,
-                      alignment: Alignment.center,
-                      child: controller.obx(
-                        ((state) => Text(
-                              state?.squad?.name ?? "SQUAD",
-                              style: TextStyle(
-                                  fontSize: 40,
-                                  fontWeight: FontWeight.w900,
-                                  letterSpacing: 10,
-                                  fontFamily: 'Anurati'),
-                              textAlign: TextAlign.center,
-                            )),
-                        onLoading: Text("Loading..."),
-                      ),
-                    ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                controller.obx(
+                  ((state) => Container(
+                        child: Column(
                           children: [
-                            controller.obx(
-                              ((state) => MySquadWidget(
-                                    width:
-                                        MediaQuery.of(context).size.width / 2,
-                                    height: MediaQuery.of(context).size.height /
-                                        2.5,
-                                    child: MySquadDetailsWidget(
-                                      mysquadModel: state!,
+                            Container(
+                                margin: EdgeInsets.only(
+                                    top:
+                                        MediaQuery.of(context).size.height / 9),
+                                width: double.infinity,
+                                alignment: Alignment.center,
+                                child: Text(
+                                  state?.squad?.name ?? "SQUAD",
+                                  style: TextStyle(
+                                      fontSize: 40,
+                                      fontWeight: FontWeight.w900,
+                                      letterSpacing: 10,
+                                      fontFamily: 'Anurati'),
+                                  textAlign: TextAlign.center,
+                                )),
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    MySquadWidget(
+                                      width:
+                                          MediaQuery.of(context).size.width / 2,
+                                      height:
+                                          MediaQuery.of(context).size.height /
+                                              2.3,
+                                      child: MySquadDetailsWidget(
+                                        mysquadModel: state!,
+                                      ),
                                     ),
-                                  )),
-                              onLoading: Visibility(
-                                  child: Text("Loading..."), visible: false),
-                            ),
-                            controller.obx(
-                              ((state) => MySquadWidget(
-                                    width:
-                                        MediaQuery.of(context).size.width / 2.6,
-                                    height: MediaQuery.of(context).size.height /
-                                        2.5,
-                                    child: MySquadImage(
-                                      squadName:
-                                          state!.squad!.name!.toLowerCase(),
+                                    MySquadWidget(
+                                      width: MediaQuery.of(context).size.width /
+                                          2.6,
+                                      height:
+                                          MediaQuery.of(context).size.height /
+                                              2.3,
+                                      child: MySquadImage(
+                                        squadName:
+                                            state.squad!.name!.toLowerCase(),
+                                      ),
                                     ),
-                                  )),
-                              onLoading: Visibility(
-                                  child: Text("Loading..."), visible: false),
-                            ),
-                          ],
-                        ),
-                        controller.obx(
-                          ((state) => Container(
-                                margin: EdgeInsets.only(bottom: 20),
-                                child: MySquadWidget(
-                                  width: MediaQuery.of(context).size.width,
-                                  height:
-                                      MediaQuery.of(context).size.height / 4,
-                                  child: MySquadCharacterDescWidget(
-                                    desc: state!.squad!.description!,
+                                  ],
+                                ),
+                                Container(
+                                  margin: EdgeInsets.only(bottom: 20),
+                                  child: MySquadWidget(
+                                    width: MediaQuery.of(context).size.width,
+                                    height:
+                                        MediaQuery.of(context).size.height / 4,
+                                    child: MySquadCharacterDescWidget(
+                                      desc: state.squad!.description!,
+                                    ),
                                   ),
                                 ),
-                              )),
-                          onLoading: Visibility(
-                              child: Text("Loading..."), visible: false),
-                        )
-                      ],
-                    )
-                  ],
-                )
+                              ],
+                            )
+                          ],
+                        ),
+                      )),
+                  onError: (error) => Container(
+                    child: Center(
+                      child: Text(error.toString()),
+                    ),
+                  ),
+                  onLoading: Center(child: CircularProgressIndicator()),
+                ),
               ],
             ),
           ),
