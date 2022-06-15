@@ -1,4 +1,4 @@
-import 'package:aaveg_app/models/cup_modal.dart';
+import 'package:aaveg_app/models/about_model.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -19,13 +19,15 @@ class _CupWidgetState extends State<CupWidget> {
         child: Column(children: [
       Container(
         decoration: BoxDecoration(
-            color: Colors.black.withOpacity(0.65),
+            color: Colors.black.withOpacity(0.55),
             borderRadius: BorderRadius.circular(10)),
         child: SizedBox(
           height: totalHeight * 0.173,
           width: totalHeight * 0.173,
           child: Center(
-            child: Image(image: AssetImage(widget.cup.imageasset)),
+            child: Image(
+                image: NetworkImage("https://aaveg.in/22${widget.cup.vector}"),
+                fit: BoxFit.cover),
           ),
         ),
       ),
@@ -43,7 +45,7 @@ class _CupWidgetState extends State<CupWidget> {
             width: totalHeight * 0.173,
             child: Center(
                 child: Text(
-              'Smol desc about the cup',
+              widget.cup.description!,
               style: TextStyle(
                   fontFamily: GoogleFonts.montserrat().fontFamily,
                   fontSize: totalHeight * 0.018),

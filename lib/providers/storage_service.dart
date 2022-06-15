@@ -34,6 +34,14 @@ class StorageService extends GetxService {
     return storage.read(Constants.team);
   }
 
+  Future<void> storeAboutContent(String about) async {
+    await storage.write(Constants.about, about);
+  }
+
+  String? getAboutContent() {
+    return storage.read(Constants.about);
+  }
+
   String? getName() {
     return storage.read(Constants.name);
   }
