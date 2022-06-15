@@ -1,7 +1,9 @@
 import 'dart:ui';
 
 import 'package:aaveg_app/models/my_squad_model.dart';
+import 'package:aaveg_app/providers/storage_service.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class MySquadDetailsWidget extends StatefulWidget {
@@ -16,6 +18,7 @@ class MySquadDetailsWidget extends StatefulWidget {
 class _MySquadDetailsWidgetState extends State<MySquadDetailsWidget> {
   List<String> events = ['Culturals', 'Spectrum', 'Overall'];
   List<String> sup = ["th", "st", "nd", "rd", "th", "th", "th"];
+  final storage = Get.find<StorageService>();
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -28,7 +31,8 @@ class _MySquadDetailsWidgetState extends State<MySquadDetailsWidget> {
             shape: BoxShape.circle,
             image: DecorationImage(
               fit: BoxFit.cover,
-              image: AssetImage('assets/images/squads/PAASHA.png'),
+              image:
+                  AssetImage('assets/images/squads/${storage.getSquad()}.png'),
             ),
           ),
         ),

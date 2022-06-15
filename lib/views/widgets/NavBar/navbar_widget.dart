@@ -75,58 +75,67 @@ class _NavbarWdigetState extends State<NavbarWdiget> {
               ],
             ),
             NavDivider(),
-            Container(
-              child: Row(children: [
-                Container(
-                  width: 70,
-                  height: 70,
-                  alignment: Alignment.center,
-                  margin: EdgeInsets.only(left: 10, top: 10),
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: Colors.transparent,
-                    border: Border.all(
-                      color: Colors.white.withOpacity(0.75),
-                      width: 1,
-                    ),
-                  ),
-                ),
-                Container(
-                  margin: EdgeInsets.only(left: 10, top: 3),
-                  alignment: Alignment.center,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Container(
-                        width: MediaQuery.of(context).size.width * 0.45,
-                        child: Text(
-                          storage.getName() ?? "Name",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              fontSize: 18,
-                              color: Colors.white,
-                              fontWeight: FontWeight.w700,
-                              fontFamily: GoogleFonts.montserrat().fontFamily),
+            Visibility(
+                child: Container(
+                  child: Row(children: [
+                    Container(
+                      width: 70,
+                      height: 70,
+                      alignment: Alignment.center,
+                      margin: EdgeInsets.only(left: 10, top: 10),
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Colors.transparent,
+                        border: Border.all(
+                          color: Colors.white.withOpacity(0.75),
+                          width: 1,
+                        ),
+                        image: DecorationImage(
+                          fit: BoxFit.cover,
+                          image: AssetImage(
+                              'assets/images/squads/${storage.getSquad()}.png'),
                         ),
                       ),
-                      Container(
-                        width: MediaQuery.of(context).size.width * 0.4,
-                        child: Text(
-                          storage.getSquad() ?? "squad",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              fontSize: 15,
-                              color: Colors.white.withOpacity(0.75),
-                              fontWeight: FontWeight.w400,
-                              fontFamily: GoogleFonts.montserrat().fontFamily),
-                        ),
-                      )
-                    ],
-                  ),
-                )
-              ]),
-            )
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(left: 10, top: 3),
+                      alignment: Alignment.center,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Container(
+                            width: MediaQuery.of(context).size.width * 0.45,
+                            child: Text(
+                              storage.getName() ?? "Name",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  fontSize: 18,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w700,
+                                  fontFamily:
+                                      GoogleFonts.montserrat().fontFamily),
+                            ),
+                          ),
+                          Container(
+                            width: MediaQuery.of(context).size.width * 0.4,
+                            child: Text(
+                              storage.getSquad() ?? "squad",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  fontSize: 15,
+                                  color: Colors.white.withOpacity(0.75),
+                                  fontWeight: FontWeight.w400,
+                                  fontFamily:
+                                      GoogleFonts.montserrat().fontFamily),
+                            ),
+                          )
+                        ],
+                      ),
+                    )
+                  ]),
+                ),
+                visible: storage.getJwt() != null ? true : false),
           ],
         )));
   }
