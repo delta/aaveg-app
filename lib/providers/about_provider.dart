@@ -14,7 +14,6 @@ class AboutProvider extends GetConnect {
           await post("${Constants.baseUrl}/api/constants/aboutUsContent", {});
       if (response.statusCode == 200) {
         final about = aboutModelFromJson(response.bodyString!);
-        print(about.aboutUsContent!.cup1!.description!);
         storage.storeAboutContent(response.bodyString!);
         return about;
       } else {

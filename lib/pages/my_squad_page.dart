@@ -1,4 +1,7 @@
+import 'package:aaveg_app/controllers/my_squad_controller.dart';
 import 'package:aaveg_app/controllers/nav_bar_controller.dart';
+import 'package:aaveg_app/models/my_squad_model.dart';
+import 'package:aaveg_app/views/widgets/Mysquad/my_squad_image.dart';
 import 'package:aaveg_app/views/widgets/NavBar/nav_icon_widget.dart';
 import 'package:aaveg_app/views/widgets/NavBar/navbar_widget.dart';
 import 'package:aaveg_app/views/widgets/Mysquad/my_squad_char_desc.dart';
@@ -7,16 +10,11 @@ import 'package:aaveg_app/views/widgets/Mysquad/my_squad_tile_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class MySquad extends StatefulWidget {
-  MySquad({Key? key}) : super(key: key);
+GlobalKey<ScaffoldState> _mysquadkey = GlobalKey<ScaffoldState>();
+final NavBarController navBarController = Get.find<NavBarController>();
+Points points = Points();
 
-  @override
-  State<MySquad> createState() => _MySquadState();
-}
-
-class _MySquadState extends State<MySquad> {
-  GlobalKey<ScaffoldState> _mysquadkey = GlobalKey<ScaffoldState>();
-  final NavBarController navBarController = Get.find<NavBarController>();
+class MySquad extends GetView<MySquadController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,14 +51,17 @@ class _MySquadState extends State<MySquad> {
                           top: MediaQuery.of(context).size.height / 9),
                       width: double.infinity,
                       alignment: Alignment.center,
-                      child: Text(
-                        "SQUAD NAME",
-                        style: TextStyle(
-                            fontSize: 40,
-                            fontWeight: FontWeight.w900,
-                            letterSpacing: 10,
-                            fontFamily: 'Anurati'),
-                        textAlign: TextAlign.center,
+                      child: controller.obx(
+                        ((state) => Text(
+                              state?.squad?.name ?? "SQUAD",
+                              style: TextStyle(
+                                  fontSize: 40,
+                                  fontWeight: FontWeight.w900,
+                                  letterSpacing: 10,
+                                  fontFamily: 'Anurati'),
+                              textAlign: TextAlign.center,
+                            )),
+                        onLoading: Text("Loading..."),
                       ),
                     ),
                     Column(
@@ -69,25 +70,49 @@ class _MySquadState extends State<MySquad> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            MySquadWidget(
-                              width: MediaQuery.of(context).size.width / 2,
-                              height: MediaQuery.of(context).size.height / 2.5,
-                              child: MySquadDetailsWidget(),
+                            controller.obx(
+                              ((state) => MySquadWidget(
+                                    width:
+                                        MediaQuery.of(context).size.width / 2,
+                                    height: MediaQuery.of(context).size.height /
+                                        2.5,
+                                    child: MySquadDetailsWidget(
+                                      mysquadModel: state!,
+                                    ),
+                                  )),
+                              onLoading: Visibility(
+                                  child: Text("Loading..."), visible: false),
                             ),
-                            MySquadWidget(
-                              width: MediaQuery.of(context).size.width / 2.6,
-                              height: MediaQuery.of(context).size.height / 2.5,
-                              child: MySquadDetailsWidget(),
+                            controller.obx(
+                              ((state) => MySquadWidget(
+                                    width:
+                                        MediaQuery.of(context).size.width / 2.6,
+                                    height: MediaQuery.of(context).size.height /
+                                        2.5,
+                                    child: MySquadImage(
+                                      squadName:
+                                          state!.squad!.name!.toLowerCase(),
+                                    ),
+                                  )),
+                              onLoading: Visibility(
+                                  child: Text("Loading..."), visible: false),
                             ),
                           ],
                         ),
-                        Container(
-                          margin: EdgeInsets.only(bottom: 20),
-                          child: MySquadWidget(
-                            width: MediaQuery.of(context).size.width,
-                            height: MediaQuery.of(context).size.height / 4,
-                            child: MySquadCharacterDescWidget(),
-                          ),
+                        controller.obx(
+                          ((state) => Container(
+                                margin: EdgeInsets.only(bottom: 20),
+                                child: MySquadWidget(
+                                  width: MediaQuery.of(context).size.width,
+                                  height:
+                                      MediaQuery.of(context).size.height / 4,
+                                  child: MySquadCharacterDescWidget(
+                                    desc: state!.squad!.description!,
+                                  ),
+                                ),
+                              )),
+                          onLoading: Visibility(
+                              child: Text("Loading..."), visible: false),
                         )
                       ],
                     )

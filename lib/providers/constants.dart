@@ -6,4 +6,5 @@ class Constants {
   static const String squads = "squads";
   static const String team = "team";
   static const String about = "about";
+  static const String mysquad = "mysquad";
 }

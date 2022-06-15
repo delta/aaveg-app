@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class MySquadCharacterDescWidget extends StatefulWidget {
-  MySquadCharacterDescWidget({Key? key}) : super(key: key);
+  final String desc;
+  MySquadCharacterDescWidget({Key? key, required this.desc}) : super(key: key);
 
   @override
   State<MySquadCharacterDescWidget> createState() =>
@@ -20,7 +21,7 @@ class _MySquadCharacterDescWidgetState
           padding: EdgeInsets.only(top: 20, bottom: 10, left: 15, right: 10),
           alignment: Alignment.center,
           child: Text(
-            a,
+            widget.desc,
             style: TextStyle(
                 fontFamily: GoogleFonts.montserrat().fontFamily,
                 fontSize: 15,

@@ -2,6 +2,7 @@ import 'package:aaveg_app/bindings/about_page_binding.dart';
 import 'package:aaveg_app/bindings/auth_binding.dart';
 import 'package:aaveg_app/bindings/calender_page_binding.dart';
 import 'package:aaveg_app/bindings/events_page_binding.dart';
+import 'package:aaveg_app/bindings/my_squad_binding.dart';
 import 'package:aaveg_app/bindings/originstory_binding.dart';
 import 'package:aaveg_app/bindings/sample_bindings.dart';
 import 'package:aaveg_app/bindings/score_binding.dart';
@@ -28,7 +29,7 @@ class Routes {
         name: "/scoreboard",
         page: () => ScoreBoardPage(),
         binding: ScoreBinding()),
-    GetPage(name: "/mysquad", page: () => MySquad()),
+    GetPage(name: "/mysquad", page: () => MySquad(), binding: MySquadBinding()),
     GetPage(name: "/team", page: () => TeamPage(), binding: TeamBinding()),
     GetPage(name: "/allsquad", page: () => AllSquad()),
     GetPage(

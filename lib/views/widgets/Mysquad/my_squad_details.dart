@@ -1,16 +1,21 @@
+import 'dart:ui';
+
+import 'package:aaveg_app/models/my_squad_model.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class MySquadDetailsWidget extends StatefulWidget {
-  MySquadDetailsWidget({Key? key}) : super(key: key);
+  final MysquadModel mysquadModel;
+  MySquadDetailsWidget({Key? key, required this.mysquadModel})
+      : super(key: key);
 
   @override
   State<MySquadDetailsWidget> createState() => _MySquadDetailsWidgetState();
 }
 
 class _MySquadDetailsWidgetState extends State<MySquadDetailsWidget> {
-  List<String> points = ['Culturals', 'Spectrun', 'Overall'];
-
+  List<String> events = ['Culturals', 'Spectrum', 'Overall'];
+  List<String> sup = ["st", "nd", "rd"];
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -33,7 +38,7 @@ class _MySquadDetailsWidgetState extends State<MySquadDetailsWidget> {
             1: FlexColumnWidth(1),
             2: FlexColumnWidth(1),
           },
-          children: points
+          children: events
               .map(
                 (e) => TableRow(children: [
                   Container(
@@ -51,7 +56,14 @@ class _MySquadDetailsWidgetState extends State<MySquadDetailsWidget> {
                     padding: EdgeInsets.symmetric(vertical: 8.0),
                     margin: EdgeInsets.only(top: 8, bottom: 8, left: 5),
                     child: Text(
-                      '30',
+                      e == "Culturals"
+                          ? widget.mysquadModel.squad!.points!.culturals
+                              .toString()
+                          : e == "Spectrum"
+                              ? widget.mysquadModel.squad!.points!.spectrum
+                                  .toString()
+                              : widget.mysquadModel.squad!.points!.overall
+                                  .toString(),
                       style: TextStyle(
                           fontSize: 15,
                           fontWeight: FontWeight.w700,
@@ -60,17 +72,47 @@ class _MySquadDetailsWidgetState extends State<MySquadDetailsWidget> {
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.only(top: 8, bottom: 8, left: 5),
-                    padding: EdgeInsets.symmetric(vertical: 8.0),
-                    child: Text(
-                      '30',
-                      style: TextStyle(
-                          fontSize: 15,
-                          fontWeight: FontWeight.w900,
-                          fontFamily: GoogleFonts.montserrat().fontFamily),
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
+                      margin: EdgeInsets.only(top: 8, bottom: 8, left: 15),
+                      padding: EdgeInsets.symmetric(vertical: 8.0),
+                      child: Wrap(
+                        direction: Axis.horizontal,
+                        children: [
+                          Text(
+                            e == "Culturals"
+                                ? widget.mysquadModel.squad!.position!.culturals
+                                    .toString()
+                                : e == "Spectrum"
+                                    ? widget
+                                        .mysquadModel.squad!.position!.spectrum
+                                        .toString()
+                                    : widget
+                                        .mysquadModel.squad!.position!.overall
+                                        .toString(),
+                            style: TextStyle(
+                                fontSize: 15,
+                                fontWeight: FontWeight.w900,
+                                fontFamily:
+                                    GoogleFonts.montserrat().fontFamily),
+                            textAlign: TextAlign.center,
+                          ),
+                          Text(
+                            e == "Culturals"
+                                ? sup[widget.mysquadModel.squad!.position!
+                                        .culturals! -
+                                    1]
+                                : e == "Spectrum"
+                                    ? sup[widget.mysquadModel.squad!.position!
+                                            .spectrum! -
+                                        1]
+                                    : sup[widget.mysquadModel.squad!.position!
+                                            .overall! -
+                                        1],
+                            style: TextStyle(
+                                fontSize: 8,
+                                fontFeatures: [FontFeature.superscripts()]),
+                          ),
+                        ],
+                      )),
                 ]),
               )
               .toList(),
