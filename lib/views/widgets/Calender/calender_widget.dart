@@ -1,6 +1,5 @@
 import 'package:aaveg_app/controllers/calendar_page_controller.dart';
-import 'package:aaveg_app/controllers/events_page_controller.dart';
-import 'package:aaveg_app/models/event_modal.dart';
+
 import 'package:aaveg_app/views/widgets/Calender/day_text.dart';
 import 'package:aaveg_app/views/widgets/Calender/day_widget.dart';
 import 'package:flutter/material.dart';

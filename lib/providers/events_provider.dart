@@ -1,7 +1,5 @@
 import 'package:aaveg_app/models/event_modal.dart';
 
-import 'package:aaveg_app/providers/constants.dart';
-import 'package:aaveg_app/providers/storage_service.dart';
 import 'package:get/get.dart';
 
 class EventsProvider extends GetConnect {
