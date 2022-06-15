@@ -9,7 +9,7 @@ class MySquadProvider extends GetConnect {
     var headers = {
       'Authorization': 'Bearer ${storage.getJwt()}',
     };
-    final response = await post("${Constants.baseUrl}/api/squad/mySquad", {},
+    final response = await post("${Constants.baseUrl}/api/squad/mySquad/", {},
         headers: headers);
     if (response.statusCode == 401) {
       storage.clearStorage();

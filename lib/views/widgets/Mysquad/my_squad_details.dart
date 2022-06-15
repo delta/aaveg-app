@@ -15,7 +15,7 @@ class MySquadDetailsWidget extends StatefulWidget {
 
 class _MySquadDetailsWidgetState extends State<MySquadDetailsWidget> {
   List<String> events = ['Culturals', 'Spectrum', 'Overall'];
-  List<String> sup = ["st", "nd", "rd"];
+  List<String> sup = ["th", "st", "nd", "rd", "th", "th", "th"];
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -97,16 +97,13 @@ class _MySquadDetailsWidgetState extends State<MySquadDetailsWidget> {
                           ),
                           Text(
                             e == "Culturals"
-                                ? sup[widget.mysquadModel.squad!.position!
-                                        .culturals! -
-                                    1]
+                                ? sup[widget
+                                    .mysquadModel.squad!.position!.culturals!]
                                 : e == "Spectrum"
                                     ? sup[widget.mysquadModel.squad!.position!
-                                            .spectrum! -
-                                        1]
+                                        .spectrum!]
                                     : sup[widget.mysquadModel.squad!.position!
-                                            .overall! -
-                                        1],
+                                        .overall!],
                             style: TextStyle(
                                 fontSize: 8,
                                 fontFeatures: [FontFeature.superscripts()]),

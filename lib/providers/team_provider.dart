@@ -11,7 +11,7 @@ class TeamProvider extends GetConnect {
       return teamModelFromJson(teamData);
     } else {
       final response =
-          await post("${Constants.baseUrl}/api/constants/teamsData", {});
+          await post("${Constants.baseUrl}/api/constants/teamsData/", {});
       if (response.statusCode == 200) {
         final team = teamModelFromJson(response.bodyString!);
         storage.storeTeams(response.bodyString!);

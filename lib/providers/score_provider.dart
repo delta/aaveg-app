@@ -6,7 +6,7 @@ import 'package:get/get.dart';
 class ScoreProvider extends GetConnect {
   Future<ScoreModel> getScoreResponse() async {
     final storage = Get.find<StorageService>();
-    final response = await post("${Constants.baseUrl}/api/squad/get", {null});
+    final response = await post("${Constants.baseUrl}/api/squad/get/", {null});
     if (response.statusCode == 200) {
       final squadScore = scoreModelFromJson(response.bodyString!);
       squadScore.squads?.sort((a, b) {
