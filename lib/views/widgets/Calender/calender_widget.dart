@@ -154,11 +154,13 @@ class CalenderWidget extends GetView<CalendarPageController> {
 class CalenderTabController extends GetxController
     with GetSingleTickerProviderStateMixin {
   late TabController tabController;
+  var now = new DateTime.now();
 
   @override
   void onInit() {
-    tabController = TabController(vsync: this, length: 12, initialIndex: 5);
-    tabController.animateTo(5);
+    tabController =
+        TabController(vsync: this, length: 12, initialIndex: now.month - 1);
+    tabController.animateTo(now.month - 1);
     super.onInit();
   }
 }
