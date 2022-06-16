@@ -17,7 +17,7 @@ class EventsProvider extends GetConnect {
     }
   }
 
-  Future<dynamic> getEventDetailsById(String id) async {
+  Future<EventDetail> getEventDetailsById(String id) async {
     final response = await post(
         "https://aaveg.in/22/api/event/:eventId/get/", {"eventId": "$id"});
 
