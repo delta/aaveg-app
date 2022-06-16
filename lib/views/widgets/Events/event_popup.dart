@@ -1,11 +1,10 @@
+import 'package:aaveg_app/models/eventDetail_modal.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import '../../../models/event_modal.dart';
-
 class EventPopup extends StatefulWidget {
-  final Event event;
+  final EventDetail event;
   const EventPopup({Key? key, required this.event}) : super(key: key);
 
   @override
@@ -106,7 +105,7 @@ class _EventPopupState extends State<EventPopup> {
                     child: Center(
                       child: InkWell(
                         onTap: () =>
-                            launchUrl(Uri.parse(widget.event.rulebookLink!)),
+                            launchUrl(Uri.parse(widget.event.ruleBookLink!)),
                         child: Row(
                           children: [
                             Expanded(
@@ -164,31 +163,12 @@ class _EventPopupState extends State<EventPopup> {
                                     widget.event.rounds![1].month.toString() +
                                     '-' +
                                     widget.event.rounds![1].year.toString() +
-                                    ' (Round2)',
+                                    ' (Round 2)',
                                 style: TextStyle(
                                     fontSize: totalHeight * 0.0141,
                                     fontFamily:
                                         GoogleFonts.montserrat().fontFamily),
                               ),
-                            ),
-                          ),
-                        ),
-                        Expanded(
-                          flex: 3,
-                          child: Align(
-                            alignment: Alignment.centerLeft,
-                            child: Text(
-                              widget.event.rounds![0].hour.toString() +
-                                  ':' +
-                                  widget.event.rounds![0].minute.toString() +
-                                  '\n' +
-                                  widget.event.rounds![1].hour.toString() +
-                                  ':' +
-                                  widget.event.rounds![1].minute.toString(),
-                              style: TextStyle(
-                                  fontSize: totalHeight * 0.0141,
-                                  fontFamily:
-                                      GoogleFonts.montserrat().fontFamily),
                             ),
                           ),
                         ),

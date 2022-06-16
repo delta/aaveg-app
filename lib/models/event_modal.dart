@@ -31,6 +31,7 @@ class Event {
     this.rulebookLink,
     this.description,
     this.cup,
+    this.positions,
     this.rounds,
     this.isCompleted,
     this.id,
@@ -42,7 +43,9 @@ class Event {
   String? rulebookLink;
   String? description;
   String? cup;
+  Positions? positions;
   List<DateTime>? rounds;
+
   bool? isCompleted;
   String? id;
 
@@ -53,6 +56,7 @@ class Event {
         rulebookLink: json["ruleBookLink"],
         description: json["description"],
         cup: json["cup"],
+        positions: Positions.fromJson(json["positions"]),
         rounds:
             List<DateTime>.from(json["rounds"].map((x) => DateTime.parse(x))),
         isCompleted: json["isCompleted"],
@@ -68,6 +72,21 @@ class Event {
         "id": id,
         "ruleBookLink": rulebookLink,
         "description": description,
-        "cup": cup
+        "cup": cup,
+        "positions": positions!.toJson()
       };
+}
+
+class Positions {
+  Positions({this.first, this.second, this.third});
+
+  String? first;
+  String? second;
+  String? third;
+
+  factory Positions.fromJson(Map<String, dynamic> json) => Positions(
+      first: json["first"], second: json["second"], third: json["third"]);
+
+  Map<String, dynamic> toJson() =>
+      {"first": first, "second": second, "third": third};
 }
