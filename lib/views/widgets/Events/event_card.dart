@@ -23,27 +23,28 @@ class _EventCardState extends State<EventCard> {
   Widget build(BuildContext context) {
     double totalHeight = MediaQuery.of(context).size.height;
     EventPopupController controller = Get.find<EventPopupController>();
-    String roundText =
-        (widget.event.rounds![0].day == widget.event.rounds![1].day &&
-                widget.event.rounds![0].month == widget.event.rounds![1].month)
-            ? widget.event.rounds![0].day.toString() +
-                '-' +
-                widget.event.rounds![0].month.toString() +
-                '-' +
-                widget.event.rounds![0].year.toString()
-            : widget.event.rounds![0].day.toString() +
-                '-' +
-                widget.event.rounds![0].month.toString() +
-                '-' +
-                widget.event.rounds![0].year.toString() +
-                ' (Round 1)' +
-                '\n' +
-                widget.event.rounds![1].day.toString() +
-                '-' +
-                widget.event.rounds![1].month.toString() +
-                '-' +
-                widget.event.rounds![1].year.toString() +
-                ' (Round 2)';
+    DateTime date1 = widget.event.rounds![0].toLocal();
+    DateTime date2 = widget.event.rounds![1].toLocal();
+
+    String roundText = (date1.day == date2.day && date1.month == date2.month)
+        ? date1.day.toString() +
+            '-' +
+            date1.month.toString() +
+            '-' +
+            date1.year.toString()
+        : date1.day.toString() +
+            '-' +
+            date1.month.toString() +
+            '-' +
+            date1.year.toString() +
+            ' (Round 1)' +
+            '\n' +
+            date2.day.toString() +
+            '-' +
+            date2.month.toString() +
+            '-' +
+            date2.year.toString() +
+            ' (Round 2)';
     return Container(
         margin: EdgeInsets.fromLTRB(32, 10, 32, 10),
         padding: EdgeInsets.all(20),
