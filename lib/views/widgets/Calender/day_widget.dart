@@ -1,4 +1,5 @@
 import 'package:aaveg_app/models/event_modal.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -41,14 +42,13 @@ class _DayWidgetState extends State<DayWidget> {
             widget.thisDay <
                 (gap[widget.thisMonth - 1] + noOfDays[widget.thisMonth - 1])
         ? Container(
-            height: totalHeight * 0.007,
             padding: EdgeInsets.fromLTRB(totalHeight * 0.005,
                 totalHeight * 0.003, totalHeight * 0.003, totalHeight * 0.003),
             decoration: BoxDecoration(
                 color: Colors.black.withOpacity(0.5),
                 borderRadius: BorderRadius.circular(3)),
             child: SizedBox(
-                height: MediaQuery.of(context).size.height * 0.049,
+                // height: MediaQuery.of(context).size.height * 0.049,
                 child: Align(
                     alignment: Alignment.centerLeft,
                     child: Column(children: [
@@ -66,23 +66,23 @@ class _DayWidgetState extends State<DayWidget> {
                         ),
                       ),
                       if (text != '')
-                        SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.03,
+                        Container(
+                          // height: MediaQuery.of(context).size.height * 0.03,
                           child: Align(
                             alignment: Alignment.centerLeft,
                             child: SingleChildScrollView(
-                              child: Text(
+                              child: AutoSizeText(
                                 text,
+                                minFontSize: 1,
+                                maxFontSize: 8,
                                 style: TextStyle(
-                                    fontFamily:
-                                        GoogleFonts.montserrat().fontFamily,
-                                    fontSize:
-                                        MediaQuery.of(context).size.height *
-                                            0.011),
+                                  fontFamily:
+                                      GoogleFonts.montserrat().fontFamily,
+                                ),
                               ),
                             ),
                           ),
-                        ),
+                        )
                     ]))),
           )
         : Container();

@@ -117,17 +117,15 @@ class CalenderWidget extends GetView<CalendarPageController> {
                                     physics: ScrollPhysics(),
                                     gridDelegate:
                                         SliverGridDelegateWithFixedCrossAxisCount(
-                                            crossAxisCount: 7,
-                                            crossAxisSpacing: 15,
-                                            mainAxisSpacing:
-                                                MediaQuery.of(context)
-                                                        .size
-                                                        .height /
-                                                    60,
-                                            // mainAxisExtent:
-                                            //     MediaQuery.of(context).size.width *
-                                            //         0.17,
-                                            childAspectRatio: 1 / 1.15),
+                                      crossAxisCount: 7,
+                                      crossAxisSpacing:
+                                          MediaQuery.of(context).size.height /
+                                              60,
+                                      mainAxisSpacing:
+                                          MediaQuery.of(context).size.height /
+                                              60,
+                                      childAspectRatio: 1 / 1.15,
+                                    ),
                                     children: new List<int>.generate(
                                         noOfItems[monthList.indexOf(month)],
                                         (i) => i + 1).map((day) {
