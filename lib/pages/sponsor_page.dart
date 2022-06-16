@@ -3,6 +3,7 @@ import 'package:aaveg_app/views/widgets/NavBar/nav_icon_widget.dart';
 import 'package:aaveg_app/views/widgets/NavBar/navbar_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class SponsorPage extends StatelessWidget {
   const SponsorPage({Key? key}) : super(key: key);
@@ -75,7 +76,22 @@ class SponsorPage extends StatelessWidget {
                             decoration: BoxDecoration(
                                 color: Colors.white.withOpacity(0.75),
                                 borderRadius: BorderRadius.circular(20)),
-                            child: Image.asset('assets/images/sponsor1.png'),
+                            child: Column(
+                              children: [
+                                Image.asset('assets/images/sponsor1.png'),
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                Text('TITLE SPONSOR',
+                                    style: TextStyle(
+                                        fontSize: 20,
+                                        letterSpacing: 4,
+                                        fontWeight: FontWeight.w600,
+                                        color: Colors.black,
+                                        fontFamily: GoogleFonts.montserrat()
+                                            .fontFamily))
+                              ],
+                            ),
                           )
                         ],
                       )
