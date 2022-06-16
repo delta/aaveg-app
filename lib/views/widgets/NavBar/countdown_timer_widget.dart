@@ -1,11 +1,15 @@
 import 'dart:async';
 
+import 'package:aaveg_app/controllers/date_controller.dart';
+import 'package:aaveg_app/providers/storage_service.dart';
 import 'package:aaveg_app/utils/logger.dart';
 import 'package:aaveg_app/views/widgets/NavBar/timer_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class CountDownTimer extends StatefulWidget {
-  CountDownTimer({Key? key}) : super(key: key);
+  final Duration duration;
+  CountDownTimer({Key? key, required this.duration}) : super(key: key);
 
   @override
   State<CountDownTimer> createState() => _CountDownTimerState();
@@ -13,10 +17,13 @@ class CountDownTimer extends StatefulWidget {
 
 class _CountDownTimerState extends State<CountDownTimer> {
   Timer? timer;
-  Duration duration = Duration(days: 1, hours: 00, minutes: 00, seconds: 3);
+  final storageService = Get.find<StorageService>();
+  final DateController dateController = Get.find<DateController>();
+  Duration duration = Duration(days: 00, minutes: 00, hours: 00, seconds: 00);
   @override
   void initState() {
     super.initState();
+    duration = widget.duration;
     startTimer();
   }
 

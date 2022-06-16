@@ -50,6 +50,14 @@ class StorageService extends GetxService {
     return storage.read(Constants.mysquad);
   }
 
+  Future<void> storeDate(String date) async {
+    await storage.write(Constants.date, date);
+  }
+
+  String? getaavegDate() {
+    return storage.read(Constants.date);
+  }
+
   String? getName() {
     return storage.read(Constants.name);
   }

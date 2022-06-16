@@ -1,3 +1,4 @@
+import 'package:aaveg_app/controllers/date_controller.dart';
 import 'package:aaveg_app/controllers/nav_bar_controller.dart';
 import 'package:aaveg_app/providers/storage_service.dart';
 import 'package:aaveg_app/views/widgets/NavBar/countdown_timer_widget.dart';
@@ -13,17 +14,10 @@ import 'package:outlined_text/outlined_text.dart';
 
 import '../utils/logger.dart';
 
-class AuthPage extends StatefulWidget {
-  AuthPage({Key? key}) : super(key: key);
+var isVisible;
+final NavBarController navBarController = Get.find<NavBarController>();
 
-  @override
-  State<AuthPage> createState() => _AuthPageState();
-}
-
-class _AuthPageState extends State<AuthPage> {
-  final GlobalKey<ScaffoldState> _key = GlobalKey<ScaffoldState>();
-  var isVisible;
-  final NavBarController navBarController = Get.find<NavBarController>();
+class AuthPage extends GetView<DateController> {
   @override
   Widget build(BuildContext context) {
     List<String> items = ['D  A\nY  S', 'H O\nU R S', 'MIN\nUTES', 'SECO\nNDS'];
@@ -32,7 +26,12 @@ class _AuthPageState extends State<AuthPage> {
     log.i("Jwt : ${storage.getJwt()}");
     log.i("Jwt : ${storage.getName()}");
     log.i("Squad : ${storage.getSquad()}");
+    final GlobalKey<ScaffoldState> _key = GlobalKey<ScaffoldState>();
     var _mediaquery = MediaQuery.of(context);
+    DateTime now = new DateTime.now();
+    DateTime dateNow = new DateTime(
+            now.year, now.month, now.day, now.hour, now.minute, now.second)
+        .toUtc();
     return Scaffold(
         key: _key,
         onDrawerChanged: (isOpen) {
@@ -74,12 +73,7 @@ class _AuthPageState extends State<AuthPage> {
                                           color: Colors.white, width: 2.5),
                                     ),
                                     onPressed: () {
-                                      setState(() {
-                                        if (storage.getJwt() != null)
-                                          storage.clearStorage();
-                                        else
-                                          Get.to(WebViewWidget());
-                                      });
+                                      controller.loginControl();
                                     },
                                     child: Container(
                                       alignment: Alignment.center,
@@ -102,7 +96,10 @@ class _AuthPageState extends State<AuthPage> {
                         ],
                       ),
                       Container(
-                        margin: EdgeInsets.only(top: MediaQuery.of(context).size.height/4, left: 10, right: 10),
+                        margin: EdgeInsets.only(
+                            top: MediaQuery.of(context).size.height / 4,
+                            left: 10,
+                            right: 10),
                         width: _mediaquery.size.width,
                         alignment: Alignment.center,
                         child: AutoSizeText(
@@ -135,7 +132,21 @@ class _AuthPageState extends State<AuthPage> {
                         alignment: Alignment.center,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
-                          children: [CountDownTimer()],
+                          children: [
+                            controller.obx(
+                              (state) => CountDownTimer(
+                                duration: Duration(
+                                    days: state!.date!.day.toInt() -
+                                        dateNow.day.toInt(),
+                                    hours: state.date!.hour.toInt() -
+                                        dateNow.hour.toInt(),
+                                    minutes: state.date!.minute.toInt() -
+                                        dateNow.minute.toInt(),
+                                    seconds: state.date!.second.toInt() -
+                                        dateNow.second.toInt()),
+                              ),
+                            )
+                          ],
                         ),
                       ),
                       Container(

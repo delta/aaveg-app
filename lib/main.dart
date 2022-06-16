@@ -1,3 +1,4 @@
+import 'package:aaveg_app/bindings/inital_binding.dart';
 import 'package:aaveg_app/bindings/nav_bar_binding.dart';
 import 'package:aaveg_app/providers/storage_service.dart';
 import 'package:aaveg_app/routes/routes.dart';
@@ -45,6 +46,6 @@ class _MyAppState extends State<MyApp> {
         theme: ThemeData.dark(),
         getPages: Routes().route,
         initialRoute: storage.getJwt() != null ? "/home" : "/home",
-        initialBinding: NavBarBinding(),
+        initialBinding: InitialBinding(),
       );
 }
