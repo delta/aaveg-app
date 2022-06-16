@@ -16,6 +16,7 @@ import 'package:aaveg_app/pages/originstory_page.dart';
 import 'package:aaveg_app/pages/sample.dart';
 import 'package:aaveg_app/pages/scoreboard_page.dart';
 import 'package:aaveg_app/pages/my_squad_page.dart';
+import 'package:aaveg_app/pages/sponsor_page.dart';
 import 'package:aaveg_app/pages/team_page.dart';
 import 'package:get/get.dart';
 
@@ -46,5 +47,6 @@ class Routes {
         name: "/calendar",
         page: () => CalendarPage(),
         binding: CalendarPageBinding()),
+    GetPage(name: "/sponsors", page: () => SponsorPage()),
   ];
 }
