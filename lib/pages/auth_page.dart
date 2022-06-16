@@ -76,17 +76,15 @@ class AuthPage extends GetView<DateController> {
                                     },
                                     child: Container(
                                       alignment: Alignment.center,
-                                      child: Text(
-                                          storage.getJwt() != null
-                                              ? "LOGOUT"
-                                              : "LOGIN",
+                                      child: Obx(() => Text(
+                                          controller.buttonName.value,
                                           style: TextStyle(
                                               color: Colors.white,
                                               fontSize: 18,
                                               fontWeight: FontWeight.bold,
                                               fontFamily:
                                                   GoogleFonts.montserrat()
-                                                      .fontFamily)),
+                                                      .fontFamily))),
                                     ),
                                   ),
                                 ),
