@@ -2,9 +2,7 @@ import 'package:aaveg_app/providers/events_provider.dart';
 import 'package:aaveg_app/providers/storage_service.dart';
 import 'package:get/get.dart';
 
-import '../models/event_modal.dart';
-
-class EventPopupController extends GetxController with StateMixin<Event> {
+class EventPopupController extends GetxController with StateMixin<dynamic> {
   final storage = Get.find<StorageService>();
   EventsProvider eventsProvider = EventsProvider();
   String eventId = '';

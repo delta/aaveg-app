@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:aaveg_app/controllers/event_popup_controller.dart';
 import 'package:aaveg_app/models/event_modal.dart';
 import 'package:aaveg_app/views/widgets/Events/event_popup.dart';
@@ -21,6 +23,27 @@ class _EventCardState extends State<EventCard> {
   Widget build(BuildContext context) {
     double totalHeight = MediaQuery.of(context).size.height;
     EventPopupController controller = Get.find<EventPopupController>();
+    String roundText =
+        (widget.event.rounds![0].day == widget.event.rounds![1].day &&
+                widget.event.rounds![0].month == widget.event.rounds![1].month)
+            ? widget.event.rounds![0].day.toString() +
+                '-' +
+                widget.event.rounds![0].month.toString() +
+                '-' +
+                widget.event.rounds![0].year.toString()
+            : widget.event.rounds![0].day.toString() +
+                '-' +
+                widget.event.rounds![0].month.toString() +
+                '-' +
+                widget.event.rounds![0].year.toString() +
+                ' (Round 1)' +
+                '\n' +
+                widget.event.rounds![1].day.toString() +
+                '-' +
+                widget.event.rounds![1].month.toString() +
+                '-' +
+                widget.event.rounds![1].year.toString() +
+                ' (Round 2)';
     return Container(
         margin: EdgeInsets.fromLTRB(32, 10, 32, 10),
         padding: EdgeInsets.all(20),
@@ -58,28 +81,125 @@ class _EventCardState extends State<EventCard> {
                       ),
                       flex: 1),
                   Expanded(
-                      child: Align(
-                        alignment: Alignment.centerLeft,
-                        child: Text(
-                            widget.event.rounds![0].day.toString() +
-                                '-' +
-                                widget.event.rounds![0].month.toString() +
-                                '-' +
-                                widget.event.rounds![0].year.toString() +
-                                ' (Round 1)' +
-                                '\n' +
-                                widget.event.rounds![1].day.toString() +
-                                '-' +
-                                widget.event.rounds![1].month.toString() +
-                                '-' +
-                                widget.event.rounds![1].year.toString() +
-                                ' (Round2)',
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: totalHeight * 0.015,
-                                fontFamily:
-                                    GoogleFonts.montserrat().fontFamily)),
-                      ),
+                      child: widget.event.isCompleted!
+                          ? Align(
+                              alignment: Alignment.centerLeft,
+                              child: Column(children: [
+                                Align(
+                                    alignment: Alignment.centerLeft,
+                                    child: Wrap(
+                                      direction: Axis.horizontal,
+                                      children: [
+                                        Text(
+                                          '1',
+                                          style: TextStyle(
+                                              fontSize: totalHeight * 0.010,
+                                              fontWeight: FontWeight.bold,
+                                              fontFamily:
+                                                  GoogleFonts.montserrat()
+                                                      .fontFamily),
+                                          textAlign: TextAlign.center,
+                                        ),
+                                        Text(
+                                          'st',
+                                          style: TextStyle(
+                                              fontSize: 9,
+                                              fontFeatures: [
+                                                FontFeature.superscripts()
+                                              ]),
+                                        ),
+                                        Text(
+                                          '- ${widget.event.positions!.first}',
+                                          style: TextStyle(
+                                              fontSize: totalHeight * 0.010,
+                                              fontWeight: FontWeight.w900,
+                                              fontFamily:
+                                                  GoogleFonts.montserrat()
+                                                      .fontFamily),
+                                          textAlign: TextAlign.center,
+                                        ),
+                                      ],
+                                    )),
+                                Align(
+                                  alignment: Alignment.centerLeft,
+                                  child: Wrap(
+                                    direction: Axis.horizontal,
+                                    children: [
+                                      Text(
+                                        '2',
+                                        style: TextStyle(
+                                            fontSize: totalHeight * 0.010,
+                                            fontWeight: FontWeight.bold,
+                                            fontFamily: GoogleFonts.montserrat()
+                                                .fontFamily),
+                                        textAlign: TextAlign.center,
+                                      ),
+                                      Text(
+                                        'nd',
+                                        style: TextStyle(
+                                            fontSize: 9,
+                                            fontFeatures: [
+                                              FontFeature.superscripts()
+                                            ]),
+                                      ),
+                                      Text(
+                                        '- ${widget.event.positions!.second}',
+                                        style: TextStyle(
+                                            fontSize: totalHeight * 0.010,
+                                            fontWeight: FontWeight.w900,
+                                            fontFamily: GoogleFonts.montserrat()
+                                                .fontFamily),
+                                        textAlign: TextAlign.center,
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Align(
+                                    alignment: Alignment.centerLeft,
+                                    child: Wrap(
+                                      direction: Axis.horizontal,
+                                      children: [
+                                        Text(
+                                          '3',
+                                          style: TextStyle(
+                                              fontSize: totalHeight * 0.010,
+                                              fontWeight: FontWeight.bold,
+                                              fontFamily:
+                                                  GoogleFonts.montserrat()
+                                                      .fontFamily),
+                                          textAlign: TextAlign.center,
+                                        ),
+                                        Text(
+                                          'rd',
+                                          style: TextStyle(
+                                              fontSize: 9,
+                                              fontFeatures: [
+                                                FontFeature.superscripts()
+                                              ]),
+                                        ),
+                                        Text(
+                                          '- ${widget.event.positions!.third}',
+                                          style: TextStyle(
+                                              fontSize: totalHeight * 0.010,
+                                              fontWeight: FontWeight.w900,
+                                              fontFamily:
+                                                  GoogleFonts.montserrat()
+                                                      .fontFamily),
+                                          textAlign: TextAlign.center,
+                                        ),
+                                      ],
+                                    )),
+                              ]),
+                            )
+                          : Align(
+                              alignment: Alignment.centerLeft,
+                              child: Text(roundText,
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: totalHeight * 0.015,
+                                      fontFamily:
+                                          GoogleFonts.montserrat().fontFamily)),
+                            ),
                       flex: 1),
                   Expanded(
                       child: Align(
