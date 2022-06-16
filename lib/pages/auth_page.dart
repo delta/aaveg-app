@@ -154,7 +154,7 @@ class AuthPage extends GetView<DateController> {
                           alignment: Alignment.center,
                           child: OutlinedText(
                             text: Text(
-                              '3 DAYS OF (INSERT SOME FANCY WORDS) ',
+                              '3 DAYS. 3 CUPS.\n1 WINNER.',
                               style: TextStyle(
                                   color: Colors.transparent,
                                   fontSize: 30,
