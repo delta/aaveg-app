@@ -21,7 +21,7 @@ class SponsorPage extends StatelessWidget {
               canvasColor: Colors.black.withOpacity(0.4),
             ),
             child: Drawer(
-              child: NavbarWdiget(),
+              child: NavbarWidget(),
             )),
         body: Container(
           child: Stack(
