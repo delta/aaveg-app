@@ -1,7 +1,7 @@
+import 'package:aaveg_app/controllers/date_controller.dart';
 import 'package:aaveg_app/controllers/nav_bar_controller.dart';
 import 'package:aaveg_app/providers/storage_service.dart';
 import 'package:aaveg_app/views/widgets/NavBar/countdown_timer_widget.dart';
-import 'package:aaveg_app/views/widgets/AuthWebView/dauth_web_view.dart';
 import 'package:aaveg_app/views/widgets/NavBar/nav_icon_widget.dart';
 import 'package:aaveg_app/views/widgets/NavBar/navbar_widget.dart';
 import 'package:aaveg_app/views/widgets/NavBar/timer_widget.dart';
@@ -13,17 +13,10 @@ import 'package:outlined_text/outlined_text.dart';
 
 import '../utils/logger.dart';
 
-class AuthPage extends StatefulWidget {
-  AuthPage({Key? key}) : super(key: key);
+var isVisible;
+final NavBarController navBarController = Get.find<NavBarController>();
 
-  @override
-  State<AuthPage> createState() => _AuthPageState();
-}
-
-class _AuthPageState extends State<AuthPage> {
-  final GlobalKey<ScaffoldState> _key = GlobalKey<ScaffoldState>();
-  var isVisible;
-  final NavBarController navBarController = Get.find<NavBarController>();
+class AuthPage extends GetView<DateController> {
   @override
   Widget build(BuildContext context) {
     List<String> items = ['D  A\nY  S', 'H O\nU R S', 'MIN\nUTES', 'SECO\nNDS'];
@@ -32,8 +25,12 @@ class _AuthPageState extends State<AuthPage> {
     log.i("Jwt : ${storage.getJwt()}");
     log.i("Jwt : ${storage.getName()}");
     log.i("Squad : ${storage.getSquad()}");
-
+    final GlobalKey<ScaffoldState> _key = GlobalKey<ScaffoldState>();
     var _mediaquery = MediaQuery.of(context);
+    DateTime now = new DateTime.now();
+    DateTime dateNow = new DateTime(
+            now.year, now.month, now.day, now.hour, now.minute, now.second)
+        .toUtc();
     return Scaffold(
         key: _key,
         onDrawerChanged: (isOpen) {
@@ -63,36 +60,45 @@ class _AuthPageState extends State<AuthPage> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
-                          Container(
-                            margin: EdgeInsets.only(top: 35, right: 20),
-                            height: 35,
-                            child: Align(
-                              alignment: Alignment.center,
-                              child: OutlinedButton(
-                                style: OutlinedButton.styleFrom(
-                                  side: BorderSide(
-                                      color: Colors.white, width: 2.5),
-                                ),
-                                onPressed: () {
-                                  Get.to(WebViewWidget());
-                                },
-                                child: Container(
+                          Visibility(
+                              child: Container(
+                                margin: EdgeInsets.only(top: 35, right: 20),
+                                height: 35,
+                                child: Align(
                                   alignment: Alignment.center,
-                                  child: Text("LOGIN",
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.bold,
-                                          fontFamily: GoogleFonts.montserrat()
-                                              .fontFamily)),
+                                  child: OutlinedButton(
+                                    style: OutlinedButton.styleFrom(
+                                      side: BorderSide(
+                                          color: Colors.white, width: 2.5),
+                                    ),
+                                    onPressed: () {
+                                      controller.loginControl();
+                                    },
+                                    child: Container(
+                                      alignment: Alignment.center,
+                                      child: Text(
+                                          storage.getJwt() != null
+                                              ? "LOGOUT"
+                                              : "LOGIN",
+                                          style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 18,
+                                              fontWeight: FontWeight.bold,
+                                              fontFamily:
+                                                  GoogleFonts.montserrat()
+                                                      .fontFamily)),
+                                    ),
+                                  ),
                                 ),
                               ),
-                            ),
-                          ),
+                              visible: true),
                         ],
                       ),
                       Container(
-                        margin: EdgeInsets.only(top: 150, left: 10, right: 10),
+                        margin: EdgeInsets.only(
+                            top: MediaQuery.of(context).size.height / 4,
+                            left: 10,
+                            right: 10),
                         width: _mediaquery.size.width,
                         alignment: Alignment.center,
                         child: AutoSizeText(
@@ -125,16 +131,30 @@ class _AuthPageState extends State<AuthPage> {
                         alignment: Alignment.center,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
-                          children: [CountDownTimer()],
+                          children: [
+                            controller.obx(
+                              (state) => CountDownTimer(
+                                duration: Duration(
+                                    days: state!.date!.day.toInt() -
+                                        dateNow.day.toInt(),
+                                    hours: state.date!.hour.toInt() -
+                                        dateNow.hour.toInt(),
+                                    minutes: state.date!.minute.toInt() -
+                                        dateNow.minute.toInt(),
+                                    seconds: state.date!.second.toInt() -
+                                        dateNow.second.toInt()),
+                              ),
+                            )
+                          ],
                         ),
                       ),
                       Container(
-                          margin: EdgeInsets.only(top: 130, left: 5, right: 5),
+                          margin: EdgeInsets.only(top: 50, left: 5, right: 5),
                           width: double.infinity,
                           alignment: Alignment.center,
                           child: OutlinedText(
                             text: Text(
-                              '3 DAYS OF (INSERT SOME FANCY WORDS) ',
+                              '3 DAYS. 3 CUPS.\n1 WINNER.',
                               style: TextStyle(
                                   color: Colors.transparent,
                                   fontSize: 30,

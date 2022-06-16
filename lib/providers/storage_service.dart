@@ -18,6 +18,46 @@ class StorageService extends GetxService {
     await storage.write(Constants.squad, user.userDetails?.squad);
   }
 
+  Future<void> storeSquads(String squads) async {
+    await storage.write(Constants.squads, squads);
+  }
+
+  String? getSquads() {
+    return storage.read(Constants.squads);
+  }
+
+  Future<void> storeTeams(String team) async {
+    await storage.write(Constants.team, team);
+  }
+
+  String? getTeams() {
+    return storage.read(Constants.team);
+  }
+
+  Future<void> storeAboutContent(String about) async {
+    await storage.write(Constants.about, about);
+  }
+
+  String? getAboutContent() {
+    return storage.read(Constants.about);
+  }
+
+  Future<void> storeMySquad(String mysquad) async {
+    await storage.write(Constants.mysquad, mysquad);
+  }
+
+  String? getMySquad() {
+    return storage.read(Constants.mysquad);
+  }
+
+  Future<void> storeDate(String date) async {
+    await storage.write(Constants.date, date);
+  }
+
+  String? getaavegDate() {
+    return storage.read(Constants.date);
+  }
+
   String? getName() {
     return storage.read(Constants.name);
   }
@@ -31,6 +71,6 @@ class StorageService extends GetxService {
   }
 
   void clearStorage() {
-    storage.remove(Constants.jwt);
+    storage.erase();
   }
 }

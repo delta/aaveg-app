@@ -1,9 +1,11 @@
-import 'package:aaveg_app/bindings/nav_bar_binding.dart';
+import 'package:aaveg_app/bindings/inital_binding.dart';
 import 'package:aaveg_app/providers/storage_service.dart';
 import 'package:aaveg_app/routes/routes.dart';
+import 'package:aaveg_app/utils/logger.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:jwt_decoder/jwt_decoder.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -23,9 +25,20 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   final storage = Get.find<StorageService>();
+  final log = logger(MyApp);
   @override
   void initState() {
     super.initState();
+    final token = storage.getJwt();
+    if (storage.getJwt() != null) {
+      log.i("Not null");
+      if (JwtDecoder.isExpired(token!)) {
+        log.e("Expired");
+        storage.clearStorage();
+      } else {
+        log.d("Not expired");
+      }
+    }
   }
 
   @override
@@ -33,7 +46,7 @@ class _MyAppState extends State<MyApp> {
         debugShowCheckedModeBanner: false,
         theme: ThemeData.dark(),
         getPages: Routes().route,
-        initialRoute: storage.getJwt() != null ? "/allsquad" : "/dauth",
-        initialBinding: NavBarBinding(),
+        initialRoute: "/home",
+        initialBinding: InitialBinding(),
       );
 }

@@ -1,24 +1,21 @@
 import 'package:aaveg_app/controllers/nav_bar_controller.dart';
+import 'package:aaveg_app/controllers/score_controller.dart';
+import 'package:aaveg_app/models/score_model.dart';
 import 'package:aaveg_app/views/widgets/NavBar/nav_icon_widget.dart';
 import 'package:aaveg_app/views/widgets/NavBar/navbar_widget.dart';
 import 'package:aaveg_app/views/widgets/ScoreBoard/scoretile_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class ScoreBoardPage extends StatefulWidget {
-  ScoreBoardPage({Key? key}) : super(key: key);
+final NavBarController navBarController = Get.find<NavBarController>();
+final ScoreController scoreController = Get.find<ScoreController>();
+Map<String, String> map = Map();
+ScoreModel? scoreModel;
 
-  @override
-  State<ScoreBoardPage> createState() => _ScoreBoardPageState();
-}
-
-class _ScoreBoardPageState extends State<ScoreBoardPage> {
-  GlobalKey<ScaffoldState> _scoreboardKey = GlobalKey<ScaffoldState>();
-  final NavBarController navBarController = Get.find<NavBarController>();
-  Map<String, String> map = Map();
-
+class ScoreBoardPage extends GetView<ScoreController> {
   @override
   Widget build(BuildContext context) {
+    GlobalKey<ScaffoldState> _scoreboardKey = GlobalKey<ScaffoldState>();
     return Scaffold(
         key: _scoreboardKey,
         onDrawerChanged: (isOpen) {
@@ -68,13 +65,19 @@ class _ScoreBoardPageState extends State<ScoreBoardPage> {
                             physics: ClampingScrollPhysics(),
                             child: Padding(
                               padding: EdgeInsets.all(3),
-                              child: Column(
-                                children: [
-                                  ScoreTile(),
-                                  ScoreTile(),
-                                  ScoreTile(),
-                                  ScoreTile()
-                                ],
+                              child: controller.obx(
+                                (state) => Column(
+                                  children: [
+                                    for (var i = 0;
+                                        i < state!.squads!.length;
+                                        i++)
+                                      ScoreTile(
+                                        score: state.squads![i],
+                                        rank: i + 1,
+                                      ),
+                                  ],
+                                ),
+                                onError: (e) => Text(e.toString()),
                               ),
                             )),
                       ),

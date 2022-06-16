@@ -34,8 +34,8 @@ dependencies:
   url_launcher: ^6.0.20
   flame: ^0.29.4
   # flutter_local_notifications: ^8.1.1+1
-  firebase_core: ^1.14.0
-  firebase_messaging: ^11.2.12
+  # firebase_core: ^1.14.0
+  # firebase_messaging: ^11.2.12
   get: ^4.6.1
   universal_html: ^2.0.8
   webview_flutter: ^3.0.2
@@ -46,6 +46,7 @@ dependencies:
   auto_size_text: ^3.0.0
   card_swiper: ^2.0.4
   sizer: ^2.0.15
+  jwt_decoder: ^2.0.1
   # fluent_ui: ^3.11.1
   
 dev_dependencies:

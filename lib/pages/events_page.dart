@@ -16,10 +16,9 @@ class EventsPage extends StatefulWidget {
 }
 
 final NavBarController navBarController = Get.find<NavBarController>();
-GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
 class _SampleState extends State<EventsPage> with TickerProviderStateMixin {
-  // finds your controller and uses it
+  GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   final sampleController = Get.find<EventsPageController>();
   late TabController _tabController;
   List<Event> eventlist = [
