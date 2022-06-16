@@ -60,7 +60,7 @@ class _SampleState extends State<CalendarPage> with TickerProviderStateMixin {
                 Expanded(
                     flex: 64,
                     child: Center(
-                      child: AutoSizeText('EVENT CALENDER',
+                      child: AutoSizeText('EVENT CALENDAR',
                           maxLines: 1,
                           minFontSize: 20,
                           maxFontSize: 40,
