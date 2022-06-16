@@ -85,7 +85,7 @@ class CalenderWidget extends GetView<CalendarPageController> {
                                                 fontSize: MediaQuery.of(context)
                                                         .size
                                                         .height /
-                                                    30,
+                                                    35,
                                                 letterSpacing: 5),
                                           ),
                                         ),
@@ -157,7 +157,8 @@ class CalenderTabController extends GetxController
 
   @override
   void onInit() {
-    tabController = TabController(vsync: this, length: 12);
+    tabController = TabController(vsync: this, length: 12, initialIndex: 5);
+    tabController.animateTo(5);
     super.onInit();
   }
 }

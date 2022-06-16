@@ -47,8 +47,9 @@ class _EventCardState extends State<EventCard> {
                         alignment: Alignment.centerLeft,
                         child: AutoSizeText(
                           widget.event.name!,
-                          minFontSize: 20,
+                          minFontSize: 10,
                           maxFontSize: 50,
+                          maxLines: 1,
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
                               // fontSize: totalHeight * 0.03,
