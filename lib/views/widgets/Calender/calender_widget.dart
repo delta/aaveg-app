@@ -6,8 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class CalenderWidget extends GetView<CalendarPageController> {
-  final dayList = new List<int>.generate(35, (i) => i + 1);
-
   @override
   Widget build(BuildContext context) {
     List<String> monthList = [
@@ -24,6 +22,8 @@ class CalenderWidget extends GetView<CalendarPageController> {
       'NOVEMBER',
       'DECEMBER'
     ];
+    List<int> noOfItems = [37, 35, 35, 35, 35, 35, 37, 35, 35, 37, 35, 35];
+    final dayList = new List<int>.generate(37, (i) => i + 1);
 
     final CalenderTabController _tabx = Get.put(CalenderTabController());
     var _tabBarController = _tabx.tabController;
@@ -114,7 +114,7 @@ class CalenderWidget extends GetView<CalendarPageController> {
                                   GridView(
                                     padding: EdgeInsets.zero,
                                     scrollDirection: Axis.horizontal,
-                                    physics: NeverScrollableScrollPhysics(),
+                                    physics: ScrollPhysics(),
                                     gridDelegate:
                                         SliverGridDelegateWithFixedCrossAxisCount(
                                             crossAxisCount: 7,
@@ -128,7 +128,9 @@ class CalenderWidget extends GetView<CalendarPageController> {
                                             //     MediaQuery.of(context).size.width *
                                             //         0.17,
                                             childAspectRatio: 1 / 1.15),
-                                    children: dayList.map((day) {
+                                    children: new List<int>.generate(
+                                        noOfItems[monthList.indexOf(month)],
+                                        (i) => i + 1).map((day) {
                                       return DayWidget(
                                         thisDay: dayList.indexOf(day),
                                         thisMonth: monthList.indexOf(month) + 1,

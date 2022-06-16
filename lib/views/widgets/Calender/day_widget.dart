@@ -21,8 +21,25 @@ class _DayWidgetState extends State<DayWidget> {
   @override
   Widget build(BuildContext context) {
     double totalHeight = MediaQuery.of(context).size.height;
+    List<int> gap = [6, 1, 1, 5, 0, 3, 5, 1, 4, 6, 2, 4, 1];
+    List<int> noOfDays = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+    String text = '';
+    widget.eventDatesThisMonth
+        .where((element) => (element.rounds![0].month == widget.thisMonth &&
+                element.rounds![0].day ==
+                    widget.thisDay - gap[widget.thisMonth - 1] ||
+            element.rounds![0].month == widget.thisMonth &&
+                element.rounds![1].day ==
+                    widget.thisDay - gap[widget.thisMonth - 1]))
+        .toList()
+        .map((e) {
+      print(e.name);
+      text += e.name!;
+    }).toList();
 
-    return widget.thisDay > 1
+    return widget.thisDay > gap[widget.thisMonth - 1] - 1 &&
+            widget.thisDay <
+                (gap[widget.thisMonth - 1] + noOfDays[widget.thisMonth - 1])
         ? Container(
             height: totalHeight * 0.007,
             padding: EdgeInsets.fromLTRB(totalHeight * 0.005,
@@ -38,40 +55,34 @@ class _DayWidgetState extends State<DayWidget> {
                       Align(
                         alignment: Alignment.centerLeft,
                         child: Text(
-                          '${widget.thisDay - 1}',
+                          '${widget.thisDay - gap[widget.thisMonth - 1] + 1}',
                           textAlign: TextAlign.left,
                           style: TextStyle(
                             fontFamily: GoogleFonts.montserrat().fontFamily,
+                            fontWeight: FontWeight.bold,
                             fontSize:
                                 MediaQuery.of(context).size.height * 0.013,
                           ),
                         ),
                       ),
-                      Column(
-                        children: widget.eventDatesThisMonth
-                            .where((element) => (element.rounds![0].month ==
-                                        widget.thisMonth &&
-                                    element.rounds![0].day ==
-                                        widget.thisDay - 2 ||
-                                element.rounds![0].month == widget.thisMonth &&
-                                    element.rounds![1].day ==
-                                        widget.thisDay - 2))
-                            .toList()
-                            .map((e) {
-                          return Align(
+                      if (text != '')
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.03,
+                          child: Align(
                             alignment: Alignment.centerLeft,
-                            child: Text(
-                              '${e.name}',
-                              textAlign: TextAlign.left,
-                              style: TextStyle(
-                                  fontFamily:
-                                      GoogleFonts.montserrat().fontFamily,
-                                  fontSize: MediaQuery.of(context).size.height *
-                                      0.011),
+                            child: SingleChildScrollView(
+                              child: Text(
+                                text,
+                                style: TextStyle(
+                                    fontFamily:
+                                        GoogleFonts.montserrat().fontFamily,
+                                    fontSize:
+                                        MediaQuery.of(context).size.height *
+                                            0.011),
+                              ),
                             ),
-                          );
-                        }).toList(),
-                      )
+                          ),
+                        ),
                     ]))),
           )
         : Container();
