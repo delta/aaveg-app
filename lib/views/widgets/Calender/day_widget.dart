@@ -35,7 +35,7 @@ class _DayWidgetState extends State<DayWidget> {
         .toList()
         .map((e) {
       print(e.name);
-      text += e.name!;
+      text += e.name! + '\n';
     }).toList();
 
     return widget.thisDay > gap[widget.thisMonth - 1] - 1 &&
@@ -52,21 +52,25 @@ class _DayWidgetState extends State<DayWidget> {
                 child: Align(
                     alignment: Alignment.centerLeft,
                     child: Column(children: [
-                      Align(
-                        alignment: Alignment.centerLeft,
-                        child: Text(
-                          '${widget.thisDay - gap[widget.thisMonth - 1] + 1}',
-                          textAlign: TextAlign.left,
-                          style: TextStyle(
-                            fontFamily: GoogleFonts.montserrat().fontFamily,
-                            fontWeight: FontWeight.bold,
-                            fontSize:
-                                MediaQuery.of(context).size.height * 0.013,
+                      Expanded(
+                        flex: 1,
+                        child: Align(
+                          alignment: Alignment.centerLeft,
+                          child: Text(
+                            '${widget.thisDay - gap[widget.thisMonth - 1] + 1}',
+                            textAlign: TextAlign.left,
+                            style: TextStyle(
+                              fontFamily: GoogleFonts.montserrat().fontFamily,
+                              fontWeight: FontWeight.bold,
+                              fontSize:
+                                  MediaQuery.of(context).size.height * 0.013,
+                            ),
                           ),
                         ),
                       ),
                       if (text != '')
-                        Container(
+                        Expanded(
+                          flex: 2,
                           // height: MediaQuery.of(context).size.height * 0.03,
                           child: Align(
                             alignment: Alignment.centerLeft,
@@ -82,6 +86,11 @@ class _DayWidgetState extends State<DayWidget> {
                               ),
                             ),
                           ),
+                        )
+                      else
+                        Expanded(
+                          child: Container(),
+                          flex: 3,
                         )
                     ]))),
           )

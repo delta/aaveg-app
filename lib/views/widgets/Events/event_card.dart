@@ -1,6 +1,7 @@
 import 'package:aaveg_app/controllers/event_popup_controller.dart';
 import 'package:aaveg_app/models/event_modal.dart';
 import 'package:aaveg_app/views/widgets/Events/event_popup.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -44,11 +45,13 @@ class _EventCardState extends State<EventCard> {
                   Expanded(
                       child: Align(
                         alignment: Alignment.centerLeft,
-                        child: Text(
+                        child: AutoSizeText(
                           widget.event.name!,
+                          minFontSize: 20,
+                          maxFontSize: 50,
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
-                              fontSize: totalHeight * 0.03,
+                              // fontSize: totalHeight * 0.03,
                               fontFamily: GoogleFonts.montserrat().fontFamily),
                         ),
                       ),
