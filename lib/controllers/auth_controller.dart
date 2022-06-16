@@ -1,3 +1,4 @@
+import 'package:aaveg_app/controllers/date_controller.dart';
 import 'package:aaveg_app/providers/auth_provider.dart';
 import 'package:aaveg_app/providers/storage_service.dart';
 import 'package:aaveg_app/utils/logger.dart';
@@ -8,6 +9,7 @@ class AuthController extends GetxController with StateMixin<dynamic> {
   AuthProvider api = AuthProvider();
   final log = logger(AuthController);
   var storageService = Get.find<StorageService>();
+  final DateController dateController = Get.find<DateController>();
   Future<void> getResponse(String code) async {
     api.getTokenResponse(code).then((response) {
       log.e(response.jwt);
@@ -21,6 +23,7 @@ class AuthController extends GetxController with StateMixin<dynamic> {
           snackStyle: SnackStyle.FLOATING,
           margin: EdgeInsets.all(10),
         );
+        dateController.buttonNameChanged();
         Get.offAllNamed("/home");
       }
     }, onError: (err) {
