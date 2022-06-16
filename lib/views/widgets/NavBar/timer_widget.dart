@@ -25,7 +25,7 @@ class TimerWidget extends StatelessWidget {
                         fontSize: isCountdownn ? 25 : 17,
                         fontWeight:
                             isCountdownn ? FontWeight.w900 : FontWeight.w400,
-                        letterSpacing: 4),
+                        letterSpacing: MediaQuery.of(context).size.width / 45),
                     textAlign: TextAlign.center,
                   ),
                 ),

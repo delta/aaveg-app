@@ -59,7 +59,7 @@ class _NavbarWidgetState extends State<NavbarWidget> {
             NavDivider(),
             NavBarListWidget(
               items: [
-                NavItem(pageName: "ScoreBoard", route: "/scoreboard"),
+                NavItem(pageName: "Scoreboard", route: "/scoreboard"),
                 NavItem(pageName: "Events", route: "/events"),
                 NavItem(pageName: "All Squad", route: "/allsquad"),
                 NavItem(pageName: "My Squad", route: "/mysquad"),
@@ -160,6 +160,8 @@ class NavBarListWidget extends StatelessWidget {
   NavBarListWidget({Key? key, required this.items}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    print(Get.routing.current);
+
     return ListView.builder(
       shrinkWrap: true,
       physics: NeverScrollableScrollPhysics(),

@@ -103,16 +103,17 @@ class AuthPage extends GetView<DateController> {
                           "THE E D G E OF K-Os",
                           maxLines: 1,
                           style: TextStyle(
-                              fontFamily: 'Anurati',
-                              fontSize: 35,
-                              letterSpacing: 0.2,
-                              fontWeight: FontWeight.w900),
+                            fontFamily: 'Anurati',
+                            fontSize: 35,
+                            letterSpacing:
+                                MediaQuery.of(context).size.width / 100,
+                          ),
                         ),
                       ),
                       Container(
                         margin: EdgeInsets.only(top: 20, left: 5, right: 5),
                         width: double.infinity,
-                        alignment: Alignment.center,
+                        alignment: Alignment.centerLeft,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -147,7 +148,10 @@ class AuthPage extends GetView<DateController> {
                         ),
                       ),
                       Container(
-                          margin: EdgeInsets.only(top: 50, left: 5, right: 5),
+                          margin: EdgeInsets.only(
+                              top: MediaQuery.of(context).size.height / 11,
+                              left: 5,
+                              right: 5),
                           width: double.infinity,
                           alignment: Alignment.center,
                           child: OutlinedText(
