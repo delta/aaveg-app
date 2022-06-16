@@ -1,5 +1,4 @@
 import 'package:aaveg_app/models/date_model.dart';
-import 'package:aaveg_app/models/score_model.dart';
 import 'package:aaveg_app/providers/date_provider.dart';
 import 'package:aaveg_app/providers/storage_service.dart';
 import 'package:aaveg_app/views/widgets/AuthWebView/dauth_web_view.dart';
