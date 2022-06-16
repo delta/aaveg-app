@@ -4,25 +4,21 @@ import 'package:get/get.dart';
 
 import '../models/event_modal.dart';
 
-class CalendarPageController extends GetxController
-    with StateMixin<EventsModel> {
+class EventPopupController extends GetxController with StateMixin<Event> {
   final storage = Get.find<StorageService>();
   EventsProvider eventsProvider = EventsProvider();
+  String eventId = '';
 
-  @override
-  void onInit() {
-    getEvents();
-    super.onInit();
+  setEventId(String id) {
+    eventId = id;
   }
 
-  @override
-  void onReady() {
-    getEvents();
-    super.onReady();
+  void getDetails(String id) {
+    getEventDetailsById(id);
   }
 
-  Future<void> getEvents() async {
-    eventsProvider.getEventsResponse().then(
+  Future<void> getEventDetailsById(String id) async {
+    eventsProvider.getEventDetailsById(id).then(
         (response) => change(response, status: RxStatus.success()),
         onError: (error) =>
             change(null, status: RxStatus.error(error.toString())));

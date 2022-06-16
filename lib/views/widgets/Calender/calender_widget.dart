@@ -1,27 +1,32 @@
+import 'package:aaveg_app/controllers/calendar_page_controller.dart';
+
 import 'package:aaveg_app/views/widgets/Calender/day_text.dart';
 import 'package:aaveg_app/views/widgets/Calender/day_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-class CalenderWidget extends StatefulWidget {
-  CalenderWidget({Key? key}) : super(key: key);
-
-  @override
-  State<CalenderWidget> createState() => _CalenderWidgetState();
-}
-
-class _CalenderWidgetState extends State<CalenderWidget>
-    with TickerProviderStateMixin {
-  final dayList = new List<int>.generate(35, (i) => i + 1);
-
-  @override
-  void initState() {
-    super.initState();
-  }
-
+class CalenderWidget extends GetView<CalendarPageController> {
   @override
   Widget build(BuildContext context) {
-    List<String> monthList = ['JULY', 'AUGUST'];
-    TabController _tabBarController = TabController(length: 2, vsync: this);
+    List<String> monthList = [
+      'JANUARY',
+      'FEBUARY',
+      'MARCH',
+      'APRIL',
+      'MAY',
+      'JUNE',
+      'JULY',
+      'AUGUST',
+      'SEPTEMBER',
+      'OCTOBER',
+      'NOVEMBER',
+      'DECEMBER'
+    ];
+    List<int> noOfItems = [37, 35, 35, 35, 35, 35, 37, 35, 35, 37, 35, 35];
+    final dayList = new List<int>.generate(37, (i) => i + 1);
+
+    final CalenderTabController _tabx = Get.put(CalenderTabController());
+    var _tabBarController = _tabx.tabController;
 
     return Container(
       child: Center(
@@ -54,8 +59,9 @@ class _CalenderWidgetState extends State<CalenderWidget>
                             child: IconButton(
                                 onPressed: () {
                                   _tabBarController.index == 0
-                                      ? _tabBarController.animateTo(1)
-                                      : _tabBarController.animateTo(0);
+                                      ? _tabBarController.animateTo(11)
+                                      : _tabBarController.animateTo(
+                                          _tabBarController.index - 1);
                                 },
                                 icon: Icon(Icons.arrow_back_ios)),
                           ),
@@ -66,11 +72,11 @@ class _CalenderWidgetState extends State<CalenderWidget>
                                   isScrollable: true,
                                   indicatorColor: Colors.transparent,
                                   tabs: [
-                                    for (var i = 0; i < 2; i++)
+                                    for (var i = 0; i < 12; i++)
                                       SizedBox(
                                         width:
                                             MediaQuery.of(context).size.width *
-                                                0.4,
+                                                0.5,
                                         child: Center(
                                           child: Text(
                                             monthList[i],
@@ -79,7 +85,7 @@ class _CalenderWidgetState extends State<CalenderWidget>
                                                 fontSize: MediaQuery.of(context)
                                                         .size
                                                         .height /
-                                                    30,
+                                                    35,
                                                 letterSpacing: 5),
                                           ),
                                         ),
@@ -89,53 +95,50 @@ class _CalenderWidgetState extends State<CalenderWidget>
                             flex: 1,
                             child: IconButton(
                                 onPressed: () {
-                                  _tabBarController.index == 1
+                                  _tabBarController.index == 11
                                       ? _tabBarController.animateTo(0)
-                                      : _tabBarController.animateTo(1);
+                                      : _tabBarController.animateTo(
+                                          _tabBarController.index + 1);
                                 },
                                 icon: Icon(Icons.arrow_forward_ios)),
                           ),
                         ])),
                     Expanded(
                         flex: 315,
-                        child: TabBarView(
-                          controller: _tabBarController,
-                          children: [
-                            GridView(
-                              padding: EdgeInsets.zero,
-                              scrollDirection: Axis.vertical,
-                              physics: ScrollPhysics(),
-                              gridDelegate:
-                                  SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisCount: 5,
-                                crossAxisSpacing: 15,
-                                mainAxisSpacing:
-                                    MediaQuery.of(context).size.height / 60,
-                                mainAxisExtent:
-                                    MediaQuery.of(context).size.height * 0.049,
-                              ),
-                              children: dayList.map((day) {
-                                return DayWidget();
-                              }).toList(),
-                            ),
-                            GridView(
-                              padding: EdgeInsets.zero,
-                              scrollDirection: Axis.vertical,
-                              physics: ScrollPhysics(),
-                              gridDelegate:
-                                  SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisCount: 5,
-                                crossAxisSpacing: 15,
-                                mainAxisSpacing:
-                                    MediaQuery.of(context).size.height / 60,
-                                mainAxisExtent:
-                                    MediaQuery.of(context).size.height * 0.049,
-                              ),
-                              children: dayList.map((day) {
-                                return DayWidget();
-                              }).toList(),
-                            ),
-                          ],
+                        child: controller.obx(
+                          (eventList) {
+                            return TabBarView(
+                              controller: _tabBarController,
+                              children: [
+                                for (var month in monthList)
+                                  GridView(
+                                    padding: EdgeInsets.zero,
+                                    scrollDirection: Axis.horizontal,
+                                    physics: ScrollPhysics(),
+                                    gridDelegate:
+                                        SliverGridDelegateWithFixedCrossAxisCount(
+                                      crossAxisCount: 7,
+                                      crossAxisSpacing:
+                                          MediaQuery.of(context).size.height /
+                                              60,
+                                      mainAxisSpacing:
+                                          MediaQuery.of(context).size.height /
+                                              60,
+                                      childAspectRatio: 1 / 1.15,
+                                    ),
+                                    children: new List<int>.generate(
+                                        noOfItems[monthList.indexOf(month)],
+                                        (i) => i + 1).map((day) {
+                                      return DayWidget(
+                                        thisDay: dayList.indexOf(day),
+                                        thisMonth: monthList.indexOf(month) + 1,
+                                        eventDatesThisMonth: eventList!.events!,
+                                      );
+                                    }).toList(),
+                                  ),
+                              ],
+                            );
+                          },
                         )),
                   ]),
                 ),
@@ -145,5 +148,19 @@ class _CalenderWidgetState extends State<CalenderWidget>
         ),
       ),
     );
+  }
+}
+
+class CalenderTabController extends GetxController
+    with GetSingleTickerProviderStateMixin {
+  late TabController tabController;
+  var now = new DateTime.now();
+
+  @override
+  void onInit() {
+    tabController =
+        TabController(vsync: this, length: 12, initialIndex: now.month - 1);
+    tabController.animateTo(now.month - 1);
+    super.onInit();
   }
 }
