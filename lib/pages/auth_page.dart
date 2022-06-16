@@ -105,7 +105,8 @@ class AuthPage extends GetView<DateController> {
                           style: TextStyle(
                             fontFamily: 'Anurati',
                             fontSize: 35,
-                            letterSpacing: 0.2,
+                            letterSpacing:
+                                MediaQuery.of(context).size.width / 100,
                           ),
                         ),
                       ),
@@ -147,7 +148,10 @@ class AuthPage extends GetView<DateController> {
                         ),
                       ),
                       Container(
-                          margin: EdgeInsets.only(top: 50, left: 5, right: 5),
+                          margin: EdgeInsets.only(
+                              top: MediaQuery.of(context).size.height / 11,
+                              left: 5,
+                              right: 5),
                           width: double.infinity,
                           alignment: Alignment.center,
                           child: OutlinedText(
