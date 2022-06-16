@@ -5,14 +5,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class NavbarWdiget extends StatefulWidget {
-  NavbarWdiget({Key? key}) : super(key: key);
+class NavbarWidget extends StatefulWidget {
+  NavbarWidget({Key? key}) : super(key: key);
 
   @override
-  State<NavbarWdiget> createState() => _NavbarWdigetState();
+  State<NavbarWidget> createState() => _NavbarWidgetState();
 }
 
-class _NavbarWdigetState extends State<NavbarWdiget> {
+class _NavbarWidgetState extends State<NavbarWidget> {
   final storage = Get.find<StorageService>();
   @override
   Widget build(BuildContext context) {
@@ -63,7 +63,7 @@ class _NavbarWdigetState extends State<NavbarWdiget> {
                 NavItem(pageName: "Events", route: "/events"),
                 NavItem(pageName: "All Squad", route: "/allsquad"),
                 NavItem(pageName: "My Squad", route: "/mysquad"),
-                NavItem(pageName: "Origin Story", route: "/originstory"),
+                // NavItem(pageName: "Origin Story", route: "/originstory"),
               ],
             ),
             NavDivider(),

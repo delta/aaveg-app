@@ -28,7 +28,7 @@ class AboutPage extends GetView<AboutPageController> {
               canvasColor: Colors.black.withOpacity(0.65),
             ),
             child: Drawer(
-              child: NavbarWdiget(),
+              child: NavbarWidget(),
             )),
         body: Container(
           decoration: BoxDecoration(

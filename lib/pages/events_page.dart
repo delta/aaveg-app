@@ -30,7 +30,7 @@ class EventsPage extends GetView<EventsPageController> {
             canvasColor: Colors.black.withOpacity(0.4),
           ),
           child: Drawer(
-            child: NavbarWdiget(),
+            child: NavbarWidget(),
           )),
       body: Stack(
         children: [

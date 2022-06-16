@@ -27,7 +27,7 @@ class _HomeState extends State<Home> {
             canvasColor: Colors.black.withOpacity(0.4),
           ),
           child: Drawer(
-            child: NavbarWdiget(),
+            child: NavbarWidget(),
           )),
       body: Stack(children: [
         NavIcon(globalKey: _scaffoldKey),

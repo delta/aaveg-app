@@ -38,7 +38,7 @@ class _SampleState extends State<CalendarPage> with TickerProviderStateMixin {
             canvasColor: Colors.black.withOpacity(0.4),
           ),
           child: Drawer(
-            child: NavbarWdiget(),
+            child: NavbarWidget(),
           )),
       body: Stack(children: [
         Container(

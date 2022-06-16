@@ -41,7 +41,7 @@ class AuthPage extends GetView<DateController> {
               canvasColor: Colors.black.withOpacity(0.4),
             ),
             child: Drawer(
-              child: NavbarWdiget(),
+              child: NavbarWidget(),
             )),
         body: Stack(
           children: [

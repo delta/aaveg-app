@@ -34,10 +34,10 @@ class Routes {
     GetPage(name: "/mysquad", page: () => MySquad(), binding: MySquadBinding()),
     GetPage(name: "/team", page: () => TeamPage(), binding: TeamBinding()),
     GetPage(name: "/allsquad", page: () => AllSquad()),
-    GetPage(
-        name: "/originstory",
-        page: () => OriginStoryPage(),
-        binding: OriginStoryBinding()),
+    // GetPage(
+    //     name: "/originstory",
+    //     page: () => OriginStoryPage(),
+    //     binding: OriginStoryBinding()),
     GetPage(
         name: "/events",
         page: () => EventsPage(),

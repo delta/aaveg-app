@@ -26,7 +26,7 @@ class ScoreBoardPage extends GetView<ScoreController> {
               canvasColor: Colors.black.withOpacity(0.4),
             ),
             child: Drawer(
-              child: NavbarWdiget(),
+              child: NavbarWidget(),
             )),
         body: Stack(
           children: [
