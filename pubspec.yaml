@@ -47,6 +47,7 @@ dependencies:
   card_swiper: ^2.0.4
   sizer: ^2.0.15
   jwt_decoder: ^2.0.1
+  animated_splash_screen: ^1.2.0
   # fluent_ui: ^3.11.1
   
 dev_dependencies:

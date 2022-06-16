@@ -17,6 +17,7 @@ import 'package:aaveg_app/pages/sample.dart';
 import 'package:aaveg_app/pages/scoreboard_page.dart';
 import 'package:aaveg_app/pages/my_squad_page.dart';
 import 'package:aaveg_app/pages/sponsor_page.dart';
+import 'package:aaveg_app/pages/splashpage.dart';
 import 'package:aaveg_app/pages/team_page.dart';
 import 'package:get/get.dart';
 
@@ -48,5 +49,6 @@ class Routes {
         page: () => CalendarPage(),
         binding: CalendarPageBinding()),
     GetPage(name: "/sponsors", page: () => SponsorPage()),
+    GetPage(name: "/splash", page: () => SplashScreen())
   ];
 }

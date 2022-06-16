@@ -46,7 +46,8 @@ class _MyAppState extends State<MyApp> {
         debugShowCheckedModeBanner: false,
         theme: ThemeData.dark(),
         getPages: Routes().route,
-        initialRoute: "/home",
+        initialRoute: "/splash",
+        //  storage.getJwt() != null ? "/splash" : "/dauth",
         initialBinding: InitialBinding(),
       );
 }
