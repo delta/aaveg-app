@@ -1,3 +1,4 @@
+import 'package:aaveg_app/pages/auth_page.dart';
 import 'package:aaveg_app/pages/home.dart';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
@@ -10,7 +11,7 @@ class SplashScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     double totalHeight = MediaQuery.of(context).size.height;
     return AnimatedSplashScreen(
-      nextScreen: Home(),
+      nextScreen: AuthPage(),
       splash: Container(
         child: Column(children: [
           Image.asset('assets/images/aaveg-logo.png', height: 200, width: 200),

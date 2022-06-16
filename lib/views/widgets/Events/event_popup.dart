@@ -105,7 +105,8 @@ class _EventPopupState extends State<EventPopup> {
                     flex: 25,
                     child: Center(
                       child: InkWell(
-                        onTap: () => launch(widget.event.rulebookLink!),
+                        onTap: () =>
+                            launchUrl(Uri.parse(widget.event.rulebookLink!)),
                         child: Row(
                           children: [
                             Expanded(
