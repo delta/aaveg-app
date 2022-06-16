@@ -1,7 +1,3 @@
-// To parse this JSON data, do
-//
-//     final aboutModel = aboutModelFromJson(jsonString);
-
 import 'dart:convert';
 
 AboutModel aboutModelFromJson(String str) =>
@@ -31,18 +27,21 @@ class AboutUsContent {
     this.cup1,
     this.cup2,
     this.cup3,
+    this.cup4,
   });
 
   String? aboutAaveg;
   Cup? cup1;
   Cup? cup2;
   Cup? cup3;
+  Cup? cup4;
 
   factory AboutUsContent.fromJson(Map<String, dynamic> json) => AboutUsContent(
         aboutAaveg: json["aboutAaveg"],
         cup1: Cup.fromJson(json["cup1"]),
         cup2: Cup.fromJson(json["cup2"]),
         cup3: Cup.fromJson(json["cup3"]),
+        cup4: Cup.fromJson(json["cup4"]),
       );
 
   Map<String, dynamic> toJson() => {
@@ -50,6 +49,7 @@ class AboutUsContent {
         "cup1": cup1!.toJson(),
         "cup2": cup2!.toJson(),
         "cup3": cup3!.toJson(),
+        "cup4": cup4!.toJson(),
       };
 }
 

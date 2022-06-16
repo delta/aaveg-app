@@ -8,12 +8,25 @@ class TeamProvider extends GetConnect {
     final storage = Get.find<StorageService>();
     final teamData = storage.getTeams();
     if (teamData != null) {
-      return teamModelFromJson(teamData);
+      final team = teamModelFromJson(teamData);
+      for (var t in team.teamsData!) {
+        t.members!.sort(((a, b) => a.name
+            .toString()
+            .toLowerCase()
+            .compareTo(b.name.toString().toLowerCase())));
+      }
+      return team;
     } else {
       final response =
           await post("${Constants.baseUrl}/api/constants/teamsData/", {});
       if (response.statusCode == 200) {
         final team = teamModelFromJson(response.bodyString!);
+        for (var t in team.teamsData!) {
+          t.members!.sort(((a, b) => a.name
+              .toString()
+              .toLowerCase()
+              .compareTo(b.name.toString().toLowerCase())));
+        }
         storage.storeTeams(response.bodyString!);
         return team;
       } else {

@@ -50,17 +50,21 @@ class _ScoreTileState extends State<ScoreTile> {
                 ),
               ),
             ),
-            Container(
-              margin: EdgeInsets.only(top: 8, bottom: 8, left: 5),
-              padding: EdgeInsets.symmetric(vertical: 8.0),
-              child: Text(
-                'Rank: ${widget.rank}',
-                style: TextStyle(
-                    fontSize: 30,
-                    fontWeight: FontWeight.w900,
-                    fontFamily: GoogleFonts.montserrat().fontFamily),
-                textAlign: TextAlign.center,
+            Visibility(
+              child: Container(
+                margin: EdgeInsets.only(top: 8, bottom: 8, left: 5),
+                padding: EdgeInsets.symmetric(vertical: 8.0),
+                child: Text(
+                  'Rank: ${widget.rank}',
+                  style: TextStyle(
+                      fontSize: 30,
+                      fontWeight: FontWeight.w900,
+                      fontFamily: GoogleFonts.montserrat().fontFamily),
+                  textAlign: TextAlign.center,
+                ),
               ),
+              visible: widget.score.position?.overall != null &&
+                  widget.score.position!.overall! > 0,
             ),
             Table(defaultColumnWidth: FixedColumnWidth(120.0), children: [
               for (var point in points.entries)

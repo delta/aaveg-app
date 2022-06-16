@@ -96,7 +96,7 @@ class AboutPage extends GetView<AboutPageController> {
                                         CupWidget(
                                             cup: state.aboutUsContent!.cup3!),
                                         CupWidget(
-                                            cup: state.aboutUsContent!.cup3!),
+                                            cup: state.aboutUsContent!.cup4!),
                                       ],
                                     ),
                                 onLoading: Center(

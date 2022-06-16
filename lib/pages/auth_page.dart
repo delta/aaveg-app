@@ -102,7 +102,7 @@ class _AuthPageState extends State<AuthPage> {
                         ],
                       ),
                       Container(
-                        margin: EdgeInsets.only(top: 150, left: 10, right: 10),
+                        margin: EdgeInsets.only(top: MediaQuery.of(context).size.height/4, left: 10, right: 10),
                         width: _mediaquery.size.width,
                         alignment: Alignment.center,
                         child: AutoSizeText(
@@ -139,7 +139,7 @@ class _AuthPageState extends State<AuthPage> {
                         ),
                       ),
                       Container(
-                          margin: EdgeInsets.only(top: 130, left: 5, right: 5),
+                          margin: EdgeInsets.only(top: 50, left: 5, right: 5),
                           width: double.infinity,
                           alignment: Alignment.center,
                           child: OutlinedText(
