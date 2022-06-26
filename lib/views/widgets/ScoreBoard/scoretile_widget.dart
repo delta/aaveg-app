@@ -18,7 +18,7 @@ class _ScoreTileState extends State<ScoreTile> {
   @override
   Widget build(BuildContext context) {
     Map<String, int?> points = {
-      "Curtural": widget.score.points?.culturals,
+      "Culturals": widget.score.points?.culturals,
       "Spectrum": widget.score.points?.spectrum,
       "Total": widget.score.points?.overall
     };
