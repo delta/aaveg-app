@@ -64,6 +64,8 @@ android {
     //     signingConfig signingConfigs.debug
     //     } 
     // }
+    
+    /* prod config*/
     signingConfigs {
       release {
           keyAlias keystoreProperties['keyAlias']
@@ -80,6 +82,7 @@ android {
           signingConfig signingConfigs.release
       }
     }
+    /* end prod config*/
 
 }
 
