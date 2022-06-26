@@ -6,7 +6,12 @@ Flutter Application for Aaveg Fest
 
 
 ## Screenshots
-Coming Soon
+<img src="https://user-images.githubusercontent.com/83528327/175801258-18fa9e7f-fd0e-4502-8509-fd6d3206cf4a.jpg" width="150">&emsp;
+<img src="https://user-images.githubusercontent.com/83528327/175801252-bee9d110-e12c-40ee-849b-eca956ce2934.jpg" width="150">&emsp;
+<img src="https://user-images.githubusercontent.com/83528327/175801248-9bcc0c6b-f218-45dd-b542-b9df53b486d3.jpg" width="150">&emsp;
+<img src="https://user-images.githubusercontent.com/83528327/175801255-6cd4de6d-fa4d-40c2-9cd7-508f0cb1a1ff.jpg" width="150">&emsp;
+<img src="https://user-images.githubusercontent.com/83528327/175801261-162c2e27-53a2-4fb4-ae99-b7c2587ce250.jpg" width="150">&emsp;
+<img src="https://user-images.githubusercontent.com/83528327/175801257-9c2f74b0-6d7b-4e40-a408-151f61bac311.jpg" width="150">&emsp;
 ## Flutter
 
 ### Requirements
